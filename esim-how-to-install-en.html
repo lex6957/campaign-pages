@@ -1,0 +1,970 @@
+<main id="maincontent" class="page-main">
+  <meta
+    name="viewport"
+    content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <style>
+    body {
+      background-color: #fdfdfd; /* Set background color */
+      margin: 0; /* Remove default margin */
+      font-family: Open Sans; /* Set a default font */
+    }
+    h1 {
+      margin: 0;
+    }
+    ol {
+      padding-inline-start: 22px;
+    }
+
+    /* Default style for anchor links */
+    a {
+      text-decoration: none; /* No underline */
+      color: black; /* Set link color to black */
+      position: relative; /* Positioning for the border */
+      display: block; /* Make anchor fill the entire cell */
+      padding: 10px 0; /* Space for the bottom border */
+      outline: none; /* Remove focus outline */
+    }
+
+    /* Style for clicked links */
+    a.clicked::after {
+      content: ""; /* Required for pseudo-element */
+      position: absolute; /* Positioning for the border */
+      left: 0; /* Align to the left */
+      bottom: 0; /* Position at the bottom */
+      height: 4px; /* Height of the border */
+      background-color: #0cd7d5; /* Thicker cyan bottom border */
+      border-radius: 2px; /* Rounded ends */
+      width: 100%; /* Full width */
+    }
+
+    a:visited {
+      color: black; /* Color for visited links */
+    }
+    a:active {
+      color: black; /* Color for visited links */
+    }
+    /* Sticky table style */
+    .tabs {
+      width: 100%;
+      position: sticky; /* Make the table sticky */
+      top: 0; /* Stick to the top */
+      z-index: 10; /* Ensure it stays on top of other content */
+      font-weight: 600;
+      display: flex;
+      margin: 10px 0;
+      font-family: Open Sans;
+      background-color: #fdfdfd;
+    }
+    .tabs-item {
+      width: 180px;
+      font-size: 16px;
+      text-align: center;
+      color: #000;
+      margin-right: 24px;
+    }
+
+    .active {
+      display: block; /* Show active content */
+    }
+
+    .override {
+      color: #0026ca !important;
+    }
+    .hide {
+      display: none;
+    }
+    .activation-box {
+      margin-top: 32px;
+      font-family: Open Sans;
+    }
+    .content-box {
+      margin: 0;
+      font-size: 14px;
+      line-height: 18px;
+      padding-inline-start: 0;
+    }
+    .content-li {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 64px;
+    }
+    .content-li ol {
+      max-width: 445px;
+    }
+    .content-image {
+      width: 316px;
+      height: auto;
+      cursor: pointer;
+    }
+    .text-14 {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+    }
+    .mb-10 {
+      margin-bottom: 10px;
+    }
+    .mb-24 {
+      margin-bottom: 24px;
+    }
+    .mt-45 {
+      margin-top: 45px;
+    }
+    .disc {
+      list-style-type: disc;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: #c8f9f8;
+      padding: 8px 10px;
+    }
+    .link {
+      color: #0026ca;
+      text-decoration: underline;
+      display: inline;
+    }
+
+    @media screen and (max-width: 959px) {
+      .tabs-item {
+        flex: 1;
+        width: auto;
+        margin-right: 0;
+      }
+      .activation-box {
+        margin-top: 24px;
+      }
+      .content-li {
+        display: block;
+        margin-top: 24px;
+      }
+      .content-image {
+        margin-top: 16px;
+        width: 100%;
+      }
+    }
+  </style>
+  <style>
+    .show {
+      z-index: 100 !important;
+      opacity: 1 !important;
+    }
+    .img-show {
+      opacity: 1 !important;
+    }
+    .image-popup {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 5px 10px 0px rgba(144, 224, 239, 0.25);
+      transition: all 0.3s linear;
+      z-index: -1;
+      opacity: 0;
+    }
+    .image-wrapper {
+      width: 538px;
+      padding: 10px 10px 44px 10px;
+      border-radius: 10px;
+      opacity: 0;
+      background-color: #ffffff;
+      transition: opacity 0.3s ease-in-out;
+      transition-delay: 0.3s;
+    }
+    .image-header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: end;
+    }
+    .image-close {
+      cursor: pointer;
+    }
+    .image-popup__img {
+      margin: 24px 0;
+      width: 100%;
+      height: auto;
+
+      max-height: calc(100vh - 80px - 100px);
+    }
+    .image-loading {
+      background-color: #eee;
+      height: 400px;
+      transition: height 0.3s linear;
+    }
+  </style>
+  <script class="attachShadow">
+    // When loading a page through the esim website, there will be a variable window._shadowRoot
+    // don't use const/let in global scope in shadow root, use var instead
+    // use IIFE to avoid polluting the global scope
+
+    (function () {
+      var root = window._shadowRoot || document;
+      function tabInit() {
+        const tabs = root.querySelectorAll(".tabs-item");
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function (event) {
+            underlineLink(this);
+          });
+        });
+      }
+      function underlineLink(link) {
+        // Remove 'clicked' class from all links
+        const links = root.querySelectorAll("a");
+        links.forEach((l) => l.classList.remove("clicked"));
+        // Add 'clicked' class to the clicked link
+        link.classList.add("clicked");
+        const selector = link.getAttribute("href");
+        resetActivationClass();
+        const iosActivation = root.querySelector("#ios-activation");
+        const aosActivation = root.querySelector("#aos-activation");
+        if (selector === "#ios-activation") {
+          iosActivation.classList.add("active");
+          aosActivation.classList.add("hide");
+        } else if (selector === "#aos-activation") {
+          aosActivation.classList.add("active");
+          iosActivation.classList.add("hide");
+        }
+        window.scrollTo(0, 0);
+      }
+      function getESimMobileOS() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+          return "Android";
+        }
+        if (
+          /iPad|iPhone|iPod/.test(userAgent) &&
+          !window.MSStream &&
+          !window.navigator.standalone &&
+          /Safari/.test(userAgent)
+        ) {
+          return "iOS-Safari";
+        }
+        return null;
+      }
+      function resetActivationClass() {
+        const iosActivation = root.querySelector("#ios-activation");
+        const aosActivation = root.querySelector("#aos-activation");
+        iosActivation.classList.remove("active");
+        iosActivation.classList.remove("hide");
+        aosActivation.classList.remove("active");
+        aosActivation.classList.remove("hide");
+      }
+      function preselectTab() {
+        let OS = "#ios";
+        const type = getESimMobileOS();
+        if (type === "Android") {
+          OS = "#aos";
+        } else if (type === "iOS-Safari") {
+          OS = "#ios";
+        }
+        const selector = OS + "-activation";
+        // Automatically click the iOS tab and show its content
+        const osLink = root.querySelector('a[href="' + selector + '"]');
+        underlineLink(osLink);
+        // Scroll to the corresponding section
+        location.hash = selector;
+      }
+
+      function changeTabPosition() {
+        const tabs = root.querySelector(".tabs");
+        const header = document.querySelector("#header");
+        // console.log("header", header);
+        if (header) {
+          tabs.style.top = header.offsetHeight + "px";
+        }
+      }
+      if (window._shadowRoot) {
+        tabInit();
+        preselectTab();
+        changeTabPosition();
+        imagePopupInit();
+        window.addEventListener("resize", changeTabPosition);
+      } else {
+        document.addEventListener("DOMContentLoaded", function () {
+          tabInit();
+          preselectTab();
+          imagePopupInit();
+        });
+      }
+
+      function isMobile() {
+        return window.innerWidth <= 959; // Adjust the width as needed
+      }
+
+      function imagePopupInit() {
+        const images = root.querySelectorAll(".content-image");
+        const $popup = root.querySelector(".image-popup");
+        const $popupWrapper = $popup.querySelector(".image-wrapper");
+        const $popupImg = $popup.querySelector(".image-popup__img");
+        const $close = $popup.querySelector(".image-close");
+
+        $popupImg.addEventListener("load", function () {
+          $popupImg.classList.remove("image-loading");
+        });
+
+        images.forEach((image) => {
+          image.addEventListener("click", function () {
+            const src = this.getAttribute("src");
+            if (!src || isMobile()) return;
+            openImagePopup(src);
+          });
+        });
+
+        $close.addEventListener("click", function () {
+          $popup.classList.remove("show");
+          $popupWrapper.classList.remove("img-show");
+          setTimeout(() => {
+            $popupImg.setAttribute("src", "");
+          }, 500);
+        });
+
+        function openImagePopup(src) {
+          $popupImg.classList.add("image-loading");
+          $popupImg.setAttribute("src", src);
+          $popupWrapper.classList.add("img-show");
+          $popup.classList.add("show");
+        }
+      }
+    })();
+  </script>
+  <div class="tabs">
+    <a class="tabs-item" href="#ios-activation">iOS</a>
+    <a class="tabs-item" href="#aos-activation">Android</a>
+  </div>
+  <!--IOS install steps-->
+  <div id="ios-activation" class="activation-box active">
+    <p class="text-14 content-title">
+      Before installing and setting up the eSIM, please make sure that:
+    </p>
+    <ul class="text-14 disc mb-24">
+      <li class="mb-10">
+        your device is eSIM compatible and network unlocked.
+      </li>
+      <li class="mb-10">
+        you have a stable connection, preferably WiFi. (It’s because you need to
+        download the eSIM properly to your device.)
+      </li>
+    </ul>
+    <h1 class="title">Method 1: By Direct Installation</h1>
+    <ul class="content-box">
+      <li class="content-li">
+        <ol start="1">
+          <li>
+            Log into your SUNDAY account and go to <strong>My eSIM</strong>.
+          </li>
+          <li>Choose the eSIM you want to install.</li>
+          <li>
+            Tap <strong>Manage eSIM </strong>and select the tab
+            <strong>Direct</strong>.
+          </li>
+          <li>Tap <strong>Install Now.</strong></li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_1_Step_4.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+      <li class="content-li">
+        <ol start="5">
+          <li>
+            Follow on-screen instructions. It may take around 2-3 minutes to
+            finish, DO NOT close SUNDAY eSIM App during the process.
+          </li>
+          <li>
+            When you see "Your Webbing eSIM is now active", tap <b>Done</b> to
+            finish the installation.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_2.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="7">
+          <li>
+            If prompted, under <strong>Cellular </strong>or<strong>
+              Mobile Plan Label</strong
+            >, tap<strong> Secondary </strong>and select or create a preferred
+            label for your new SUNDAY eSIM.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_3.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="8">
+          <li>
+            For <strong>Default Line</strong>, choose
+            <strong>Primary</strong> for calls and texts and tap
+            <strong>Continue</strong>.
+          </li>
+          <li>
+            For <strong>iMessage &amp; FaceTime</strong>, choose
+            <strong>Primary</strong> and tap <strong>Continue</strong>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_4.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="10">
+          <li>
+            For <strong>Cellular</strong> or <strong>Mobile</strong>
+            <strong>Data</strong>,<br />a.&nbsp;&nbsp;&nbsp;choose your new
+            SUNDAY eSIM if you’re already at your destination. Make sure the
+            option <b>Allow Cellular Data Switching</b> is DISABLED.<br />b.&nbsp;&nbsp;&nbsp;choose
+            <strong>Primary</strong> if you’re still in your own country.
+          </li>
+          <li>
+            You will then go back to SUNDAY App and get a message on the
+            successful installation.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_1_Step_11.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+    </ul>
+    <h1 class="title mt-45">Method 2: By QR Code</h1>
+    <ul class="content-box">
+      <li class="content-li">
+        <ol start="1">
+          <li>
+            Log into your SUNDAY account and go to <strong>My eSIM</strong>.
+          </li>
+          <li>Choose the eSIM you want to install.</li>
+          <li>
+            Tap <strong>Manage eSIM</strong> and select the tab
+            <strong>QR Code</strong>.
+          </li>
+          <li>
+            Tap <strong>Save QR Code</strong> to download the QR code image to
+            your device. You could share it to another device or print it out
+            for scanning.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_2_Step_4.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="5">
+          <li>
+            On your iOS device, go to <strong>Settings </strong>&gt;<strong>
+              Cellular</strong
+            >
+            or <strong>Mobile</strong> <strong>Service </strong>&gt;<strong>
+              Add eSIM</strong
+            >.
+          </li>
+          <li>
+            Select <strong>Use QR Code</strong> and scan the code. If your
+            device is running iOS 17 or later, tap
+            <strong>Open Photos</strong> to import the QR code image you just
+            saved from camera roll.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_7.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="7">
+          <li>
+            Follow on-screen instructions. It may take around 2-3 minutes to
+            finish.
+          </li>
+          <li>
+            When you see "Your Webbing eSIM is now active", tap<strong
+              >&nbsp;Done</strong
+            >
+            to finish the installation.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_8.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="9">
+          <li>
+            If prompted, under<strong> Cellular </strong>or<strong>
+              Mobile Plan Label</strong
+            >, tap <strong>Secondary</strong> and select or create a preferred
+            label for your new SUNDAY eSIM.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_9.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="10">
+          <li>
+            For <strong>Default Line</strong>, choose<strong> Primary</strong>
+            for calls and texts and tap <b>Continue</b>.
+          </li>
+          <li>
+            For<strong> iMessage &amp; FaceTime</strong>, choose
+            <strong>Primary</strong> and tap <strong>Continue</strong>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_10.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="12">
+          <li>
+            For <strong>Cellular</strong>&nbsp;or <strong>Mobile</strong>
+            <strong>Data</strong>,<br />a.&nbsp;&nbsp;&nbsp;choose your new
+            SUNDAY eSIM if you’re already at your destination. Make sure the
+            option <b>Allow Cellular Data Switching</b> is DISABLED.<br />b.&nbsp;&nbsp;&nbsp;choose
+            <b>Primary</b> if you’re still in your own country.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_11.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+    </ul>
+
+    <h1 class="title mt-45">Method 3: By Manual Input</h1>
+    <ul class="content-box">
+      <li class="content-li">
+        <ol start="1">
+          <li>
+            Log into your SUNDAY account and go to
+            <strong>My eSIM</strong>.&nbsp;
+          </li>
+          <li>Choose the eSIM you want to install.</li>
+          <li>
+            Tap <strong>Manage eSIM</strong> and select the tab
+            <strong>Manual</strong>.
+          </li>
+          <li>
+            On your iOS device, go to <strong>Settings </strong>&gt;
+            <strong>Cellular</strong> or <strong>Mobile</strong>
+            <strong>Service </strong>&gt; <strong>Add eSIM</strong>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_3_Step_4.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="5">
+          <li>
+            Select <strong>Use QR Code </strong>&gt;<strong>
+              Enter Details Manually</strong
+            >.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_13.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="6">
+          <li>
+            Go back to your SUNDAY App, copy and paste the
+            <strong>SM-DP + Address</strong> and
+            <strong>Activation Code</strong> to corresponding fields. Tap
+            <strong>Next</strong>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_3_Step_6.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="7">
+          <li>
+            Follow on-screen instructions to start the installation. It may take
+            around 2-3 minutes to finish.
+          </li>
+          <li>
+            When you see "Your Webbing eSIM is now active", tap
+            <strong>Done</strong> to finish the installation.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_15.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="9">
+          <li>
+            If prompted, under <strong>Cellular </strong>or<strong>
+              Mobile Plan Label</strong
+            >, tap <strong>Secondary</strong> and select or create a preferred
+            label for your new SUNDAY eSIM.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_16.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="10">
+          <li>
+            For <strong>Default Line</strong>, choose<strong> Primary</strong>
+            for calls and texts and tap <b>Continue</b>.
+          </li>
+          <li>
+            For<strong> iMessage &amp; FaceTime</strong>, choose
+            <strong>Primary</strong> and tap <b>Continue</b>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_17.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="12">
+          <li>
+            For <strong>Cellular</strong> or <strong>Mobile</strong>
+            <strong>Data</strong>,<br />a.&nbsp;&nbsp;&nbsp;choose your new
+            SUNDAY eSIM if you’re already at your destination. Make sure the
+            option <strong>Allow Cellular Data Switching</strong> is
+            DISABLED.<br />b.&nbsp;&nbsp;&nbsp;choose<strong> Primary</strong>
+            if you’re still in your own country.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_18.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+    </ul>
+  </div>
+  <!--IOS install steps ends-->
+  <!--AOS install steps-->
+  <div id="aos-activation" class="activation-box">
+    <!--<br><br>Tutorial for Android devices-->
+    <p class="text-14 content-title">
+      Before installing and setting up the eSIM, please make sure that:
+    </p>
+    <ul class="text-14 disc mb-24">
+      <li class="mb-10">your device is eSIM compatible.</li>
+      <li class="mb-10">
+        you have already enabled the eSIM function of your device.&nbsp;
+      </li>
+      <li class="mb-10">
+        you have a stable connection, preferably WiFi. (It’s because you need to
+        download the eSIM properly to your device.)
+      </li>
+    </ul>
+    <h1 class="title">Method 1: By QR code</h1>
+
+    <ul class="content-box">
+      <li class="content-li">
+        <ol start="1">
+          <li>
+            Log into your SUNDAY account and go to <strong>My eSIM</strong>.
+          </li>
+          <li>Choose the eSIM you want to install.</li>
+          <li>Tap <b>Manage eSIM</b> and select the tab <b>QR Code</b>.</li>
+          <li>
+            Tap <strong>Save QR Code</strong> to download the QR code image to
+            your device. You could share it to another device or print it out
+            for scanning.
+          </li>
+          <li>
+            On your Android device, go to <b>Settings</b> &gt;
+            <b>Connections</b>,<b> Network &amp; Internet </b>or<b>
+              Mobile Network</b
+            >.
+          </li>
+          <li>
+            Select <b>SIM Manager</b>, <b>Mobile Network </b>or<b> SIM Cards</b
+            >. Switch on eSIM when option is available.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_1.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="7">
+          <li>
+            Tap <b>Add eSIM card</b>,<b> Add Mobile Plan</b> or
+            <b>Add Carrier</b> and select the option to scan QR code.
+          </li>
+          <li>
+            Scan the code or tap <b>Gallery </b>or <b>Photo</b> icon to import
+            the QR code image you just saved from SUNDAY App.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_2.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="9">
+          <li>
+            Follow the on-screen instructions to start the installation. It may
+            take around 2-3 minutes to process. Once it finishes, you will be
+            able to see the new SUNDAY (Webbing) eSIM profile on the list.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_3.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+    </ul>
+
+    <h1 class="title mt-45">Method 2: By Manual Input</h1>
+
+    <ul class="content-box">
+      <li class="content-li">
+        <ol start="1">
+          <li>
+            Log into your SUNDAY account and go to <strong>My eSIM</strong>.
+          </li>
+          <li>Choose the eSIM you want to install.</li>
+          <li>Tap <b>Manage eSIM</b> and select the tab <b>Manual</b>.</li>
+          <li>
+            On your Android device, go to <b>Settings</b> &gt;
+            <b>Connections</b>,<b> Network &amp; Internet </b>or<b>
+              Mobile Network</b
+            >.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/AOS_Installation_Method_2_Step_4.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="5">
+          <li>
+            Select <b>SIM Manager, Mobile Network </b>or<b> SIM Cards</b>.
+            Switch on eSIM when option is available.
+          </li>
+          <li>
+            Tap <b>Add eSIM card</b>,<b> Add Mobile Plan </b>or
+            <b>Add Carrier</b> and select the option to scan QR code.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_5.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="7">
+          <li>Tap <b>Enter activation code manually</b>.</li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_6.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="8">
+          <li>
+            Go back to your SUNDAY App, copy and paste the
+            <b>SM-DP + Address &amp; Activation Code</b> to the text field. Then
+            tap <b>Add</b>.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/AOS_Installation_Method_2_Step_8.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+
+      <li class="content-li">
+        <ol start="9">
+          <li>
+            Follow the on-screen instructions to start the installation. It may
+            take around 2-3 minutes to process. Once it finishes, you will be
+            able to see the new SUNDAY (Webbing) eSIM profile on the list.
+          </li>
+        </ol>
+        <img
+          class="content-image"
+          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_8.png"
+          border="0"
+          alt=""
+          width="843"
+        />
+      </li>
+    </ul>
+  </div>
+  <!--AOS install steps ends-->
+  <h1 class="title mt-45">How to activate a data plan?</h1>
+  <p style="margin: 0px 0px 0px 5px; font-family: Open Sans; font-size: 14px">
+    <br />After successful eSIM installation, you're ready to activate your
+    SUNDAY Pass! Click
+    <a
+      class="link"
+      href="https://dev.sunday.com/esim-activation-tutorial-en#ios-activation"
+      >here</a
+    >
+    for the detailed guide.
+  </p>
+
+  <h1 class="title mt-45">Is my device eSIM-compatible?</h1>
+  <p style="margin: 0px 0px 0px 5px; font-family: Open Sans; font-size: 14px">
+    <br />Click
+    <a
+      class="link"
+      href="https://dev.sunday.com/esim-compatible-device-list-en"
+      target="_blank"
+      title="Device List"
+      rel="noopener"
+      >here</a
+    >
+    to see supported devices.
+  </p>
+  <!-- image popup -->
+  <div class="image-popup">
+    <div class="image-wrapper">
+      <div class="image-header">
+        <svg
+          class="image-close"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="#1A1A1A"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="image-content">
+        <img class="image-popup__img" src="" alt="Image" />
+      </div>
+    </div>
+  </div>
+</main>
