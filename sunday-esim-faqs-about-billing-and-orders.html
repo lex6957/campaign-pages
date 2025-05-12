@@ -103,7 +103,7 @@
     [class^="faqs-section__"] h3 {
       margin-top: 24px;
       font-size: 16px;
-      line-height: 32px;
+      line-height: 20px;
       font-weight: 400;
       margin-bottom: 0;
     }
@@ -114,22 +114,28 @@
       padding-top: 0px;
     }
     .faqs-container__questions {
-      padding: 16px 24px;
+      position: relative;
+      padding: 24px;
+      padding-right: 48px !important;
       font-size: 16px;
       font-weight: 400;
       color: #000 !important;
       border: 1px solid #dfdfdf;
       border-radius: 4px;
       background-color: #ffffff;
+      vertical-align: middle;
+      overflow: hidden;
     }
     .faqs-container__questions:before {
-      float: right;
-      display: block;
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      margin-top: -10px;
       text-decoration: none !important;
       color: #000 !important;
       content: "";
       width: 32px;
-      height: 32px;
+      height: 20px;
       background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
       background-position: center;
       background-size: 32px 32px;
@@ -199,6 +205,20 @@
       font-size: 12px;
       font-weight: 400;
       margin-bottom: 5px;
+    }
+    @media (max-width: 959px) {
+      .faqs-container__questions {
+        padding: 16px;
+      }
+      .faqs-container__questions:before {
+        right: 16px;
+      }
+      .faqs-container__answers {
+        padding: 0 16px;
+      }
+      .faqs-container__answers-content {
+        padding-bottom: 16px;
+      }
     }
   </style>
   <script>
