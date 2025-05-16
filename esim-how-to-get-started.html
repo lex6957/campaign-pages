@@ -1,264 +1,346 @@
-<main id="maincontent" class="page-main">
-  <style>
-    div {
-      font-family: Open Sans;
-    }
-    .breadcrumbs {
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  div {
+    font-family: Open Sans;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+
+  .page-main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .progress_bar {
+    margin-top: 7.7vw;
+    height: 76.6vw;
+    width: 2.3vw;
+  }
+
+  body {
+    background: #f9fdfe;
+  }
+
+  .no-hover {
+    text-decoration: none; /* No underline */
+    color: #ffffff; /* Retain the default color */
+  }
+
+  .no-hover:hover {
+    text-decoration: none; /* Keep no underline on hover */
+    color: #ffffff; /* Keep the same color on hover */
+  }
+  .a {
+    text-decoration: underline;
+    color: #0026ca;
+  }
+  .a:hover {
+    text-decoration: underline;
+    color: #0026ca;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .banner {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .content-wrapper {
+    display: flex;
+    margin: 32px 0;
+  }
+  .content-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .content-item + .content-item {
+    margin-left: 32px;
+  }
+  .content-item__image {
+    width: 125px;
+    height: 130px;
+  }
+  .content-item__point {
+    margin: 16px 0;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: #0cd7d5;
+    border-radius: 50%;
+  }
+  .content-item__point_left::after,
+  .content-item__point_content::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20vw;
+    height: 1px;
+    background-color: #0cd7d5;
+  }
+  .content-item__point_right::before,
+  .content-item__point_content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 20vw;
+    height: 1px;
+    background-color: #0cd7d5;
+  }
+  .content-item__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-bottom: 12px;
+    color: #00c6c4;
+  }
+  .content-item__p {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+  }
+  .content-item__line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 0px;
+    background-color: #0cd7d5;
+  }
+  .content-item__whiteline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 10px;
+    height: 100px;
+    background-color: #ffffff;
+  }
+  .button {
+    width: 160px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: #00a09f;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 32px;
+  }
+  .button:hover {
+    background-color: #007f7e;
+  }
+  .link {
+    display: block;
+    text-decoration: underline;
+    color: #1a1a1a;
+  }
+  .bottom-button {
+    text-align: center;
+  }
+  .button-fixed {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 959px) {
+    .desktop {
       display: none;
     }
-
-    .page-main {
-      padding-left: 0px;
-      padding-right: 0px;
+    .mobile {
+      display: block;
     }
-    .progress_bar {
-      margin-top: 7.7vw;
-      height: 76.6vw;
-      width: 2.3vw;
+    .content-wrapper {
+      margin-top: 24px;
+      flex-direction: column;
     }
-    table > tbody > tr > td {
-      padding: 8px 0px;
+    .content-item {
+      flex-direction: row-reverse;
+      text-align: left;
+      align-items: center;
+      justify-content: space-between;
     }
-    body {
-      background: #f9fdfe;
+    .content-item__p {
+      font-size: 14px;
+      line-height: 18px;
     }
-    button {
-      background-color: #00a09f;
-      align-self: center;
-      border-radius: 100px;
-      width: 500 px;
-      height: 45px;
-      color: #ffffff;
-      font-size: 16px;
-      font-family: open sans;
-      text-align: center;
-      font-weight: 600;
-      display: inline-block;
+    .content-item__point {
+      margin: 0 12px 0 0;
+      flex-shrink: 0;
     }
-
-    .no-hover {
-      text-decoration: none; /* No underline */
-      color: #ffffff; /* Retain the default color */
+    .content-item + .content-item {
+      margin-left: 0px;
+      margin-top: 32px;
     }
-
-    .no-hover:hover {
-      text-decoration: none; /* Keep no underline on hover */
-      color: #ffffff; /* Keep the same color on hover */
+    .content-item__box {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
-    .a {
-      text-decoration: underline;
-      color: #0026ca;
-    }
-    .a:hover {
-      text-decoration: underline;
-      color: #0026ca;
+    .content-item__point {
+      margin-top: 18px;
     }
 
-    @media (min-width: 421px) {
-      .progress_bar {
-        margin-top: 8.7vw;
-        height: 77.9vw;
-        width: 2.3vw;
+    .button {
+      width: 100%;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    function isInApp() {
+      return !!window.ReactNativeWebView;
+    }
+
+    function changePositionInApp() {
+      if (isInApp()) {
+        var button = root.querySelector(".bottom-button");
+        button.classList.add("button-fixed");
       }
     }
 
-    @media (min-width: 503px) {
-      .progress_bar {
-        margin-top: 12vw;
-        height: 75vw;
-        width: 2.3vw;
-      }
+    function setPointHeight() {
+      var points = root.querySelectorAll(".mobile.content-item__point");
+      var line = root.querySelector(".content-item__line");
+      // console.log("points", points);
+      if (points.length < 2) return 0;
+      var first = points[0];
+      var last = points[points.length - 1];
+
+      var diff = Math.abs(
+        last.getBoundingClientRect().top - first.getBoundingClientRect().top
+      );
+      // console.log("diff", diff);
+      line.style.height = diff + 10 + "px";
     }
 
-    @media (min-width: 621px) {
-      .progress_bar {
-        margin-top: 12.3vw;
-        height: 72vw;
-        width: 2.3vw;
-      }
+    if (window._shadowRoot) {
+      changePositionInApp();
+      setPointHeight();
+    } else {
+      window.addEventListener("DOMContentLoaded", function () {
+        changePositionInApp();
+        setPointHeight();
+      });
     }
+    window.addEventListener("resize", function () {
+      setPointHeight();
+    });
+  })();
+</script>
+<div>
+  <picture>
+    <source
+      media="(max-width: 959px)"
+      srcset="
+        https://t0.shop.theclub.com.hk/media/wysiwyg/esim/3Steps_banner_2_1_.png
+      "
+    />
+    <img
+      class="banner"
+      src="https://api-dev.sunday.com/media/wysiwyg/esim/3Steps_banner_2_1_desktop.png"
+      border="0"
+      alt=""
+      width="1125"
+      height="522"
+    />
+  </picture>
 
-    @media (min-width: 700px) {
-      .progress_bar {
-        margin-top: 12.3vw;
-        height: 72vw;
-        width: 2.2vw;
-      }
-    }
-
-    @media (min-width: 759px) {
-      .progress_bar {
-        margin-top: 13vw;
-        height: 71vw;
-        width: 2.2vw;
-      }
-    }
-
-    @media (min-width: 831px) {
-      .progress_bar {
-        margin-top: 13.5vw;
-        height: 72.5vw;
-        width: 2.3vw;
-      }
-    }
-
-    @media (min-width: 949px) {
-      .progress_bar {
-        margin-top: 14.8vw;
-        height: 71.2vw;
-        width: 2.1vw;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .progress_bar {
-        margin-top: 15.7vh;
-        height: 73.4vh;
-        width: 2.1vh;
-      }
-    }
-  </style>
-  <div style="background: #f9fdfe">
-    <div style="text-align: center">
+  <div class="content-wrapper">
+    <div class="content-item">
       <img
-        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/3Steps_banner_2_1_.png"
+        class="content-item__image"
+        src="https://api-dev.sunday.com/media/wysiwyg/esim/step1_1_1.png"
         border="0"
         alt=""
-        width="1125"
-        height="522"
       />
+      <span class="desktop content-item__point content-item__point_left"></span>
+      <div class="content-item__box">
+        <span class="mobile content-item__point">
+          <i class="content-item__line"></i>
+        </span>
+        <div>
+          <h2 class="content-item__title">Step 1</h2>
+          <p class="content-item__p">
+            Simply input or select the destination you’re traveling to and
+            choose your data plan.
+          </p>
+        </div>
+      </div>
     </div>
-    <div style="margin: 0 16px">
-      <table style="border-collapse: collapse; width: 100%" border="0">
-        <tbody>
-          <tr>
-            <td style="width: 6.04595%" rowspan="3">
-              <img
-                class="progress_bar"
-                src="https://t0.shop.theclub.com.hk/media/wysiwyg/Group_1171276817.png"
-                border="0"
-                alt=""
-              />
-            </td>
-            <td style="width: 60.6862%; vertical-align: middle">
-              <span style="color: #00c6c4; font-size: 20px; font-weight: bold"
-                >Step 1<br /></span
-              ><span style="font-size: 14px; font-weight: 400"
-                >Simply input or select the destination you’re travelling to and
-                choose your data plan.<br
-              /></span>
-            </td>
-            <td style="width: 33.2527%">
-              <img
-                src="https://api-dev.sunday.com/media/wysiwyg/esim/step1_1_1.png"
-                border="0"
-                alt=""
-                width="375"
-                height="391"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td style="width: 60.6862%; vertical-align: middle">
-              <span style="color: #00c6c4; font-size: 20px; font-weight: bold"
-                >Step 2<br /></span
-              ><span style="font-size: 14px; font-weight: 400"
-                >Follow the steps on screen to checkout and install the eSIM on
-                your device.<br
-              /></span>
-            </td>
-            <td style="width: 33.2527%">
-              <img
-                src="https://api-dev.sunday.com/media/wysiwyg/esim/step2.png"
-                border="0"
-                alt=""
-                width="378"
-                height="391"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td style="width: 60.6862%; vertical-align: middle">
-              <span style="color: #00c6c4; font-size: 20px; font-weight: bold"
-                >Step 3<br /></span
-              ><span style="font-weight: 400"
-                >Your plan will automatically activate when you arrive at your
-                destination.</span
-              >
-            </td>
-            <td style="width: 33.2527%">
-              <img
-                src="https://api-dev.sunday.com/media/wysiwyg/esim/step3.png"
-                border="0"
-                alt=""
-                width="378"
-                height="391"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center; width: 99.9849%" colspan="3">
-              <span style="font-size: 14px"
-                ><a
-                  href="https://api-dev.sunday.com/esim-compatible-device-list-en"
-                  title="Device List"
-                  target="_blank"
-                  rel="noopener"
-                ></a
-                ><span style="text-decoration: underline"
-                  ><a
-                    href="https://api-dev.sunday.com/esim-compatible-device-list-en"
-                    title="Device List"
-                    target="_blank"
-                    rel="noopener"
-                    ><span style="color: #000000; text-decoration: underline"
-                      >How to check if my device supports eSIM?</span
-                    ></a
-                  ></span
-                ><strong><br /><br /></strong
-              ></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="content-item">
+      <img
+        class="content-item__image"
+        src="https://api-dev.sunday.com/media/wysiwyg/esim/step1_1_1.png"
+        border="0"
+        alt=""
+      />
+      <span
+        class="desktop content-item__point content-item__point_content"
+      ></span>
+      <div class="content-item__box">
+        <span class="mobile content-item__point"></span>
+        <div>
+          <h2 class="content-item__title">Step 2</h2>
+          <p class="content-item__p">
+            Follow the steps on screen to checkout and install the eSIM on your
+            device.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-item">
+      <img
+        class="content-item__image"
+        src="https://api-dev.sunday.com/media/wysiwyg/esim/step1_1_1.png"
+        border="0"
+        alt=""
+      />
+      <span
+        class="desktop content-item__point content-item__point_right"
+      ></span>
+      <div class="content-item__box">
+        <span class="mobile content-item__point">
+          <i class="content-item__whiteline"></i
+        ></span>
+        <div>
+          <h2 class="content-item__title">Step 3</h2>
+          <p class="content-item__p">
+            Your plan will automatically activate when you arrive at your
+            destination.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-  <div style="text-align: center; margin: 0px 16px 0px 16px">
-    <span
-      style="
-        font-size: 16px;
-        font-weight: 600;
-        text-align: center;
-        display: inline-block;
-      "
-      ><a
-        class="no-hover"
-        href="https://api-dev.sunday.com/search/search-by-category/"
-        ><button
-          class="button"
-          style="
-            align: center;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding: 8px 20px;
-            gap: 10px;
-            width: 343px;
-            height: 45px;
-            background: #00a09f;
-            border-radius: 100px; /* inside auto layout */
-            flex: none;
-            order: 0;
-            flex-grow: 0;
-            text-decoration: none;
-            color: #ffffff;
-            border: none;
-          "
-        >
-          Get Started
-        </button></a
-      ></span
-    >
-  </div>
-</main>
+</div>
+<div class="bottom-button">
+  <a
+    class="no-hover"
+    href="https://dev.sunday.com/search/search-by-category?category=Destinations"
+    ><button class="button">Get Started</button></a
+  >
+  <a class="link" href="https://dev.sunday.com/esim-compatible-device-list-en"
+    >How to check if my device supports eSIM?
+  </a>
+</div>
+<!-- </main> -->

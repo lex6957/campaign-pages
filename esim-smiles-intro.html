@@ -1,0 +1,231 @@
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  body {
+    /* Set background color */
+    margin: 0;
+    /* Remove default margin */
+    font-family: Open Sans;
+  }
+  * {
+    font-family: Open Sans;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+
+  .page-main {
+    max-width: 1116px;
+    margin: 0 auto;
+  }
+
+  .no-hover {
+    text-decoration: none; /* No underline */
+    color: #ffffff; /* Retain the default color */
+  }
+
+  .no-hover:hover {
+    text-decoration: none; /* Keep no underline on hover */
+    color: #ffffff; /* Keep the same color on hover */
+  }
+  .a {
+    text-decoration: underline;
+    color: #000000;
+  }
+  .a:hover {
+    text-decoration: underline;
+    color: #0026ca;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 543px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+  .text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0;
+  }
+  .flex {
+    display: flex;
+    align-items: start;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .mr-32 {
+    margin-right: 32px;
+  }
+  .mb-64 {
+    margin-bottom: 64px;
+  }
+  .top-box {
+    margin-bottom: 64px;
+  }
+  .top-box .img-box {
+    margin-right: 32px;
+  }
+  .bottom-box .img-box {
+    margin-left: 32px;
+  }
+  .button {
+    width: 160px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    margin-top: 24px;
+    cursor: pointer;
+    background-color: #00a09f;
+  }
+  .button:hover {
+    background-color: #007f7e;
+  }
+  .button-fixed {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 24px;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 959px) {
+    .top-box {
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+    .top-box .img-box {
+      margin-right: 0;
+    }
+    .title {
+      font-size: 18px;
+      line-height: 24px;
+      margin: 16px 0;
+    }
+    .text {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .bottom-box {
+      flex-direction: column-reverse;
+    }
+    .bottom-box .img-box {
+      margin-left: 0;
+    }
+    .a {
+      font-size: 12px;
+    }
+    .button {
+      width: 100%;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    function isInApp() {
+      return !!window.ReactNativeWebView;
+    }
+
+    function changePositionInApp() {
+      if (isInApp()) {
+        var button = root.querySelector(".bottom-button");
+        button.classList.add("button-fixed");
+      }
+    }
+
+    if (window._shadowRoot) {
+      changePositionInApp();
+    } else {
+      window.addEventListener("DOMContentLoaded", function () {
+        changePositionInApp();
+      });
+    }
+  })();
+</script>
+<div>
+  <div class="flex top-box">
+    <div class="flex-1 img-box">
+      <img
+        class="image"
+        src="https://api-dev.sunday.com/media/wysiwyg/esim/Earn_S.miles.png"
+        border="0"
+        alt=""
+        width="1125"
+        height="522"
+      />
+    </div>
+
+    <div class="flex-1">
+      <h2 class="title">What is SUNDAY Reward Programme?</h2>
+      <p class="text">
+        The SUNDAY Reward Programme is our way of showing appreciation to each
+        and every one of you. The accumulated reward points - we call them
+        <span style="margin: 0; padding: 0; font-weight: 600">S.miles</span>
+        here - can be used to offset your future purchases. Enjoy great deals
+        that make your next adventures even more rewarding.<br /><br />
+      </p>
+    </div>
+  </div>
+
+  <div class="flex bottom-box">
+    <div class="flex-1">
+      <h2 class="title">What are S.miles?</h2>
+
+      <p class="text">
+        S.miles are the rewards in our reward programme. For every dollar you
+        spend, you will earn <strong>10 S.miles</strong>.
+      </p>
+      <br />
+
+      <p class="text">
+        You can also earn S.miles by introducing SUNDAY to your friends. Each
+        successful referral will bring you
+        <strong>200 S.miles</strong>.&nbsp;
+      </p>
+      <br />
+      <p class="text">
+        Earned S.miles are valid for 365 days from the date they are credited.
+        If you make another purchase, any remaining S.miles will
+        <strong>automatically extend for another 365 days</strong>.
+      </p>
+      <br />
+      <a class="a" href="https://dev.sunday.com/esim-terms-and-conditions-en"
+        >Terms &amp; Conditions</a
+      >
+    </div>
+    <div class="flex-1 img-box">
+      <img
+        class="image"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/smileintrobanner23X.png"
+        border="0"
+        alt=""
+        width="1029"
+        height="480"
+      />
+    </div>
+  </div>
+
+  <div class="bottom-button">
+    <a
+      class="no-hover"
+      href="https://dev.sunday.com/search/search-by-category?category=Destinations"
+      ><button class="button">Shop Now</button></a
+    >
+  </div>
+</div>
+<!-- </main> -->

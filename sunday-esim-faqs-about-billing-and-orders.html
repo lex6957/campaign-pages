@@ -1,462 +1,458 @@
-<main id="maincontent" class="page-main">
-  <style>
-    body {
-      font-family: Open Sans;
-      margin: 0;
-    }
-    p {
-      margin: 0;
-    }
-    .esim-faqs-page a,
-    .esim-faqs-page a:hover,
-    .esim-faqs-page a:active,
-    .esim-faqs-page a:visited {
-      color: #000;
-      text-decoration: underline;
-    }
-    .esim-faqs-page {
-      max-width: calc(100% - 32px);
-      margin: 0 auto;
-    }
-    #hkt-clubmall .page-main .breadcrumbs {
-      display: none !important;
-    }
-    #hkt-clubmall .columns {
-      max-width: unset !important;
-    }
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  body {
+    font-family: Open Sans;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .esim-faqs-page a,
+  .esim-faqs-page a:hover,
+  .esim-faqs-page a:active,
+  .esim-faqs-page a:visited {
+    color: #000;
+    text-decoration: underline;
+  }
 
-    .faqs-page__wrapper {
-      padding: 35px 25px 30px;
-      background-color: #fff;
-    }
+  #hkt-clubmall .page-main .breadcrumbs {
+    display: none !important;
+  }
+  #hkt-clubmall .columns {
+    max-width: unset !important;
+  }
+
+  .faqs-page__wrapper {
+    padding: 35px 25px 30px;
+    background-color: #fff;
+  }
+  .faqs-page__title-questions {
+    float: left;
+    width: 100%;
+    font-weight: 200;
+    color: #4a4a4a;
+    font-size: 50px;
+  }
+  .faqs-page__title-answers {
+    float: left;
+    width: 100%;
+    font-weight: 700;
+    color: #ea1b76;
+    font-size: 50px;
+  }
+  .faqs-page__label {
+    margin: 0 2px 8px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    color: #4a4a4a;
+  }
+  .faqs-page__question-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ea1b76;
+  }
+  .faqs-page__question-link:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #b00050;
+  }
+  .faqs-page__question-link:visited {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ea1b76;
+  }
+  @media (min-width: 768px) {
     .faqs-page__title-questions {
-      float: left;
-      width: 100%;
-      font-weight: 200;
-      color: #4a4a4a;
-      font-size: 50px;
+      float: unset;
+      width: auto;
     }
     .faqs-page__title-answers {
-      float: left;
-      width: 100%;
-      font-weight: 700;
-      color: #ea1b76;
-      font-size: 50px;
+      float: unset;
+      width: auto;
     }
-    .faqs-page__label {
-      margin: 0 2px 8px;
-      font-size: 14px;
-      letter-spacing: 0.2px;
-      line-height: 20px;
-      color: #4a4a4a;
-    }
-    .faqs-page__question-link {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 4px 2px;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 18px;
-      border-radius: 20px;
-      text-decoration: none;
-      color: #ffffff;
-      background-color: #ea1b76;
-    }
-    .faqs-page__question-link:hover {
-      text-decoration: none;
-      color: #fff;
-      background-color: #b00050;
-    }
-    .faqs-page__question-link:visited {
-      text-decoration: none;
-      color: #fff;
-      background-color: #ea1b76;
-    }
-    @media (min-width: 768px) {
-      .faqs-page__title-questions {
-        float: unset;
-        width: auto;
-      }
-      .faqs-page__title-answers {
-        float: unset;
-        width: auto;
-      }
-    }
-    [class^="faqs-section__"] {
-      margin-top: 38px;
-    }
-    [class^="faqs-section__"]:first-child {
-      margin-top: 0;
-    }
-    [class^="faqs-section__"] h2 {
-      margin-bottom: 0;
-      font-size: 24px;
-      line-height: 30px;
-      font-weight: 600;
-    }
-    [class^="faqs-section__"] h2 p {
-      margin-top: 4px;
-      margin-bottom: 4px;
-      margin-left: 10px;
-      font-size: 14px;
-    }
-    [class^="faqs-section__"] h3 {
-      margin-top: 24px;
-      font-size: 16px;
-      line-height: 20px;
-      font-weight: 400;
-      margin-bottom: 0;
-    }
-    [class^="faqs-section__"] h3:hover {
-      cursor: pointer;
-    }
-    .faqs-page__content {
-      padding-top: 0px;
-    }
+  }
+  [class^="faqs-section__"] {
+    margin-top: 38px;
+  }
+  [class^="faqs-section__"]:first-child {
+    margin-top: 0;
+  }
+  [class^="faqs-section__"] h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+  [class^="faqs-section__"] h2 p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  [class^="faqs-section__"] h3 {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  [class^="faqs-section__"] h3:hover {
+    cursor: pointer;
+  }
+  .faqs-page__content {
+    padding-top: 0px;
+  }
+  .faqs-container__questions {
+    position: relative;
+    padding: 24px;
+    padding-right: 48px !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000 !important;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-color: #ffffff;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  .faqs-container__questions:before {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    margin-top: -10px;
+    text-decoration: none !important;
+    color: #000 !important;
+    content: "";
+    width: 32px;
+    height: 20px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
+    background-position: center;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+  }
+  .faqs-container__questions.ui-accordion-header-active {
+    margin-bottom: 0;
+    text-decoration: none !important;
+    color: #000 !important;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  .faqs-container__questions.ui-accordion-header-active:before {
+    transform: rotate(180deg);
+  }
+  .faqs-container__answers {
+    font-weight: 400;
+    padding: 0 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #ffffff;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+  }
+  .faqs-container__answers:before {
+    content: "A:";
+    display: table-cell;
+    width: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.07px;
+    color: #0cd7d5;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+  .ui-accordion-content-active {
+    height: auto;
+  }
+  .faqs-container__answers-content {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    display: table-cell;
+    vertical-align: top;
+    padding-bottom: 24px;
+  }
+  .faqs-container__answers-content ul,
+  .faqs-container__answers-content ol {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  .faqs-container__answers-content ul {
+    font-size: 12px;
+    font-weight: 400;
+    list-style: none;
+  }
+  .faqs-container__answers-content ul li {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  @media (max-width: 959px) {
     .faqs-container__questions {
-      position: relative;
-      padding: 24px;
-      padding-right: 48px !important;
-      font-size: 16px;
-      font-weight: 400;
-      color: #000 !important;
-      border: 1px solid #dfdfdf;
-      border-radius: 4px;
-      background-color: #ffffff;
-      vertical-align: middle;
-      overflow: hidden;
+      padding: 16px;
     }
     .faqs-container__questions:before {
-      position: absolute;
-      right: 24px;
-      top: 50%;
-      margin-top: -10px;
-      text-decoration: none !important;
-      color: #000 !important;
-      content: "";
-      width: 32px;
-      height: 20px;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
-      background-position: center;
-      background-size: 32px 32px;
-      background-repeat: no-repeat;
-    }
-    .faqs-container__questions.ui-accordion-header-active {
-      margin-bottom: 0;
-      text-decoration: none !important;
-      color: #000 !important;
-      border-bottom: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      transition: transform 0.3s ease-in-out;
-    }
-    .faqs-container__questions.ui-accordion-header-active:before {
-      transform: rotate(180deg);
+      right: 16px;
     }
     .faqs-container__answers {
-      font-weight: 400;
-      padding: 0 24px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #dfdfdf;
-      border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      background-color: #ffffff;
-      height: 0px;
-      overflow: hidden;
-      transition: height 0.3s ease-in-out;
-    }
-    .faqs-container__answers:before {
-      content: "A:";
-      display: table-cell;
-      width: 30px;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 22px;
-      letter-spacing: 0.07px;
-      color: #0cd7d5;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    }
-    .ui-accordion-content-active {
-      height: auto;
+      padding: 0 16px;
     }
     .faqs-container__answers-content {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 20px;
-      display: table-cell;
-      vertical-align: top;
-      padding-bottom: 24px;
+      padding-bottom: 16px;
     }
-    .faqs-container__answers-content ul,
-    .faqs-container__answers-content ol {
-      font-size: 12px;
-      font-weight: 400;
-      margin-top: 10px;
-      padding-left: 20px;
-    }
-    .faqs-container__answers-content ul {
-      font-size: 12px;
-      font-weight: 400;
-      list-style: none;
-    }
-    .faqs-container__answers-content ul li {
-      font-size: 12px;
-      font-weight: 400;
-      margin-bottom: 5px;
-    }
-    @media (max-width: 959px) {
-      .faqs-container__questions {
-        padding: 16px;
-      }
-      .faqs-container__questions:before {
-        right: 16px;
-      }
-      .faqs-container__answers {
-        padding: 0 16px;
-      }
-      .faqs-container__answers-content {
-        padding-bottom: 16px;
-      }
-    }
-  </style>
-  <script>
-    (function () {
-      var root = window._shadowRoot || document;
-      if (window._shadowRoot) {
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    if (window._shadowRoot) {
+      accordionInit();
+    } else {
+      document.addEventListener("DOMContentLoaded", function () {
         accordionInit();
-      } else {
-        document.addEventListener("DOMContentLoaded", function () {
-          accordionInit();
-        });
-      }
-      function accordionInit() {
-        var questions = root.querySelectorAll(".faqs-container__questions");
-        var answers = root.querySelectorAll(".faqs-container__answers");
-        console.log("questions", questions);
-        questions.forEach(function (question, index) {
-          question.addEventListener("click", triggerAccordion);
-        });
-        answers.forEach(function (answer, index) {
-          if (!answer.classList.contains("ui-accordion-content-active")) {
-            answer.style.height = "0px";
-          }
-        });
-        function triggerAccordion() {
-          var question = this;
-          var answer = question.nextElementSibling;
-          resetActivationClasses(answer);
-          question.classList.add("ui-accordion-header-active");
-          if (answer && answer.classList.contains("faqs-container__answers")) {
-            answer.classList.add("ui-accordion-content-active");
-            answer.style.display = "block";
-            var height = answer.scrollHeight;
-
-            answer.style.height = height + "px";
-            void answer.offsetWidth;
-          }
+      });
+    }
+    function accordionInit() {
+      var questions = root.querySelectorAll(".faqs-container__questions");
+      var answers = root.querySelectorAll(".faqs-container__answers");
+      console.log("questions", questions);
+      questions.forEach(function (question, index) {
+        question.addEventListener("click", triggerAccordion);
+      });
+      answers.forEach(function (answer, index) {
+        if (!answer.classList.contains("ui-accordion-content-active")) {
+          answer.style.height = "0px";
         }
+      });
+      function triggerAccordion() {
+        var question = this;
+        var answer = question.nextElementSibling;
+        resetActivationClasses(answer);
+        question.classList.add("ui-accordion-header-active");
+        if (answer && answer.classList.contains("faqs-container__answers")) {
+          answer.classList.add("ui-accordion-content-active");
+          answer.style.display = "block";
+          var height = answer.scrollHeight;
 
-        function resetActivationClasses(answer) {
-          questions.forEach(function (q) {
-            q.classList.remove("ui-accordion-header-active");
-          });
-          answers.forEach(function (a) {
-            if (a !== answer) {
-              a.classList.remove("ui-accordion-content-active");
-              a.style.height = "0px";
-              setTimeout(() => {
-                a.style.display = "none";
-              }, 300);
-            }
-          });
+          answer.style.height = height + "px";
+          void answer.offsetWidth;
         }
       }
-    })();
-  </script>
-  <div class="faqs-page-css">
-    <div class="esim-faqs-page faqs-page-en">
-      <div class="faqs-page__content page-container">
-        <div class="faqs-section__billing-and-orders" name="billing-and-orders">
-          <h2>About Billing &amp; Orders</h2>
-          <div
-            class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
-            id="faqs-accordion-05 billing-and-orders"
-            role="tablist"
+
+      function resetActivationClasses(answer) {
+        questions.forEach(function (q) {
+          q.classList.remove("ui-accordion-header-active");
+        });
+        answers.forEach(function (a) {
+          if (a !== answer) {
+            a.classList.remove("ui-accordion-content-active");
+            a.style.height = "0px";
+            setTimeout(() => {
+              a.style.display = "none";
+            }, 300);
+          }
+        });
+      }
+    }
+  })();
+</script>
+<div class="faqs-page-css">
+  <div class="esim-faqs-page faqs-page-en">
+    <div class="faqs-page__content page-container">
+      <div class="faqs-section__billing-and-orders" name="billing-and-orders">
+        <h2>About Billing &amp; Orders</h2>
+        <div
+          class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+          id="faqs-accordion-05 billing-and-orders"
+          role="tablist"
+        >
+          <!-- question 1 -->
+          <h3
+            class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+            role="tab"
+            id="ui-id-1"
+            aria-controls="ui-id-2"
+            aria-selected="true"
+            aria-expanded="true"
+            tabindex="0"
           >
-            <!-- question 1 -->
-            <h3
-              class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
-              role="tab"
-              id="ui-id-1"
-              aria-controls="ui-id-2"
-              aria-selected="true"
-              aria-expanded="true"
-              tabindex="0"
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+            ></span
+            ><a
+              name="E1"
+              href="“#”"
+              onclick="return false"
+              style="text-decoration: none"
+              >How can I apply a promotion code or referral code?</a
             >
-              <span
-                class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
-              ></span
-              ><a
-                name="E1"
-                href="“#”"
-                onclick="return false"
-                style="text-decoration: none"
-                >How can I apply a promotion code or referral code?</a
-              >
-            </h3>
-            <div
-              class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
-              style=""
-              id="ui-id-2"
-              aria-labelledby="ui-id-1"
-              role="tabpanel"
-              aria-hidden="false"
-            >
-              <div class="faqs-container__answers-content">
-                <p>
-                  When you make a new purhcase, you may enter the code to the
-                  field <strong>Promotion code</strong> on
-                  <strong>Checkout</strong> page and then tap
-                  <strong>Apply</strong>.
-                </p>
-                <br />
-                <p>
-                  <strong>Note</strong>: All promotional offers are subject to
-                  Terms &amp; Conditions. You may click here for more
-                  information.
-                </p>
-              </div>
+          </h3>
+          <div
+            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+            style=""
+            id="ui-id-2"
+            aria-labelledby="ui-id-1"
+            role="tabpanel"
+            aria-hidden="false"
+          >
+            <div class="faqs-container__answers-content">
+              <p>
+                When you make a new purhcase, you may enter the code to the
+                field <strong>Promotion code</strong> on
+                <strong>Checkout</strong> page and then tap
+                <strong>Apply</strong>.
+              </p>
+              <br />
+              <p>
+                <strong>Note</strong>: All promotional offers are subject to
+                Terms &amp; Conditions. You may click here for more information.
+              </p>
             </div>
-            <!-- question 2 -->
-            <h3
-              class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-              role="tab"
-              id="ui-id-3"
-              aria-controls="ui-id-4"
-              aria-selected="false"
-              aria-expanded="false"
-              tabindex="-1"
-            >
-              <span
-                class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-              ></span
-              >The billing amount is incorrect. What should I do?
-            </h3>
-            <div
-              class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-              style="display: none"
-              id="ui-id-4"
-              aria-labelledby="ui-id-3"
-              role="tabpanel"
-              aria-hidden="true"
-            >
-              <div class="faqs-container__answers-content">
-                <p>On your SUNDAY App:</p>
-                <p>1. Log into your SUNDAY account</p>
-                <p>
-                  2. Go to <strong>Profile</strong> section and then tap
-                  <strong>Contact Us</strong>.
-                </p>
-                <p>
-                  3. Choose <strong>Billing &amp; Orders</strong> for type of
-                  enquiry and fill up the remaining parts of the form. Don't
-                  forget to provide the details of the issues you encountered,
-                  including the Order Number and the disputable amount.
-                </p>
-                <br />
-                <p>
-                  Or you may send an email to enquiry@sunday.com with case
-                  details to us. We will reply to you soon.
-                </p>
-              </div>
+          </div>
+          <!-- question 2 -->
+          <h3
+            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+            role="tab"
+            id="ui-id-3"
+            aria-controls="ui-id-4"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+          >
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+            ></span
+            >The billing amount is incorrect. What should I do?
+          </h3>
+          <div
+            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+            style="display: none"
+            id="ui-id-4"
+            aria-labelledby="ui-id-3"
+            role="tabpanel"
+            aria-hidden="true"
+          >
+            <div class="faqs-container__answers-content">
+              <p>On your SUNDAY App:</p>
+              <p>1. Log into your SUNDAY account</p>
+              <p>
+                2. Go to <strong>Profile</strong> section and then tap
+                <strong>Contact Us</strong>.
+              </p>
+              <p>
+                3. Choose <strong>Billing &amp; Orders</strong> for type of
+                enquiry and fill up the remaining parts of the form. Don't
+                forget to provide the details of the issues you encountered,
+                including the Order Number and the disputable amount.
+              </p>
+              <br />
+              <p>
+                Or you may send an email to enquiry@sunday.com with case details
+                to us. We will reply to you soon.
+              </p>
             </div>
-            <!-- question 3 -->
-            <h3
-              class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-              role="tab"
-              id="ui-id-5"
-              aria-controls="ui-id-6"
-              aria-selected="false"
-              aria-expanded="false"
-              tabindex="-1"
-            >
-              <span
-                class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-              ></span
-              >How can I request for a refund?
-            </h3>
-            <div
-              class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-              style="display: none"
-              id="ui-id-6"
-              aria-labelledby="ui-id-5"
-              role="tabpanel"
-              aria-hidden="true"
-            >
-              <div class="faqs-container__answers-content">
-                <p>On your SUNDAY App:</p>
-                <p>1. Log into your SUNDAY account</p>
-                <p>
-                  2. Go to <strong>Profile</strong> section and then tap
-                  <strong>Contact Us</strong>.
-                </p>
-                <p>
-                  3. Choose <strong>Billing &amp; Orders</strong> for type of
-                  enquiry and fill up the remaining parts of the form. Don't
-                  forget to provide the details and reason of your refund case.
-                </p>
-                <br />
-                <p>
-                  Or you may send an email to enquiry@sunday.com with details to
-                  request for a refund, including the Order Number and the
-                  reason for refund.
-                </p>
-                <br />
-                <p>
-                  <strong>Note</strong>: All requests for refund are subject to
-                  our Refund Policy and Terms &amp; Conditions. You may click
-                  here for more information.
-                </p>
-              </div>
+          </div>
+          <!-- question 3 -->
+          <h3
+            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+            role="tab"
+            id="ui-id-5"
+            aria-controls="ui-id-6"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+          >
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+            ></span
+            >How can I request for a refund?
+          </h3>
+          <div
+            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+            style="display: none"
+            id="ui-id-6"
+            aria-labelledby="ui-id-5"
+            role="tabpanel"
+            aria-hidden="true"
+          >
+            <div class="faqs-container__answers-content">
+              <p>On your SUNDAY App:</p>
+              <p>1. Log into your SUNDAY account</p>
+              <p>
+                2. Go to <strong>Profile</strong> section and then tap
+                <strong>Contact Us</strong>.
+              </p>
+              <p>
+                3. Choose <strong>Billing &amp; Orders</strong> for type of
+                enquiry and fill up the remaining parts of the form. Don't
+                forget to provide the details and reason of your refund case.
+              </p>
+              <br />
+              <p>
+                Or you may send an email to enquiry@sunday.com with details to
+                request for a refund, including the Order Number and the reason
+                for refund.
+              </p>
+              <br />
+              <p>
+                <strong>Note</strong>: All requests for refund are subject to
+                our Refund Policy and Terms &amp; Conditions. You may click here
+                for more information.
+              </p>
             </div>
-            <!-- question 4 -->
-            <h3
-              class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-              role="tab"
-              id="ui-id-7"
-              aria-controls="ui-id-8"
-              aria-selected="false"
-              aria-expanded="false"
-              tabindex="-1"
-            >
-              <span
-                class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-              ></span
-              >What is your refund policy?
-            </h3>
-            <div
-              class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-              style="display: none"
-              id="ui-id-8"
-              aria-labelledby="ui-id-7"
-              role="tabpanel"
-              aria-hidden="true"
-            >
-              <div class="faqs-container__answers-content">
-                <p>
-                  Please refer to Section 11 of our
-                  <a
-                    href="https://api-dev.sunday.com/esim-terms-and-conditions-en"
-                    >Terms &amp; Conditions</a
-                  >.
-                </p>
-              </div>
+          </div>
+          <!-- question 4 -->
+          <h3
+            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+            role="tab"
+            id="ui-id-7"
+            aria-controls="ui-id-8"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+          >
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+            ></span
+            >What is your refund policy?
+          </h3>
+          <div
+            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+            style="display: none"
+            id="ui-id-8"
+            aria-labelledby="ui-id-7"
+            role="tabpanel"
+            aria-hidden="true"
+          >
+            <div class="faqs-container__answers-content">
+              <p>
+                Please refer to Section 11 of our
+                <a
+                  href="https://api-dev.sunday.com/esim-terms-and-conditions-en"
+                  >Terms &amp; Conditions</a
+                >.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>
+<!-- </main> -->
