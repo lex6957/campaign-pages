@@ -145,7 +145,7 @@
       border-bottom: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      /* transition: transform 0.3s ease-in-out; */
+      transition: transform 0.3s ease-in-out;
     }
     .faqs-container__questions.ui-accordion-header-active:before {
       transform: rotate(180deg);
@@ -162,7 +162,7 @@
       background-color: #ffffff;
       height: 0px;
       overflow: hidden;
-      transition: all 0.3s ease-in-out;
+      transition: height 0.3s ease-in-out;
       transform-origin: top center;
     }
     .faqs-container__answers:before {
@@ -287,10 +287,8 @@
             if (a !== answer) {
               a.classList.remove("ui-accordion-content-active");
               a.style.height = "0px";
-              a.style.paddingTop = "10px";
               setTimeout(() => {
                 a.style.display = "none";
-                a.style.paddingTop = "";
               }, animationTime);
             }
           });
@@ -344,11 +342,11 @@
   </script>
   <div class="esim-faqs-page faqs-page-en">
     <div class="faqs-page__content page-container">
-      <div class="faqs-section__troubleshooting" name="troubleshooting">
-        <h2>Troubleshooting</h2>
+      <div class="faqs-section__membership" name="membership">
+        <h2>About SUNDAY Membership</h2>
         <div
           class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
-          id="faqs-accordion-06 troubleshooting"
+          id="faqs-accordion-04 membership"
           role="tablist"
         >
           <!-- question 1 -->
@@ -364,8 +362,7 @@
             <span
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
             ></span
-            >I scan my QR Code but the installation does not start. What should
-            I do?
+            >How can I become a SUNDAY Member?
           </h3>
           <div
             class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
@@ -377,42 +374,13 @@
           >
             <div class="faqs-container__answers-content">
               <p>
-                You can install the eSIM by entering the eSIM details manually.
-                On your SUNDAY App,
-              </p>
-              <p>1) Go to <strong>My eSIM</strong> section.</p>
-              <p>
-                2) Choose the eSIM you want to install, then tap
-                <strong>Install/View eSIM</strong>.
+                Download SUNDAY: eSIM Travel App from App Store or Play Store.
               </p>
               <p>
-                3) Under Manual, follow the instruction to complete the
-                installation.
-              </p>
-              <br />
-              <p>
-                Or you could check below <strong>See Also</strong> for detail
-                guidelines.
-              </p>
-              <p>
-                If you have any questions, please feel free to contact our
-                support team via <strong>Contact Us</strong> of your SUNDAY App.
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>
-                1.
-                <a
-                  href="https://dev.sunday.com/esim-how-to-install-en#aos-activation"
-                  >How to install and set up eSIM on my Android device?</a
-                >
-              </p>
-              <p>
-                2.
-                <a
-                  href="https://dev.sunday.com/esim-how-to-install-en#ios-activation"
-                  >How to install and set up eSIM on my iOS device?</a
-                >
+                Open the App and follow the instruction to register as a SUNDAY
+                Member by providing a verifiable email address and accepting the
+                SUNDAY eSIM General Terms &amp; Conditions and the Privacy
+                Statement.
               </p>
             </div>
           </div>
@@ -429,8 +397,7 @@
             <span
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
-            >If my device is network or carrier-locked, what can I do to use
-            eSIM?
+            >How do I unsubscribe from marketing emails?
           </h3>
           <div
             class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
@@ -441,11 +408,17 @@
             aria-hidden="true"
           >
             <div class="faqs-container__answers-content">
+              <p>On your Sunday App:</p>
+              <p>1. Go to <strong>Profile</strong> section.</p>
+              <p>2. Select <strong>Notification</strong>.</p>
               <p>
-                If your device was purchased from a mobile network
-                provider/carrier at a special price, it may be carrier-locked
-                and not able to support other eSIM. Please contact your mobile
-                network provider to unlock your device or adjust its settings.
+                3. For the item <strong>Marketing email</strong>, tap to turn
+                off the toggle button.
+              </p>
+              <br />
+              <p>
+                Don't want to miss any of our promotions? You may turn this on
+                again anytime.
               </p>
             </div>
           </div>
@@ -462,8 +435,7 @@
             <span
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
-            >I did not receive the email or any QR code after purchase. What
-            should I do?
+            >How do I delete my account?
           </h3>
           <div
             class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
@@ -474,31 +446,19 @@
             aria-hidden="true"
           >
             <div class="faqs-container__answers-content">
+              <p>On your Sunday App:</p>
+              <p>1. Go to <strong>Profile</strong> section.</p>
               <p>
-                Don't worry, the QR code of your SUNDAY eSIM is not sent via
-                email. You could easily find it under
-                <strong>My eSIM</strong> &gt;
-                <strong>Install/View eSIM</strong> &gt;
-                <strong>QR Code</strong>.
+                2. Go into <strong>Account</strong>, tap
+                <strong>Delete Account</strong>.
               </p>
+              <p>3. Read the reminders and tap Yes to confirm your action.</p>
               <br />
               <p>
-                <strong>Note</strong>: If your data plan was added to an
-                existing eSIM which you have already installed in your device,
-                you would not need the QR Code to activate the plan. QR Code is
-                for eSIM installation only.
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>
-                1.
-                <a href="https://dev.sunday.com/esim-activation-tutorial-en"
-                  >How to activate data plan (to the tutorial)</a
-                >
-              </p>
-              <p>
-                2.
-                <a href="#C4">How to add a new data plan to existing eSIM?</a>
+                <strong>Note</strong>: This action will permanently erase your
+                account info and cannot be undone. All purchased eSIM(s) will be
+                terminated and any remaining data packages cannot be used
+                anymore. All the S.miles will also be forfeited.
               </p>
             </div>
           </div>
@@ -515,7 +475,13 @@
             <span
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
-            >What should I set 'Roaming' to for using SUNDAY eSIM?
+            ><a
+              name="D4"
+              href="“#”"
+              onclick="return false"
+              style="text-decoration: none"
+              >What is SUNDAY Reward Program?</a
+            >
           </h3>
           <div
             class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
@@ -527,18 +493,31 @@
           >
             <div class="faqs-container__answers-content">
               <p>
-                When you turn on your SUNDAY eSIM, you should set eSIM data
-                roaming <strong>ON</strong> for keeping smooth network
-                connection and staying away from unexpected charges.
+                The SUNDAY Reward Program is our way of showing appreciation to
+                each and every one of you. When you have purchased any SUNDAY
+                Pass through SUNDAY App, you will be given some reward points.
+                The accumulated reward points - we call them S.miles here - can
+                be used as discounts in your future purchases.
+              </p>
+              <br />
+              <p>
+                You can earn 10 S.miles for every US$1 spent on SUNDAY Pass via
+                SUNDAY App. Next time, when you buy SUNDAY Pass, you may enter
+                the amount of S.miles you want to apply at checkout and the
+                total order value will be discounted accordingly. You are
+                entitled to enjoy a discount of US$1 for every 200 S.miles
+                applied in a transaction.
+              </p>
+              <br />
+              <p>
+                <strong>Note</strong>: All Reward Program and S.miles related
+                offers are subject to Terms &amp; Conditions. You may click here
+                for more information.
               </p>
               <br />
               <p><strong>See Also</strong></p>
-              <p>
-                1.
-                <a href="https://dev.sunday.com/esim-activation-tutorial-en"
-                  >How to activate data plan (to the tutorial)</a
-                >
-              </p>
+              <p>1. <a href="#D5">What is S.mile?</a></p>
+              <p>2. <a href="#D6">How do I refer my friend to SUNDAY?</a></p>
             </div>
           </div>
           <!-- question 5 -->
@@ -555,11 +534,11 @@
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
             ><a
-              name="F4"
+              name="D5"
               href="“#”"
               onclick="return false"
               style="text-decoration: none"
-              >I have switched on my SUNDAY eSIM, but it is not working. Why?</a
+              >What is S.mile?</a
             >
           </h3>
           <div
@@ -571,57 +550,38 @@
             aria-hidden="true"
           >
             <div class="faqs-container__answers-content">
-              <p>Please try to check below</p>
-              <p>1. Have you successfully installed the SUNDAY eSIM?</p>
-              <p>2. Have you turned ON data roaming?</p>
               <p>
-                3. Are you still on <strong>Airplane Mode</strong> that prevent
-                you from connecting to network?
-              </p>
-              <p>
-                4. Have you arrived your destination yet? SUNDAY eSIM will only
-                be activated when it connects to a supported destination
-                network.
-              </p>
-              <p>
-                5. Have you got the correct APN (Access Point Name) setting on
-                your device? Please refer to our guide here to set it up.
-                &lt;&lt;
-              </p>
-              <p><strong>See Also</strong></p>
-              <p>
-                1.
-                <a
-                  href="https://dev.sunday.com/esim-how-to-install-en#aos-activation"
-                  >How to install and set up eSIM on my Android device?</a
-                >
-              </p>
-              <p>
-                2.
-                <a
-                  href="https://dev.sunday.com/esim-how-to-install-en#ios-activation"
-                  >How to install and set up eSIM on my iOS device?</a
-                >
-              </p>
-              <p>
-                3.
-                <a href="https://dev.sunday.com/esim-activation-tutorial-en"
-                  >How to activate data plan (to the tutorial)</a
-                >
-              </p>
-              <p>
-                4.
-                <a href="#F6"
-                  >Do I need to set up an APN (Access Point Name) when using
-                  SUNDAY eSIM? And how?</a
-                >
+                A "S.mile" refers to a point earned in SUNDAY Reward Program.
+                For every US dollar you spend on SUNDAY Passes, you will earn 10
+                S.miles (unless otherwise specified). Next time, when you buy
+                SUNDAY Pass, you may enter the amount of S.miles you want to
+                apply at checkout and the total order value will be discounted
+                accordingly. You are entitled to enjoy a discount of US$1 for
+                every 200 S.miles applied in a transaction.
               </p>
               <br />
               <p>
-                If you are still encountering issues, we are here to help! You
-                may fill in the form via <strong>Contact Us</strong> or email to
-                enquiry@sunday.com for further assistance.
+                You can also earn S.miles by introducing our service to your
+                friends. You will get 200 S.miles for every referred friend who
+                completes their first purchase on SUNDAY App.
               </p>
+              <br />
+              <p>
+                Earned S.miles are valid for 365 days from the date they are
+                credited. If you make another purchase within such validity
+                period, any remaining S.miles will automatically extend for
+                another 365 days.
+              </p>
+              <br />
+              <p>
+                <strong>Note</strong>: All Reward Program and S.miles related
+                offers are subject to Terms &amp; Conditions. You may click here
+                for more information.
+              </p>
+              <br />
+              <p><strong>See Also</strong></p>
+              <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
+              <p>2. <a href="#D7">When will I receive my S.mile rewards?</a></p>
             </div>
           </div>
           <!-- question 6 -->
@@ -638,12 +598,13 @@
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
             ><a
-              name="F6"
+              name="D6"
               href="“#”"
               onclick="return false"
               style="text-decoration: none"
-              >Do I need to set up an APN (Access Point Name) when using SUNDAY
-              eSIM? And how?</a
+              ><span style="color: #000000"
+                >How do I refer my friend to SUNDAY?</span
+              ></a
             >
           </h3>
           <div
@@ -655,67 +616,19 @@
             aria-hidden="true"
           >
             <div class="faqs-container__answers-content">
+              <p>On your SUNDAY App:</p>
               <p>
-                After installing your eSIM, usually your device would
-                automatically configure the APN (Access Point Name) settings. If
-                not, please follow the steps for APN setup.
+                1. Log into your account and go to
+                <strong>Profile &gt; Refer &amp; Earn</strong>.<br />2. Copy
+                your unique referral code or tap <strong>Share Now</strong> to
+                share it to your friends.
               </p>
-              <br />
-              <p>For iOS users</p>
-              <p>1. Open <strong>Settings</strong> on your device.</p>
-              <p>
-                2. Go to <strong>Cellular</strong> or
-                <strong>Mobile Service</strong>.
-              </p>
-              <p>
-                3. Under your SUNDAY eSIM/mobile plan, tap
-                <strong>Mobile Data Network</strong>.
-              </p>
-              <p>
-                4. If your device has auto-detected the APN, 'wbdata' should
-                appear as the APN name. If not, please enter
-                '<strong>wbdata</strong>' (one word, in small letters, no space)
-                as APN under Mobile Data.
-              </p>
-              <p>
-                5. Tap <strong>Reset Settings</strong> and restart your device.
-              </p>
-              <br />
-              <p>For Android users</p>
-              <p>1. Open <strong>Settings</strong> on your device.</p>
-              <p>
-                2. Go to <strong>Connections/Network &amp; Internet</strong>,
-                and then choose <strong>SIM Manager</strong>,
-                <strong>Mobile Network</strong> or <strong>SIM Cards</strong>.
-              </p>
-              <p>
-                3. Select your SUNDAY eSIM and scroll down to tap
-                <strong>Access Point Names</strong>.
-              </p>
-              <p>
-                4. If your device has auto-detected the APN, 'wbdata' should
-                appear as the chosen APN. If not, you could edit existing APN or
-                tap the <strong>+/Add APN</strong> button to create a new one
-                with below information:
-              </p>
-              <p>&nbsp;&nbsp; a. For <strong>Name</strong>, enter 'SUNDAY'</p>
-              <p>
-                &nbsp;&nbsp; b. For <strong>APN</strong>, enter 'wbdata' (one
-                word, in small letters, no space)
-              </p>
-              <p>5. Save the settings and restart your device.</p>
               <br />
               <p><strong>See Also</strong></p>
-              <p>
-                1.
-                <a href="#F4"
-                  >I have switched on my SUNDAY eSIM, but it is not working.
-                  Why?</a
-                >
-              </p>
+              <p>1. <a href="#E1"> How can I apply a promotion code?</a></p>
             </div>
           </div>
-          <!-- question 7 -->
+          <!-- question7  -->
           <h3
             class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
             role="tab"
@@ -728,7 +641,13 @@
             <span
               class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
             ></span
-            >How can I activate my eSIM on my iPhone in Turkey?
+            ><a
+              name="D7"
+              href="“#”"
+              onclick="return false"
+              style="text-decoration: none"
+              >When will I receive my S.mile rewards?</a
+            >
           </h3>
           <div
             class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
@@ -740,35 +659,62 @@
           >
             <div class="faqs-container__answers-content">
               <p>
-                For devices set up after June 23, 2020, eSIM activates upon
-                installation. Contact your carrier if it's not enabled.
+                For any successful and eligible purchase or friend referral, you
+                will receive the corresponding rewards 35 days after the action
+                is completed. You may go to
+                <strong>My S.miles</strong> for the latest record.&nbsp;
               </p>
               <br />
+              <p><strong>See Also</strong></p>
+              <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
+              <p>2. <a href="#D5">What is S.mile?</a></p>
+            </div>
+          </div>
+          <!-- question8 -->
+          <h3
+            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+            role="tab"
+            id="ui-id-15"
+            aria-controls="ui-id-16"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+          >
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+            ></span
+            >Can I delete my SUNDAY account?
+          </h3>
+          <div
+            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+            style="display: none"
+            id="ui-id-16"
+            aria-labelledby="ui-id-15"
+            role="tabpanel"
+            aria-hidden="true"
+          >
+            <div class="faqs-container__answers-content">
               <p>
-                For devices set up before June 23, 2020, follow the steps below
-                to activate your eSIM. Backup your data, as the process may
-                erase it.
-              </p>
-              <br />
-              <p>
-                1. Back up your device and update to the latest iOS. Go to
-                Settings &gt; General &gt; Transfer or Reset &gt; Erase All
-                Content and Settings.
-              </p>
-              <p>
-                2. Enter your passcode or Apple ID password to confirm. After
-                erasing, restore your device from the backup and set up your
-                eSIM.
-              </p>
-              <br />
-              <p>
-                <strong>Note</strong>: To use roaming data services in Turkey
-                for 91 days or more within a 120-day period, your device's IMEI
-                must be registered with Turkey's Central Equipment Identity
-                Register. Contact CEIR for details. Source:
-                https://support.apple.com/en-us/HT211023
+                Click
+                <a
+                  href="https://api-dev.sunday.com/customer/account/deleteAccount"
+                  >here</a
+                >
+                to proceed if you wish to delete your SUNDAY account.
               </p>
             </div>
+          </div>
+          <div
+            class="faqs-page-script ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+            role="tab"
+            id="ui-id-17"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+          >
+            <span
+              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+            ></span>
           </div>
         </div>
       </div>
