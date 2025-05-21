@@ -112,6 +112,7 @@
     }
     .faqs-container__questions {
       position: relative;
+      z-index: 10;
       padding: 24px;
       padding-right: 48px !important;
       font-size: 16px;
@@ -145,7 +146,7 @@
       border-bottom: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      /* transition: transform 0.3s ease-in-out; */
+      transition: transform 0.3s linear;
     }
     .faqs-container__questions.ui-accordion-header-active:before {
       transform: rotate(180deg);
@@ -162,8 +163,8 @@
       background-color: #ffffff;
       height: 0px;
       overflow: hidden;
-      transition: all 0.3s ease-in-out;
-      transform-origin: top center;
+      transition: all 0.3s linear;
+      transform-origin: center top;
     }
     .faqs-container__answers:before {
       content: "A:";
@@ -212,7 +213,8 @@
         right: 16px;
       }
       .faqs-container__answers {
-        padding: 0 16px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
       .faqs-container__answers-content {
         padding-bottom: 16px;
@@ -284,13 +286,20 @@
             q.classList.remove("ui-accordion-header-active");
           });
           answers.forEach(function (a) {
-            if (a !== answer) {
+            if (a !== answer && a.style.display !== "none") {
+              var prevQuestion = a.previousElementSibling;
+              var transformHeight = 54;
+              if (prevQuestion) {
+                transformHeight = prevQuestion.offsetHeight;
+              }
+              // console.log("transformHeight", transformHeight);
               a.classList.remove("ui-accordion-content-active");
               a.style.height = "0px";
-              a.style.paddingTop = "10px";
+              a.style.transform = `translateY(-${transformHeight}px)`; //This seems to solve the scroll problem
               setTimeout(() => {
                 a.style.display = "none";
-                a.style.paddingTop = "";
+                a.style.transform = "";
+                // a.style.marginTop = "";
               }, animationTime);
             }
           });
@@ -307,7 +316,9 @@
 
       function anchorScroll() {
         var hash = window.location.hash;
-        scrollToHash(hash);
+        setTimeout(() => {
+          scrollToHash(hash);
+        }, animationTime);
         var anchors = root.querySelectorAll("a");
         anchors.forEach(function (anchor) {
           anchor.addEventListener("click", function (event) {

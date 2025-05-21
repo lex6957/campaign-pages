@@ -1,723 +1,735 @@
-<main id="maincontent" class="page-main">
-  <style>
-    body {
-      font-family: Open Sans;
-      margin: 0;
-    }
-    p {
-      margin: 0;
-    }
-    .esim-faqs-page a,
-    .esim-faqs-page a:hover,
-    .esim-faqs-page a:active,
-    .esim-faqs-page a:visited {
-      color: #000;
-      text-decoration: underline;
-    }
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  body {
+    font-family: Open Sans;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .esim-faqs-page a,
+  .esim-faqs-page a:hover,
+  .esim-faqs-page a:active,
+  .esim-faqs-page a:visited {
+    color: #000;
+    text-decoration: underline;
+  }
 
-    #hkt-clubmall .page-main .breadcrumbs {
-      display: none !important;
-    }
-    #hkt-clubmall .columns {
-      max-width: unset !important;
-    }
+  #hkt-clubmall .page-main .breadcrumbs {
+    display: none !important;
+  }
+  #hkt-clubmall .columns {
+    max-width: unset !important;
+  }
 
-    .faqs-page__wrapper {
-      padding: 35px 25px 30px;
-      background-color: #fff;
-    }
+  .faqs-page__wrapper {
+    padding: 35px 25px 30px;
+    background-color: #fff;
+  }
+  .faqs-page__title-questions {
+    float: left;
+    width: 100%;
+    font-weight: 200;
+    color: #4a4a4a;
+    font-size: 50px;
+  }
+  .faqs-page__title-answers {
+    float: left;
+    width: 100%;
+    font-weight: 700;
+    color: #ea1b76;
+    font-size: 50px;
+  }
+  .faqs-page__label {
+    margin: 0 2px 8px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    color: #4a4a4a;
+  }
+  .faqs-page__question-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ea1b76;
+  }
+  .faqs-page__question-link:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #b00050;
+  }
+  .faqs-page__question-link:visited {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ea1b76;
+  }
+  @media (min-width: 768px) {
     .faqs-page__title-questions {
-      float: left;
-      width: 100%;
-      font-weight: 200;
-      color: #4a4a4a;
-      font-size: 50px;
+      float: unset;
+      width: auto;
     }
     .faqs-page__title-answers {
-      float: left;
-      width: 100%;
-      font-weight: 700;
-      color: #ea1b76;
-      font-size: 50px;
+      float: unset;
+      width: auto;
     }
-    .faqs-page__label {
-      margin: 0 2px 8px;
-      font-size: 14px;
-      letter-spacing: 0.2px;
-      line-height: 20px;
-      color: #4a4a4a;
-    }
-    .faqs-page__question-link {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 4px 2px;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 18px;
-      border-radius: 20px;
-      text-decoration: none;
-      color: #ffffff;
-      background-color: #ea1b76;
-    }
-    .faqs-page__question-link:hover {
-      text-decoration: none;
-      color: #fff;
-      background-color: #b00050;
-    }
-    .faqs-page__question-link:visited {
-      text-decoration: none;
-      color: #fff;
-      background-color: #ea1b76;
-    }
-    @media (min-width: 768px) {
-      .faqs-page__title-questions {
-        float: unset;
-        width: auto;
-      }
-      .faqs-page__title-answers {
-        float: unset;
-        width: auto;
-      }
-    }
-    [class^="faqs-section__"] {
-      margin-top: 38px;
-    }
-    [class^="faqs-section__"]:first-child {
-      margin-top: 0;
-    }
-    [class^="faqs-section__"] h2 {
-      margin-bottom: 0;
-      font-size: 24px;
-      line-height: 30px;
-      font-weight: 600;
-    }
-    [class^="faqs-section__"] h2 p {
-      margin-top: 4px;
-      margin-bottom: 4px;
-      margin-left: 10px;
-      font-size: 14px;
-    }
-    [class^="faqs-section__"] h3 {
-      margin-top: 24px;
-      font-size: 16px;
-      line-height: 20px;
-      font-weight: 400;
-      margin-bottom: 0;
-    }
-    [class^="faqs-section__"] h3:hover {
-      cursor: pointer;
-    }
-    .faqs-page__content {
-      padding-top: 0px;
-    }
+  }
+  [class^="faqs-section__"] {
+    margin-top: 38px;
+  }
+  [class^="faqs-section__"]:first-child {
+    margin-top: 0;
+  }
+  [class^="faqs-section__"] h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+  [class^="faqs-section__"] h2 p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  [class^="faqs-section__"] h3 {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  [class^="faqs-section__"] h3:hover {
+    cursor: pointer;
+  }
+  .faqs-page__content {
+    padding-top: 0px;
+  }
+  .faqs-container__questions {
+    position: relative;
+    z-index: 10;
+    padding: 24px;
+    padding-right: 48px !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000 !important;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-color: #ffffff;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  .faqs-container__questions:before {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    margin-top: -10px;
+    text-decoration: none !important;
+    color: #000 !important;
+    content: "";
+    width: 32px;
+    height: 20px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
+    background-position: center;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+  }
+  .faqs-container__questions.ui-accordion-header-active {
+    margin-bottom: 0;
+    text-decoration: none !important;
+    color: #000 !important;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.3s linear;
+  }
+  .faqs-container__questions.ui-accordion-header-active:before {
+    transform: rotate(180deg);
+  }
+  .faqs-container__answers {
+    font-weight: 400;
+    padding: 0 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #ffffff;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    transform-origin: center top;
+  }
+  .faqs-container__answers:before {
+    content: "A:";
+    display: table-cell;
+    width: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.07px;
+    color: #0cd7d5;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+  .ui-accordion-content-active {
+    height: auto;
+  }
+  .faqs-container__answers-content {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    display: table-cell;
+    vertical-align: top;
+    padding-bottom: 24px;
+  }
+  .faqs-container__answers-content ul,
+  .faqs-container__answers-content ol {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  .faqs-container__answers-content ul {
+    font-size: 12px;
+    font-weight: 400;
+    list-style: none;
+  }
+  .faqs-container__answers-content ul li {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  @media (max-width: 959px) {
     .faqs-container__questions {
-      position: relative;
-      padding: 24px;
-      padding-right: 48px !important;
-      font-size: 16px;
-      font-weight: 400;
-      color: #000 !important;
-      border: 1px solid #dfdfdf;
-      border-radius: 4px;
-      background-color: #ffffff;
-      vertical-align: middle;
-      overflow: hidden;
+      padding: 16px;
     }
     .faqs-container__questions:before {
-      position: absolute;
-      right: 24px;
-      top: 50%;
-      margin-top: -10px;
-      text-decoration: none !important;
-      color: #000 !important;
-      content: "";
-      width: 32px;
-      height: 20px;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
-      background-position: center;
-      background-size: 32px 32px;
-      background-repeat: no-repeat;
-    }
-    .faqs-container__questions.ui-accordion-header-active {
-      margin-bottom: 0;
-      text-decoration: none !important;
-      color: #000 !important;
-      border-bottom: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      transition: transform 0.3s ease-in-out;
-    }
-    .faqs-container__questions.ui-accordion-header-active:before {
-      transform: rotate(180deg);
+      right: 16px;
     }
     .faqs-container__answers {
-      font-weight: 400;
-      padding: 0 24px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #dfdfdf;
-      border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      background-color: #ffffff;
-      height: 0px;
-      overflow: hidden;
-      transition: height 0.3s ease-in-out;
-      transform-origin: top center;
-    }
-    .faqs-container__answers:before {
-      content: "A:";
-      display: table-cell;
-      width: 30px;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 22px;
-      letter-spacing: 0.07px;
-      color: #0cd7d5;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    }
-    .ui-accordion-content-active {
-      height: auto;
+      padding-left: 16px;
+      padding-right: 16px;
     }
     .faqs-container__answers-content {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 20px;
-      display: table-cell;
-      vertical-align: top;
-      padding-bottom: 24px;
+      padding-bottom: 16px;
     }
-    .faqs-container__answers-content ul,
-    .faqs-container__answers-content ol {
-      font-size: 12px;
-      font-weight: 400;
-      margin-top: 10px;
-      padding-left: 20px;
-    }
-    .faqs-container__answers-content ul {
-      font-size: 12px;
-      font-weight: 400;
-      list-style: none;
-    }
-    .faqs-container__answers-content ul li {
-      font-size: 12px;
-      font-weight: 400;
-      margin-bottom: 5px;
-    }
-    @media (max-width: 959px) {
-      .faqs-container__questions {
-        padding: 16px;
-      }
-      .faqs-container__questions:before {
-        right: 16px;
-      }
-      .faqs-container__answers {
-        padding: 0 16px;
-      }
-      .faqs-container__answers-content {
-        padding-bottom: 16px;
-      }
-    }
-  </style>
-  <script>
-    (function () {
-      var root = window._shadowRoot || document;
-      var animationTime = 300;
-      if (window._shadowRoot) {
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    var animationTime = 300;
+    if (window._shadowRoot) {
+      accordionInit();
+      anchorScroll();
+    } else {
+      document.addEventListener("DOMContentLoaded", function () {
         accordionInit();
         anchorScroll();
-      } else {
-        document.addEventListener("DOMContentLoaded", function () {
-          accordionInit();
-          anchorScroll();
+      });
+    }
+    function accordionInit() {
+      var questions = root.querySelectorAll(".faqs-container__questions");
+      var answers = root.querySelectorAll(".faqs-container__answers");
+      // console.log("questions", questions);
+      questions.forEach(function (question, index) {
+        question.addEventListener("click", function () {
+          triggerAccordion(question, false);
         });
-      }
-      function accordionInit() {
-        var questions = root.querySelectorAll(".faqs-container__questions");
-        var answers = root.querySelectorAll(".faqs-container__answers");
-        // console.log("questions", questions);
-        questions.forEach(function (question, index) {
-          question.addEventListener("click", function () {
-            triggerAccordion(question, false);
-          });
-        });
-        answers.forEach(function (answer, index) {
-          if (!answer.classList.contains("ui-accordion-content-active")) {
-            answer.style.height = "0px";
-          }
-        });
-        if (questions.length > 0) {
-          triggerAccordion(questions[0], true); // The click event that triggers the first question
+      });
+      answers.forEach(function (answer, index) {
+        if (!answer.classList.contains("ui-accordion-content-active")) {
+          answer.style.height = "0px";
         }
+      });
+      if (questions.length > 0) {
+        triggerAccordion(questions[0], true); // The click event that triggers the first question
+      }
 
-        function triggerAccordion(question, isFirstLoad) {
-          var answer = question.nextElementSibling;
-          resetActivationClasses(answer);
-          question.classList.add("ui-accordion-header-active");
-          if (answer && answer.classList.contains("faqs-container__answers")) {
-            answer.classList.add("ui-accordion-content-active");
-            answer.style.display = "block";
-            var height = answer.scrollHeight;
-            answer.style.height = height + "px";
-            void answer.offsetWidth;
+      function triggerAccordion(question, isFirstLoad) {
+        var answer = question.nextElementSibling;
+        resetActivationClasses(answer);
+        question.classList.add("ui-accordion-header-active");
+        if (answer && answer.classList.contains("faqs-container__answers")) {
+          answer.classList.add("ui-accordion-content-active");
+          answer.style.display = "block";
+          var height = answer.scrollHeight;
+          answer.style.height = height + "px";
+          void answer.offsetWidth;
 
-            if (isFirstLoad) return;
+          if (isFirstLoad) return;
 
-            // When the question is not in the view, return it to the view
-            setTimeout(function () {
-              var rect = question.getBoundingClientRect();
-              // console.log("onTransitionEnd", rect);
-              var viewHeight =
-                window.innerHeight || root.documentElement.clientHeight;
-              if (rect.top < 0) {
-                const header = document.querySelector("#header");
-                const headerHeight = header ? header.offsetHeight : 0;
-                const y = rect.top + window.scrollY - headerHeight;
-                window.scrollTo({ top: y, behavior: "smooth" });
-              }
+          // When the question is not in the view, return it to the view
+          setTimeout(function () {
+            var rect = question.getBoundingClientRect();
+            // console.log("onTransitionEnd", rect);
+            var viewHeight =
+              window.innerHeight || root.documentElement.clientHeight;
+            if (rect.top < 0) {
+              const header = document.querySelector("#header");
+              const headerHeight = header ? header.offsetHeight : 0;
+              const y = rect.top + window.scrollY - headerHeight;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          }, animationTime + 50);
+        }
+      }
+
+      function resetActivationClasses(answer) {
+        questions.forEach(function (q) {
+          q.classList.remove("ui-accordion-header-active");
+        });
+        answers.forEach(function (a) {
+          if (a !== answer && a.style.display !== "none") {
+            var prevQuestion = a.previousElementSibling;
+            var transformHeight = 54;
+            if (prevQuestion) {
+              transformHeight = prevQuestion.offsetHeight;
+            }
+            // console.log("transformHeight", transformHeight);
+            a.classList.remove("ui-accordion-content-active");
+            a.style.height = "0px";
+            a.style.transform = `translateY(-${transformHeight}px)`; //This seems to solve the scroll problem
+            setTimeout(() => {
+              a.style.display = "none";
+              a.style.transform = "";
+              // a.style.marginTop = "";
             }, animationTime);
           }
-        }
-
-        function resetActivationClasses(answer) {
-          questions.forEach(function (q) {
-            q.classList.remove("ui-accordion-header-active");
-          });
-          answers.forEach(function (a) {
-            if (a !== answer) {
-              a.classList.remove("ui-accordion-content-active");
-              a.style.height = "0px";
-              setTimeout(() => {
-                a.style.display = "none";
-              }, animationTime);
-            }
-          });
-        }
-
-        window.addEventListener("resize", function () {
-          // reset the height of the active answer when the window is resized
-          // No need to set height, let it adapt
-          var activeAnswer = root.querySelector(".ui-accordion-content-active");
-          if (!activeAnswer) return;
-          activeAnswer.style.height = "";
         });
       }
 
-      function anchorScroll() {
-        var hash = window.location.hash;
+      window.addEventListener("resize", function () {
+        // reset the height of the active answer when the window is resized
+        // No need to set height, let it adapt
+        var activeAnswer = root.querySelector(".ui-accordion-content-active");
+        if (!activeAnswer) return;
+        activeAnswer.style.height = "";
+      });
+    }
+
+    function anchorScroll() {
+      var hash = window.location.hash;
+      setTimeout(() => {
         scrollToHash(hash);
-        var anchors = root.querySelectorAll("a");
-        anchors.forEach(function (anchor) {
-          anchor.addEventListener("click", function (event) {
-            var target = this;
-            if (!target.getAttribute("href")?.startsWith("#")) return;
-            const anchorId = target.getAttribute("href");
-            if (!anchorId) return;
-            scrollToHash(anchorId);
-          });
+      }, animationTime);
+      var anchors = root.querySelectorAll("a");
+      anchors.forEach(function (anchor) {
+        anchor.addEventListener("click", function (event) {
+          var target = this;
+          if (!target.getAttribute("href")?.startsWith("#")) return;
+          const anchorId = target.getAttribute("href");
+          if (!anchorId) return;
+          scrollToHash(anchorId);
         });
-      }
-      function scrollToHash(hash) {
-        // Resolve the issue where the anchor function of tag A cannot be used
-        if (hash) {
-          var el = root.querySelector(hash);
-          if (!el) {
-            el = root.querySelector('[name="' + hash.replace(/^#/, "") + '"]');
-          }
-          if (el) {
-            const header = document.querySelector("#header");
-            if (header) {
-              // Avoid being obscured by header
-              const headerHeight = header.offsetHeight + 32;
-              const y =
-                el.getBoundingClientRect().top + window.scrollY - headerHeight;
-              window.scrollTo({ top: y, left: 0, behavior: "smooth" });
-            } else {
-              el.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
+      });
+    }
+    function scrollToHash(hash) {
+      // Resolve the issue where the anchor function of tag A cannot be used
+      if (hash) {
+        var el = root.querySelector(hash);
+        if (!el) {
+          el = root.querySelector('[name="' + hash.replace(/^#/, "") + '"]');
+        }
+        if (el) {
+          const header = document.querySelector("#header");
+          if (header) {
+            // Avoid being obscured by header
+            const headerHeight = header.offsetHeight + 32;
+            const y =
+              el.getBoundingClientRect().top + window.scrollY - headerHeight;
+            window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+          } else {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }
       }
-    })();
-  </script>
-  <div class="esim-faqs-page faqs-page-en">
-    <div class="faqs-page__content page-container">
-      <div class="faqs-section__membership" name="membership">
-        <h2>About SUNDAY Membership</h2>
-        <div
-          class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
-          id="faqs-accordion-04 membership"
-          role="tablist"
+    }
+  })();
+</script>
+<div class="esim-faqs-page faqs-page-en">
+  <div class="faqs-page__content page-container">
+    <div class="faqs-section__membership" name="membership">
+      <h2>About SUNDAY Membership</h2>
+      <div
+        class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+        id="faqs-accordion-04 membership"
+        role="tablist"
+      >
+        <!-- question 1 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+          role="tab"
+          id="ui-id-1"
+          aria-controls="ui-id-2"
+          aria-selected="true"
+          aria-expanded="true"
+          tabindex="0"
         >
-          <!-- question 1 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
-            role="tab"
-            id="ui-id-1"
-            aria-controls="ui-id-2"
-            aria-selected="true"
-            aria-expanded="true"
-            tabindex="0"
-          >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
-            ></span
-            >How can I become a SUNDAY Member?
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
-            style=""
-            id="ui-id-2"
-            aria-labelledby="ui-id-1"
-            role="tabpanel"
-            aria-hidden="false"
-          >
-            <div class="faqs-container__answers-content">
-              <p>
-                Download SUNDAY: eSIM Travel App from App Store or Play Store.
-              </p>
-              <p>
-                Open the App and follow the instruction to register as a SUNDAY
-                Member by providing a verifiable email address and accepting the
-                SUNDAY eSIM General Terms &amp; Conditions and the Privacy
-                Statement.
-              </p>
-            </div>
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+          ></span
+          >How can I become a SUNDAY Member?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+          style=""
+          id="ui-id-2"
+          aria-labelledby="ui-id-1"
+          role="tabpanel"
+          aria-hidden="false"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              Download SUNDAY: eSIM Travel App from App Store or Play Store.
+            </p>
+            <p>
+              Open the App and follow the instruction to register as a SUNDAY
+              Member by providing a verifiable email address and accepting the
+              SUNDAY eSIM General Terms &amp; Conditions and the Privacy
+              Statement.
+            </p>
           </div>
-          <!-- question 2 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-3"
-            aria-controls="ui-id-4"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
-          >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            >How do I unsubscribe from marketing emails?
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-4"
-            aria-labelledby="ui-id-3"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>On your Sunday App:</p>
-              <p>1. Go to <strong>Profile</strong> section.</p>
-              <p>2. Select <strong>Notification</strong>.</p>
-              <p>
-                3. For the item <strong>Marketing email</strong>, tap to turn
-                off the toggle button.
-              </p>
-              <br />
-              <p>
-                Don't want to miss any of our promotions? You may turn this on
-                again anytime.
-              </p>
-            </div>
+        </div>
+        <!-- question 2 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-3"
+          aria-controls="ui-id-4"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >How do I unsubscribe from marketing emails?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-4"
+          aria-labelledby="ui-id-3"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>On your Sunday App:</p>
+            <p>1. Go to <strong>Profile</strong> section.</p>
+            <p>2. Select <strong>Notification</strong>.</p>
+            <p>
+              3. For the item <strong>Marketing email</strong>, tap to turn off
+              the toggle button.
+            </p>
+            <br />
+            <p>
+              Don't want to miss any of our promotions? You may turn this on
+              again anytime.
+            </p>
           </div>
-          <!-- question 3 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-5"
-            aria-controls="ui-id-6"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
-          >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            >How do I delete my account?
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-6"
-            aria-labelledby="ui-id-5"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>On your Sunday App:</p>
-              <p>1. Go to <strong>Profile</strong> section.</p>
-              <p>
-                2. Go into <strong>Account</strong>, tap
-                <strong>Delete Account</strong>.
-              </p>
-              <p>3. Read the reminders and tap Yes to confirm your action.</p>
-              <br />
-              <p>
-                <strong>Note</strong>: This action will permanently erase your
-                account info and cannot be undone. All purchased eSIM(s) will be
-                terminated and any remaining data packages cannot be used
-                anymore. All the S.miles will also be forfeited.
-              </p>
-            </div>
+        </div>
+        <!-- question 3 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-5"
+          aria-controls="ui-id-6"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >How do I delete my account?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-6"
+          aria-labelledby="ui-id-5"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>On your Sunday App:</p>
+            <p>1. Go to <strong>Profile</strong> section.</p>
+            <p>
+              2. Go into <strong>Account</strong>, tap
+              <strong>Delete Account</strong>.
+            </p>
+            <p>3. Read the reminders and tap Yes to confirm your action.</p>
+            <br />
+            <p>
+              <strong>Note</strong>: This action will permanently erase your
+              account info and cannot be undone. All purchased eSIM(s) will be
+              terminated and any remaining data packages cannot be used anymore.
+              All the S.miles will also be forfeited.
+            </p>
           </div>
-          <!-- question 4 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-7"
-            aria-controls="ui-id-8"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
+        </div>
+        <!-- question 4 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-7"
+          aria-controls="ui-id-8"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          ><a
+            name="D4"
+            href="“#”"
+            onclick="return false"
+            style="text-decoration: none"
+            >What is SUNDAY Reward Program?</a
           >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            ><a
-              name="D4"
-              href="“#”"
-              onclick="return false"
-              style="text-decoration: none"
-              >What is SUNDAY Reward Program?</a
-            >
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-8"
-            aria-labelledby="ui-id-7"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>
-                The SUNDAY Reward Program is our way of showing appreciation to
-                each and every one of you. When you have purchased any SUNDAY
-                Pass through SUNDAY App, you will be given some reward points.
-                The accumulated reward points - we call them S.miles here - can
-                be used as discounts in your future purchases.
-              </p>
-              <br />
-              <p>
-                You can earn 10 S.miles for every US$1 spent on SUNDAY Pass via
-                SUNDAY App. Next time, when you buy SUNDAY Pass, you may enter
-                the amount of S.miles you want to apply at checkout and the
-                total order value will be discounted accordingly. You are
-                entitled to enjoy a discount of US$1 for every 200 S.miles
-                applied in a transaction.
-              </p>
-              <br />
-              <p>
-                <strong>Note</strong>: All Reward Program and S.miles related
-                offers are subject to Terms &amp; Conditions. You may click here
-                for more information.
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>1. <a href="#D5">What is S.mile?</a></p>
-              <p>2. <a href="#D6">How do I refer my friend to SUNDAY?</a></p>
-            </div>
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-8"
+          aria-labelledby="ui-id-7"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              The SUNDAY Reward Program is our way of showing appreciation to
+              each and every one of you. When you have purchased any SUNDAY Pass
+              through SUNDAY App, you will be given some reward points. The
+              accumulated reward points - we call them S.miles here - can be
+              used as discounts in your future purchases.
+            </p>
+            <br />
+            <p>
+              You can earn 10 S.miles for every US$1 spent on SUNDAY Pass via
+              SUNDAY App. Next time, when you buy SUNDAY Pass, you may enter the
+              amount of S.miles you want to apply at checkout and the total
+              order value will be discounted accordingly. You are entitled to
+              enjoy a discount of US$1 for every 200 S.miles applied in a
+              transaction.
+            </p>
+            <br />
+            <p>
+              <strong>Note</strong>: All Reward Program and S.miles related
+              offers are subject to Terms &amp; Conditions. You may click here
+              for more information.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>1. <a href="#D5">What is S.mile?</a></p>
+            <p>2. <a href="#D6">How do I refer my friend to SUNDAY?</a></p>
           </div>
-          <!-- question 5 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-9"
-            aria-controls="ui-id-10"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
+        </div>
+        <!-- question 5 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-9"
+          aria-controls="ui-id-10"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          ><a
+            name="D5"
+            href="“#”"
+            onclick="return false"
+            style="text-decoration: none"
+            >What is S.mile?</a
           >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            ><a
-              name="D5"
-              href="“#”"
-              onclick="return false"
-              style="text-decoration: none"
-              >What is S.mile?</a
-            >
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-10"
-            aria-labelledby="ui-id-9"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>
-                A "S.mile" refers to a point earned in SUNDAY Reward Program.
-                For every US dollar you spend on SUNDAY Passes, you will earn 10
-                S.miles (unless otherwise specified). Next time, when you buy
-                SUNDAY Pass, you may enter the amount of S.miles you want to
-                apply at checkout and the total order value will be discounted
-                accordingly. You are entitled to enjoy a discount of US$1 for
-                every 200 S.miles applied in a transaction.
-              </p>
-              <br />
-              <p>
-                You can also earn S.miles by introducing our service to your
-                friends. You will get 200 S.miles for every referred friend who
-                completes their first purchase on SUNDAY App.
-              </p>
-              <br />
-              <p>
-                Earned S.miles are valid for 365 days from the date they are
-                credited. If you make another purchase within such validity
-                period, any remaining S.miles will automatically extend for
-                another 365 days.
-              </p>
-              <br />
-              <p>
-                <strong>Note</strong>: All Reward Program and S.miles related
-                offers are subject to Terms &amp; Conditions. You may click here
-                for more information.
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
-              <p>2. <a href="#D7">When will I receive my S.mile rewards?</a></p>
-            </div>
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-10"
+          aria-labelledby="ui-id-9"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              A "S.mile" refers to a point earned in SUNDAY Reward Program. For
+              every US dollar you spend on SUNDAY Passes, you will earn 10
+              S.miles (unless otherwise specified). Next time, when you buy
+              SUNDAY Pass, you may enter the amount of S.miles you want to apply
+              at checkout and the total order value will be discounted
+              accordingly. You are entitled to enjoy a discount of US$1 for
+              every 200 S.miles applied in a transaction.
+            </p>
+            <br />
+            <p>
+              You can also earn S.miles by introducing our service to your
+              friends. You will get 200 S.miles for every referred friend who
+              completes their first purchase on SUNDAY App.
+            </p>
+            <br />
+            <p>
+              Earned S.miles are valid for 365 days from the date they are
+              credited. If you make another purchase within such validity
+              period, any remaining S.miles will automatically extend for
+              another 365 days.
+            </p>
+            <br />
+            <p>
+              <strong>Note</strong>: All Reward Program and S.miles related
+              offers are subject to Terms &amp; Conditions. You may click here
+              for more information.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
+            <p>2. <a href="#D7">When will I receive my S.mile rewards?</a></p>
           </div>
-          <!-- question 6 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-11"
-            aria-controls="ui-id-12"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
+        </div>
+        <!-- question 6 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-11"
+          aria-controls="ui-id-12"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          ><a
+            name="D6"
+            href="“#”"
+            onclick="return false"
+            style="text-decoration: none"
+            ><span style="color: #000000"
+              >How do I refer my friend to SUNDAY?</span
+            ></a
           >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            ><a
-              name="D6"
-              href="“#”"
-              onclick="return false"
-              style="text-decoration: none"
-              ><span style="color: #000000"
-                >How do I refer my friend to SUNDAY?</span
-              ></a
-            >
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-12"
-            aria-labelledby="ui-id-11"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>On your SUNDAY App:</p>
-              <p>
-                1. Log into your account and go to
-                <strong>Profile &gt; Refer &amp; Earn</strong>.<br />2. Copy
-                your unique referral code or tap <strong>Share Now</strong> to
-                share it to your friends.
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>1. <a href="#E1"> How can I apply a promotion code?</a></p>
-            </div>
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-12"
+          aria-labelledby="ui-id-11"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>On your SUNDAY App:</p>
+            <p>
+              1. Log into your account and go to
+              <strong>Profile &gt; Refer &amp; Earn</strong>.<br />2. Copy your
+              unique referral code or tap <strong>Share Now</strong> to share it
+              to your friends.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>1. <a href="#E1"> How can I apply a promotion code?</a></p>
           </div>
-          <!-- question7  -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-13"
-            aria-controls="ui-id-14"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
+        </div>
+        <!-- question7  -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-13"
+          aria-controls="ui-id-14"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          ><a
+            name="D7"
+            href="“#”"
+            onclick="return false"
+            style="text-decoration: none"
+            >When will I receive my S.mile rewards?</a
           >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            ><a
-              name="D7"
-              href="“#”"
-              onclick="return false"
-              style="text-decoration: none"
-              >When will I receive my S.mile rewards?</a
-            >
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-14"
-            aria-labelledby="ui-id-13"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>
-                For any successful and eligible purchase or friend referral, you
-                will receive the corresponding rewards 35 days after the action
-                is completed. You may go to
-                <strong>My S.miles</strong> for the latest record.&nbsp;
-              </p>
-              <br />
-              <p><strong>See Also</strong></p>
-              <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
-              <p>2. <a href="#D5">What is S.mile?</a></p>
-            </div>
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-14"
+          aria-labelledby="ui-id-13"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              For any successful and eligible purchase or friend referral, you
+              will receive the corresponding rewards 35 days after the action is
+              completed. You may go to
+              <strong>My S.miles</strong> for the latest record.&nbsp;
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>1. <a href="#D4">What is SUNDAY Reward Program?</a></p>
+            <p>2. <a href="#D5">What is S.mile?</a></p>
           </div>
-          <!-- question8 -->
-          <h3
-            class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-15"
-            aria-controls="ui-id-16"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
-          >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span
-            >Can I delete my SUNDAY account?
-          </h3>
-          <div
-            class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
-            style="display: none"
-            id="ui-id-16"
-            aria-labelledby="ui-id-15"
-            role="tabpanel"
-            aria-hidden="true"
-          >
-            <div class="faqs-container__answers-content">
-              <p>
-                Click
-                <a
-                  href="https://api-dev.sunday.com/customer/account/deleteAccount"
-                  >here</a
-                >
-                to proceed if you wish to delete your SUNDAY account.
-              </p>
-            </div>
+        </div>
+        <!-- question8 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-15"
+          aria-controls="ui-id-16"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >Can I delete my SUNDAY account?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-16"
+          aria-labelledby="ui-id-15"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              Click
+              <a href="https://dev.sunday.com/customer/account/deleteAccount"
+                >here</a
+              >
+              to proceed if you wish to delete your SUNDAY account.
+            </p>
           </div>
-          <div
-            class="faqs-page-script ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
-            role="tab"
-            id="ui-id-17"
-            aria-selected="false"
-            aria-expanded="false"
-            tabindex="-1"
-          >
-            <span
-              class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
-            ></span>
-          </div>
+        </div>
+        <div
+          class="faqs-page-script ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-17"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>
+<!-- </main> -->
