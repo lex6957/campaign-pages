@@ -1,0 +1,1017 @@
+<main id="maincontent" class="page-main">
+  <div class="page messages">
+    <div data-placeholder="messages"></div>
+    <div data-bind="scope: 'messages'">
+      <!-- ko if: cookieMessages && cookieMessages.length > 0 --><!-- /ko -->
+
+      <!-- ko if: messages().messages && messages().messages.length > 0 --><!-- /ko -->
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column main">
+      <input name="form_key" type="hidden" value="TcOWBqlzGy1qDEKw" />
+
+      <script>
+        require([
+          "jquery",
+          "Magefan_Blog/js/lib/mfblogunveil",
+          "domReady!",
+        ], function ($) {
+          $(".mfblogunveil").mfblogunveil();
+        });
+      </script>
+
+      <div class="faqs-page-css">
+        <style>
+          body {
+            background: #f9fdfe;
+            font-family: open sans;
+          }
+          .esim-faqs-page  a,
+                .esim-faqs-page  a:hover,
+                .esim-faqs-page  a:active,
+                .esim-faqs-page  a: visited {
+            color: #000;
+            text-decoration: underline;
+          }
+          .esim-faqs-page {
+            max-width: calc(100% - 32px);
+          }
+          #hkt-clubmall .page-main .breadcrumbs {
+            display: none !important;
+          }
+          #hkt-clubmall .columns {
+            max-width: unset !important;
+          }
+          @media (min-width: 768px) {
+            .page-container {
+              max-width: 708px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 992px) {
+            .page-container {
+              max-width: 932px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 1300px) {
+            .page-container {
+              max-width: 1240px;
+              margin: 0 auto;
+            }
+          }
+          .faqs-page__wrapper {
+            padding: 35px 25px 30px;
+            background-color: #fff;
+          }
+          .faqs-page__title-questions {
+            float: left;
+            width: 100%;
+            font-weight: 200;
+            color: #4a4a4a;
+            font-size: 50px;
+          }
+          .faqs-page__title-answers {
+            float: left;
+            width: 100%;
+            font-weight: 700;
+            color: #ea1b76;
+            font-size: 50px;
+          }
+          .faqs-page__label {
+            margin: 0 2px 8px;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            line-height: 20px;
+            color: #4a4a4a;
+          }
+          .faqs-page__question-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 4px 2px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #ea1b76;
+          }
+          .faqs-page__question-link:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #b00050;
+          }
+          .faqs-page__question-link:visited {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ea1b76;
+          }
+          @media (min-width: 768px) {
+            .faqs-page__title-questions {
+              float: unset;
+              width: auto;
+            }
+            .faqs-page__title-answers {
+              float: unset;
+              width: auto;
+            }
+          }
+          [class^="faqs-section__"] {
+            margin-top: 38px;
+          }
+          [class^="faqs-section__"]:first-child {
+            margin-top: 0;
+          }
+          [class^="faqs-section__"] h2 {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: bold;
+          }
+          [class^="faqs-section__"] h2 p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            margin-left: 10px;
+            font-size: 14px;
+          }
+          [class^="faqs-section__"] h3 {
+            margin-top: 15px;
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400;
+          }
+          [class^="faqs-section__"] h3:hover {
+            cursor: pointer;
+          }
+          .faqs-page__content {
+            padding-top: 0px;
+          }
+          .faqs-container__questions {
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000 !important;
+            border: 1px solid #dfdfdf;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__questions:before {
+            float: right;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            content: "";
+            width: 28px;
+            height: 28px;
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-expand-icon.png"}});
+            background-position: center;
+            background-size: 28px 28px;
+            background-repeat: no-repeat;
+          }
+          .faqs-container__questions.ui-accordion-header-active {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            border-bottom: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          .faqs-container__questions.ui-accordion-header-active:before {
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-collapse-icon.png"}});
+          }
+          .faqs-container__answers {
+            font-size: 12px;
+            font-weight: 400;
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #dfdfdf;
+            border-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__answers:before {
+            font-size: 12px;
+            font-weight: 400;
+            content: "A:";
+            display: table-cell;
+            width: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.07px;
+            color: #0cd7d5;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+          }
+          .faqs-container__answers-content {
+            font-size: 12px;
+            font-weight: 400;
+            display: table-cell;
+            vertical-align: top;
+          }
+          .faqs-container__answers-content ul,
+          .faqs-container__answers-content ol {
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 10px;
+            padding-left: 20px;
+          }
+          .faqs-container__answers-content ul {
+            font-size: 12px;
+            font-weight: 400;
+            list-style: none;
+          }
+          .faqs-container__answers-content ul li {
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+        </style>
+      </div>
+      <div class="esim-faqs-page faqs-page-en">
+        <div class="faqs-page__content page-container">
+          <div class="faqs-section__managing-esim" name="managing-esim">
+            <h2>About Managing your eSIM</h2>
+            <div
+              class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+              id="faqs-accordion-03 managing-esim"
+              role="tablist"
+            >
+              <!-- question 1 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+                role="tab"
+                id="ui-id-1"
+                aria-controls="ui-id-2"
+                aria-selected="true"
+                aria-expanded="true"
+                tabindex="0"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+                ></span
+                >How many eSIMs can I install?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+                style=""
+                id="ui-id-2"
+                aria-labelledby="ui-id-1"
+                role="tabpanel"
+                aria-hidden="false"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    The number of eSIMs you can install varies among different
+                    devices. Most smartphones can store 2 to 8 eSIM profiles,
+                    but you can only turn on ONE eSIM for data at a time. Please
+                    check your device's specifications or settings for the exact
+                    limit.
+                  </p>
+                </div>
+              </div>
+              <!-- question 2 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-3"
+                aria-controls="ui-id-4"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Where can I find my eSIM’s ICCID number?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-4"
+                aria-labelledby="ui-id-3"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>On your SUNDAY App:</p>
+                  <p>1. Go to <strong>My eSIM</strong> section.</p>
+                  <p>
+                    2. Under the corresponding tab of the eSIM, tap
+                    <strong>Install/View eSIM</strong> and you can find the
+                    ICCID number.
+                  </p>
+                </div>
+              </div>
+              <!-- question 3 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-5"
+                aria-controls="ui-id-6"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="C3"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none"
+                  >How do I know which eSIM is being used?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-6"
+                aria-labelledby="ui-id-5"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Under <strong>My eSIM</strong> section, you can see
+                    different plans with various status labels.
+                  </p>
+                  <p>[In Use] - The data plan is currently in use.</p>
+                  <p>
+                    [Ready to Use] - The data plan that is ready to be activated
+                    when you arrive the corresponding destination and/or
+                    previous data plan is used up.
+                  </p>
+                  <p>
+                    [Used] - The data plan has already been activated, and its
+                    validity period has ended.
+                  </p>
+                  <p>
+                    [Expired] - The data plan that has not been activated within
+                    60 days after purchase.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1. <a href="#B6">How can I track my current data usage?</a>
+                  </p>
+                  <p>2. <a href="#B5">When will my SUNDAY Pass expire?</a></p>
+                </div>
+              </div>
+              <!-- question 4 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-7"
+                aria-controls="ui-id-8"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >How can I add more data to my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-8"
+                aria-labelledby="ui-id-7"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    You can always make new purchase with SUNDAY
+                    App.&nbsp;&nbsp; After selecting your new plan and payment
+                    method at the <strong>Checkout</strong> page, you can choose
+                    to add your new plan to any existing eSIM.&nbsp; Pick the
+                    one you want and tap <strong>Continue</strong> to
+                    checkout.&nbsp; When the order completes, the plan will be
+                    added to your selected eSIM.&nbsp; If you have multiple
+                    plans for the same destination in your selected eSIM, the
+                    first purchased plan will be activated first.
+                  </p>
+                  <p>
+                    Or you may go to
+                    <strong>My eSIM &gt; Reorder Now</strong> to purchase data
+                    plan for the same destination.&nbsp;
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="#C4"
+                      >How to add a new data plan to existing eSIM?</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a href="#A6"
+                      >Do I need to buy a new eSIM every time for a new data
+                      plan?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 5 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-9"
+                aria-controls="ui-id-10"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >How many eSIM can a SUNDAY Member account support?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-10"
+                aria-labelledby="ui-id-9"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Each SUNDAY Member account can support up to ten (10) SUNDAY
+                    eSIMs.
+                  </p>
+                  <p>
+                    However, the number of eSIMs you can install varies among
+                    different devices. Most smartphones can store 2 to 8 eSIM
+                    profiles, but you can only turn on ONE eSIM for data at a
+                    time.
+                  </p>
+                  <p>
+                    Please check your device's specifications or settings for
+                    the exact limit.
+                  </p>
+                  <br />
+                  <p>
+                    For easy management of eSIM, we strongly recommend adding
+                    new data plan to your existing SUNDAY eSIM.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="#C4"
+                      >How to add a new data plan to existing eSIM?</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a href="#A6"
+                      >Do I need to buy a new eSIM every time for a new data
+                      plan?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 6 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-11"
+                aria-controls="ui-id-12"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Will I be notified when I’m running out of data?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-12"
+                aria-labelledby="ui-id-11"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Yes, you will be receiving alerts (SMS + App push
+                    notification) when your current data plan only has 100MB
+                    left.
+                  </p>
+                  <p>
+                    You can also keep track of your usage under My eSIM - a
+                    dashboard will be showing the total data you have and the
+                    amount you have used.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1. <a href="#B6">How can I track my current data usage?</a>
+                  </p>
+                </div>
+              </div>
+              <!-- question 7 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-13"
+                aria-controls="ui-id-14"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >What happens when I run out of data on my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-14"
+                aria-labelledby="ui-id-13"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    You will be receiving alerts (SMS + App push notification)
+                    when your current data plan only has 100MB left.
+                  </p>
+                  <p>
+                    If you have already purchased other data plans on the same
+                    eSIM for the same location, the next plan will start
+                    automatically and your connection will not be suspended.
+                  </p>
+                  <br />
+                  <p>
+                    If you do not have any other purchased data plans, you may
+                    simply buy any add-on plans before you run out of data.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="#C4"
+                      >How to add a new data plan to existing eSIM?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 8 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-15"
+                aria-controls="ui-id-16"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Can I install the same eSIM on multiple devices?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-16"
+                aria-labelledby="ui-id-15"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    No, you cannot install the same eSIM on multiple devices at
+                    the same time.
+                  </p>
+                  <p>
+                    However, you could install the eSIM on another compatible
+                    device (or reinstall it on the same one) after removing the
+                    eSIM profile from your current device successfully. Steps to
+                    delete an eSIM:
+                  </p>
+                  <p>For iOS users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to <strong>Cellular</strong> or
+                    <strong>Mobile Service</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete eSIM</strong> or
+                    <strong>Remove Cellular/Mobile Plan</strong>.
+                  </p>
+                  <br />
+                  <p>For Android users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to
+                    <strong>Connections/Network &amp; Internet</strong>, and
+                    then choose <strong>SIM Manager, Mobile Network</strong> or
+                    <strong>SIM Cards</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete/Remove</strong>.
+                  </p>
+                  <br />
+                  <p>
+                    After removing the eSIM, you may now follow the normal
+                    installation steps to install it to another device.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#ios-activation"
+                      >How to install and set up eSIM on my iOS device?</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#aos-activation"
+                      >How to install and set up eSIM on my Android device?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 9 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-17"
+                aria-controls="ui-id-18"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Can I transfer my eSIM between devices?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-18"
+                aria-labelledby="ui-id-17"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Yes, you can but on condition that you could install the
+                    eSIM on another compatible device ONLY AFTER removing the
+                    eSIM profile from your current device successfully. Steps to
+                    delete an eSIM:
+                  </p>
+                  <p>For iOS users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to <strong>Cellular</strong> or
+                    <strong>Mobile Service</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete eSIM</strong> or
+                    <strong>Remove Cellular/Mobile Plan</strong>.
+                  </p>
+                  <br />
+                  <p>For Android users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to
+                    <strong>Connections/Network &amp; Internet</strong>, and
+                    then choose <strong>SIM Manager, Mobile Network</strong> or
+                    <strong>SIM Cards</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete/Remove</strong>.
+                  </p>
+                  <br />
+                  <p>
+                    After removing the eSIM, you may now follow the normal
+                    installation steps to install it to another device.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#ios-activation"
+                      >How to install and set up eSIM on my iOS device?</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#aos-activation"
+                      >How to install and set up eSIM on my Android device?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 10 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-19"
+                aria-controls="ui-id-20"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="C11"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none"
+                  >I accidentally deleted my eSIM. Can I reinstall it?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-20"
+                aria-labelledby="ui-id-19"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    With SUNDAY, you can reinstall your eSIM on the same or a
+                    different device as long as you have removed it from the
+                    current device. Just follow the normal installation steps to
+                    reinstall the eSIM to the device you want.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#ios-activation"
+                      >How to install and set up eSIM on my iOS device?</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#aos-activation"
+                      >How to install and set up eSIM on my Android device?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 11 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-21"
+                aria-controls="ui-id-22"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >How can I delete an eSIM on my device?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-22"
+                aria-labelledby="ui-id-21"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Note: Deleting an eSIM from your device will NOT pause any
+                    activated data plan(s). The validity period will continue to
+                    count from the date of activation.
+                  </p>
+                  <br />
+                  <p>Steps to delete an eSIM:</p>
+                  <p>For iOS users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to <strong>Cellular</strong> or
+                    <strong>Mobile Service</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete eSIM</strong> or
+                    <strong>Remove Cellular/Mobile Plan</strong>.
+                  </p>
+                  <br />
+                  <p>For Android users</p>
+                  <p>1. Open <strong>Settings</strong> on your device.</p>
+                  <p>
+                    2. Go to
+                    <strong>Connections/Network &amp; Internet</strong>, and
+                    then choose <strong>SIM Manager, Mobile Network</strong> or
+                    <strong>SIM Cards</strong>.
+                  </p>
+                  <p>
+                    3. Select the eSIM you want to remove and tap
+                    <strong>Delete/Remove</strong>.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="#C11"
+                      >I accidentally deleted my eSIM. Can I reinstall it?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 12 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-23"
+                aria-controls="ui-id-24"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >How can I rename my SUNDAY eSIM for easier reference?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-24"
+                aria-labelledby="ui-id-23"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>On your SUNDAY App:</p>
+                  <p>1. Go to <strong>My eSIM</strong> section.</p>
+                  <p>
+                    2. Under the corresponding tab of the eSIM, tap
+                    <strong>Install/View eSIM</strong>.
+                  </p>
+                  <p>
+                    3. Inside <strong>Install/View eSIM</strong>, next to the
+                    text field of <strong>eSIM Name</strong>, you will see a
+                    pencil icon.
+                  </p>
+                  <p>4. Tap and change the name of your eSIM.</p>
+                  <br />
+                  <p>
+                    <strong>Note</strong>: This will only change the eSIM name
+                    on SUNDAY App. To change the eSIM label on your device,
+                    please go to related device setting.
+                  </p>
+                </div>
+              </div>
+              <!-- question 13 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-25"
+                aria-controls="ui-id-26"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >I lost my phone. Can I transfer my eSIM to a new phone?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-26"
+                aria-labelledby="ui-id-25"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    To transfer an eSIM to a new phone, you will need to remove
+                    it from your original device first. If you have lost your
+                    original phone, it is NOT feasible to transfer the eSIM or
+                    data plan to your new device.
+                  </p>
+                  <p>
+                    To continue to use SUNDAY service, please purchase new data
+                    plans with a new SUNDAY eSIM by selecting
+                    <strong>New eSIM</strong> on checkout page.
+                  </p>
+                  <p>
+                    <img
+                      src="https://t0.shop.theclub.com.hk/media/wysiwyg/C-13_new_esim.png"
+                      border="0"
+                      alt=""
+                      width="433"
+                      height="828"
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="faqs-page-script">
+      <script type="text/javascript">
+        require([
+          "jquery",
+          "jquery/ui",
+          "Magento_Swatches/js/swatch-renderer",
+        ], function ($) {
+          $(function () {
+            $('[id^="faqs-accordion-"]').accordion({ heightStyle: "content" });
+            $("#top-question-01").click(function (e) {
+              $("#faqs-accordion-03").accordion({
+                collapsible: true,
+                active: 2,
+              });
+            });
+            $("#top-question-02").click(function (e) {
+              $("#faqs-accordion-10").accordion({
+                collapsible: true,
+                active: 0,
+              });
+            });
+            $.towhere = function (id) {
+              if (id !== "" && $("#" + id).length !== 0) {
+                $("html, body").animate(
+                  {
+                    scrollTop: Number($("#" + id).offset().top) - Number(300),
+                  },
+                  { duration: 500, easing: "swing" }
+                );
+                $("#faqs-accordion-07").accordion({
+                  collapsible: true,
+                  active: 4,
+                });
+              }
+            };
+            $.towhere(window.location.hash.slice(1));
+          });
+        });
+      </script>
+    </div>
+    <section
+      class="amsearch-overlay-block"
+      data-bind="
+                scope: 'index = amsearch_overlay_section',
+                mageInit: {
+                    'Magento_Ui/js/core/app': {
+                        components: {
+                            'amsearch_overlay_section': {
+                                component: 'Amasty_Xsearch/js/components/overlay'
+                            }
+                        }
+                    }
+                }"
+    >
+      <div
+        class="amsearch-overlay"
+        data-bind="
+                event: {
+                    click: hide
+                },
+                afterRender: initNode"
+      ></div>
+    </section>
+  </div>
+</main>

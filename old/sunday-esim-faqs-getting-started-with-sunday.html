@@ -1,0 +1,682 @@
+<main id="maincontent" class="page-main">
+  <div class="page messages">
+    <div data-placeholder="messages"></div>
+    <div data-bind="scope: 'messages'">
+      <!-- ko if: cookieMessages && cookieMessages.length > 0 --><!-- /ko -->
+
+      <!-- ko if: messages().messages && messages().messages.length > 0 --><!-- /ko -->
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column main">
+      <input name="form_key" type="hidden" value="TcOWBqlzGy1qDEKw" />
+
+      <script>
+        require([
+          "jquery",
+          "Magefan_Blog/js/lib/mfblogunveil",
+          "domReady!",
+        ], function ($) {
+          $(".mfblogunveil").mfblogunveil();
+        });
+      </script>
+
+      <div class="faqs-page-css">
+        <style>
+          body {
+            background: #f9fdfe;
+            font-family: open sans;
+          }
+          .esim-faqs-page  a,
+                .esim-faqs-page  a:hover,
+                .esim-faqs-page  a:active,
+                .esim-faqs-page  a: visited {
+            color: #000;
+            text-decoration: underline;
+          }
+          .esim-faqs-page {
+            max-width: calc(100% - 32px);
+          }
+          #hkt-clubmall .page-main .breadcrumbs {
+            display: none !important;
+          }
+          #hkt-clubmall .columns {
+            max-width: unset !important;
+          }
+          @media (min-width: 768px) {
+            .page-container {
+              max-width: 708px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 992px) {
+            .page-container {
+              max-width: 932px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 1300px) {
+            .page-container {
+              max-width: 1240px;
+              margin: 0 auto;
+            }
+          }
+          .faqs-page__wrapper {
+            padding: 35px 25px 30px;
+            background-color: #fff;
+          }
+          .faqs-page__title-questions {
+            float: left;
+            width: 100%;
+            font-weight: 200;
+            color: #4a4a4a;
+            font-size: 50px;
+          }
+          .faqs-page__title-answers {
+            float: left;
+            width: 100%;
+            font-weight: 700;
+            color: #ea1b76;
+            font-size: 50px;
+          }
+          .faqs-page__label {
+            margin: 0 2px 8px;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            line-height: 20px;
+            color: #4a4a4a;
+          }
+          .faqs-page__question-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 4px 2px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #ea1b76;
+          }
+          .faqs-page__question-link:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #b00050;
+          }
+          .faqs-page__question-link:visited {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ea1b76;
+          }
+          @media (min-width: 768px) {
+            .faqs-page__title-questions {
+              float: unset;
+              width: auto;
+            }
+            .faqs-page__title-answers {
+              float: unset;
+              width: auto;
+            }
+          }
+          [class^="faqs-section__"] {
+            margin-top: 38px;
+          }
+          [class^="faqs-section__"]:first-child {
+            margin-top: 0;
+          }
+          [class^="faqs-section__"] h2 {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: bold;
+          }
+          [class^="faqs-section__"] h2 p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            margin-left: 10px;
+            font-size: 14px;
+          }
+          [class^="faqs-section__"] h3 {
+            margin-top: 15px;
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400;
+          }
+          [class^="faqs-section__"] h3:hover {
+            cursor: pointer;
+          }
+          .faqs-page__content {
+            padding-top: 0px;
+          }
+          .faqs-container__questions {
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000 !important;
+            border: 1px solid #dfdfdf;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__questions:before {
+            float: right;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            content: "";
+            width: 28px;
+            height: 28px;
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-expand-icon.png"}});
+            background-position: center;
+            background-size: 28px 28px;
+            background-repeat: no-repeat;
+          }
+          .faqs-container__questions.ui-accordion-header-active {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            border-bottom: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          .faqs-container__questions.ui-accordion-header-active:before {
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-collapse-icon.png"}});
+          }
+          .faqs-container__answers {
+            font-size: 12px;
+            font-weight: 400;
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #dfdfdf;
+            border-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__answers:before {
+            font-size: 12px;
+            font-weight: 400;
+            content: "A:";
+            display: table-cell;
+            width: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.07px;
+            color: #0cd7d5;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+          }
+          .faqs-container__answers-content {
+            font-size: 12px;
+            font-weight: 400;
+            display: table-cell;
+            vertical-align: top;
+          }
+          .faqs-container__answers-content ul,
+          .faqs-container__answers-content ol {
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 10px;
+            padding-left: 20px;
+          }
+          .faqs-container__answers-content ul {
+            font-size: 12px;
+            font-weight: 400;
+            list-style: none;
+          }
+          .faqs-container__answers-content ul li {
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+        </style>
+      </div>
+      <div class="esim-faqs-page faqs-page-en">
+        <div class="faqs-page__content page-container">
+          <div class="faqs-section__getting-started" name="getting-started">
+            <h2>Getting Started with SUNDAY</h2>
+            <div
+              class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+              id="faqs-accordion-01 getting-started"
+              role="tablist"
+            >
+              <!-- question 1 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+                role="tab"
+                id="ui-id-1"
+                aria-controls="ui-id-2"
+                aria-selected="true"
+                aria-expanded="true"
+                tabindex="0"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+                ></span
+                >How can I buy an eSIM? Do I need to buy eSIM and data plan
+                separately?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+                style=""
+                id="ui-id-2"
+                aria-labelledby="ui-id-1"
+                role="tabpanel"
+                aria-hidden="false"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    You only need to buy the data plan you desire, and it will
+                    come with an eSIM if this is your first purchase. Simply
+                    follow the steps below.
+                  </p>
+                  <br />
+                  <p>On your SUNDAY App:</p>
+                  <p>1. Sign up or log into your SUNDAY account.</p>
+                  <p>2. Enter or select your destination on the homepage.</p>
+                  <p>
+                    3. Choose the SUNDAY Pass (data plan) you preferred and
+                    follow the steps to checkout.
+                  </p>
+                  <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For newcomer, a new eSIM will
+                    be assigned to the data plan when you buy your first data
+                    package.
+                  </p>
+                  <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you're a repeat customer,
+                    you can choose to add the new data package to an existing OR
+                    a new eSIM on checkout page.&gt;
+                  </p>
+                  <p>
+                    4. You will receive an order confirmation email upon
+                    successful purchase. Follow the instructions for
+                    installation, or go to <strong>My eSIM</strong> for details.
+                  </p>
+                  <br />
+                  <p>
+                    <strong>Note</strong>: Before buying any of the SUNDAY
+                    Passes (data plans), remember to check that your device is
+                    eSIM-compatible and carrier unlocked.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="https://api-dev.sunday.com/esim-how-to-install-en">
+                      How to install eSIM (to the tutorial)</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a
+                      href="https://api-dev.sunday.com/esim-activation-tutorial-en"
+                      >How to activate data plan (to the tutorial)</a
+                    >
+                  </p>
+                  <p>
+                    3.
+                    <a
+                      href="https://api-dev.sunday.com/esim-compatible-device-list-en"
+                      >Is my device compatible with SUNDAY eSIM?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 2 -->
+              <h3
+                id="A2"
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                aria-controls="ui-id-3"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >When should I install and/or activate my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-3"
+                aria-labelledby="A2"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>eSIM Installation</p>
+                  <p>
+                    After purchase, you may follow the steps to complete the
+                    installation on your eSIM-compatible device under stable
+                    Wi-Fi (recommended) network. You are recommended to do this
+                    anytime BEFORE you set off.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    <a href="https://api-dev.sunday.com/esim-how-to-install-en"
+                      >How to install eSIM (to the tutorial)</a
+                    >
+                  </p>
+                  <br />
+                  <p><strong>Data Plan Activitation</strong></p>
+                  <p>
+                    After successful eSIM installation, you could activate your
+                    data plan when you arrive at the destination:
+                  </p>
+                  <p>1. Go to the eSIM setting on your device</p>
+                  <p>2. Turn on your SUNDAY eSIM</p>
+                  <p>3. Enable Data Romaing</p>
+                  <p>
+                    Your eSIM will then activate ONCE it connects to a supported
+                    network.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a
+                      href="https://api-dev.sunday.com/esim-activation-tutorial-en"
+                      >How to activate data plan (to the tutorial)</a
+                    >
+                  </p>
+                  <p>
+                    2.
+                    <a
+                      href="https://api-dev.sunday.com/sunday-esim-faqs-troubleshooting#F4"
+                      >I have switched on my SUNDAY eSIM, but it is not working.
+                      Why?</a
+                    >
+                  </p>
+                  <p>
+                    3.
+                    <a
+                      href="https://api-dev.sunday.com/sunday-esim-faqs-about-installing-and--using-esim#B5"
+                    >
+                      When will my SUNDAY Pass expire?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 3 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-4"
+                aria-controls="ui-id-5"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >What is a Day Pass?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-5"
+                aria-labelledby="ui-id-4"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <img
+                    src="https://t0.shop.theclub.com.hk/media/wysiwyg/Day_Volume_Table.png"
+                    border="0"
+                    alt=""
+                    width="433"
+                    height="828"
+                  />
+                </div>
+              </div>
+              <!-- question 4 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-6"
+                aria-controls="ui-id-7"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >What is a Volume Pass?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-7"
+                aria-labelledby="ui-id-6"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <img
+                    src="https://t0.shop.theclub.com.hk/media/wysiwyg/Day_Volume_Table.png"
+                    border="0"
+                    alt=""
+                    width="433"
+                    height="829"
+                  />
+                </div>
+              </div>
+              <!-- question 5 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-8"
+                aria-controls="ui-id-9"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="A5"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none; color: #000"
+                  >How to add a new data plan to existing eSIM?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-9"
+                aria-labelledby="ui-id-8"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    After choosing your payment method at the
+                    <strong>Checkout</strong> page, SUNDAY will ask if you want
+                    to add your new plan to any existing eSIM. Choose the one
+                    you want and tap
+                    <strong>Continue to checkout</strong>.&nbsp; Then, the new
+                    plan will be purchased and added to the selected eSIM, and
+                    you can skip the installation step. Easy!<br /><img
+                      src="https://t0.shop.theclub.com.hk/media/wysiwyg/A-5_existing_esim.jpg"
+                      border="0"
+                      alt=""
+                      width="433"
+                      height="828"
+                    />
+                  </p>
+                  <p>
+                    <strong>Note</strong>: If you have multiple plans for the
+                    same destination in your eSIM, the first purchased plan will
+                    be activated first.
+                  </p>
+                </div>
+              </div>
+              <!-- question 6 -->
+              <h3
+                id="A6"
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                aria-controls="ui-id-10"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Do I need to buy a new eSIM every time for a new data plan?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-10"
+                aria-labelledby="A6"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    SUNDAY offers you the flexibility to suit your needs. It is
+                    not necessary to get a new eSIM when purchasing a new data
+                    plan.
+                  </p>
+                  <p>
+                    For newcomer, a new eSIM will be assigned to your account
+                    when you buy your first data package. Next time when you
+                    make a purchase on SUNDAY App, you can choose to add the new
+                    data plan to an existing OR a new eSIM on Checkout page.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.
+                    <a href="#A5"
+                      >How to add a new data plan to existing eSIM?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 7 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-11"
+                aria-controls="ui-id-12"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Is my device compatible with SUNDAY eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-12"
+                aria-labelledby="ui-id-11"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    See the list of devices that are eSIM-compatible
+                    <a
+                      href="https://api-dev.sunday.com/esim-compatible-device-list-en"
+                      >here</a
+                    >.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="faqs-page-script">
+          <script type="text/javascript">
+            require([
+              "jquery",
+              "jquery/ui",
+              "Magento_Swatches/js/swatch-renderer",
+            ], function ($) {
+              $(function () {
+                $('[id^="faqs-accordion-"]').accordion({
+                  heightStyle: "content",
+                });
+                $("#top-question-01").click(function (e) {
+                  $("#faqs-accordion-03").accordion({
+                    collapsible: true,
+                    active: 2,
+                  });
+                });
+                $("#top-question-02").click(function (e) {
+                  $("#faqs-accordion-10").accordion({
+                    collapsible: true,
+                    active: 0,
+                  });
+                });
+                $.towhere = function (id) {
+                  if (id !== "" && $("#" + id).length !== 0) {
+                    $("html, body").animate(
+                      {
+                        scrollTop:
+                          Number($("#" + id).offset().top) - Number(300),
+                      },
+                      { duration: 500, easing: "swing" }
+                    );
+                    $("#faqs-accordion-07").accordion({
+                      collapsible: true,
+                      active: 4,
+                    });
+                  }
+                };
+                $.towhere(window.location.hash.slice(1));
+              });
+            });
+          </script>
+        </div>
+      </div>
+      <section
+        class="amsearch-overlay-block"
+        data-bind="
+                scope: 'index = amsearch_overlay_section',
+                mageInit: {
+                    'Magento_Ui/js/core/app': {
+                        components: {
+                            'amsearch_overlay_section': {
+                                component: 'Amasty_Xsearch/js/components/overlay'
+                            }
+                        }
+                    }
+                }"
+      >
+        <div
+          class="amsearch-overlay"
+          data-bind="
+                event: {
+                    click: hide
+                },
+                afterRender: initNode"
+        ></div>
+      </section>
+    </div>
+  </div>
+</main>

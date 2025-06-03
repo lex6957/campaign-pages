@@ -1,0 +1,712 @@
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  body {
+    font-family: Open Sans;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .esim-faqs-page a,
+  .esim-faqs-page a:hover,
+  .esim-faqs-page a:active,
+  .esim-faqs-page a:visited {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  #hkt-clubmall .page-main .breadcrumbs {
+    display: none !important;
+  }
+  #hkt-clubmall .columns {
+    max-width: unset !important;
+  }
+
+  .faqs-page__wrapper {
+    padding: 35px 25px 30px;
+    background-color: #fff;
+  }
+  .faqs-page__title-questions {
+    float: left;
+    width: 100%;
+    font-weight: 200;
+    color: #4a4a4a;
+    font-size: 50px;
+  }
+  .faqs-page__title-answers {
+    float: left;
+    width: 100%;
+    font-weight: 700;
+    color: #ea1b76;
+    font-size: 50px;
+  }
+  .faqs-page__label {
+    margin: 0 2px 8px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    color: #4a4a4a;
+  }
+  .faqs-page__question-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ea1b76;
+  }
+  .faqs-page__question-link:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #b00050;
+  }
+  .faqs-page__question-link:visited {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ea1b76;
+  }
+  @media (min-width: 768px) {
+    .faqs-page__title-questions {
+      float: unset;
+      width: auto;
+    }
+    .faqs-page__title-answers {
+      float: unset;
+      width: auto;
+    }
+  }
+  [class^="faqs-section__"] {
+    margin-top: 38px;
+  }
+  [class^="faqs-section__"]:first-child {
+    margin-top: 0;
+  }
+  [class^="faqs-section__"] h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+  [class^="faqs-section__"] h2 p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  [class^="faqs-section__"] h3 {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  [class^="faqs-section__"] h3:hover {
+    cursor: pointer;
+  }
+  .faqs-page__content {
+    padding-top: 0px;
+  }
+  .faqs-container__questions {
+    position: relative;
+    z-index: 10;
+    padding: 24px;
+    padding-right: 48px !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000 !important;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-color: #ffffff;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  .faqs-container__questions:before {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    margin-top: -10px;
+    text-decoration: none !important;
+    color: #000 !important;
+    content: "";
+    width: 32px;
+    height: 20px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMiAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9Ikljb24vMjBweC9DaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik04LjI5NzM2IDEyLjQxN0wxNi4xOTgyIDIwLjMxNzlMMjQuMDk5MSAxMi40MTciIHN0cm9rZT0iIzFBMUExQSIgc3Ryb2tlLXdpZHRoPSIyLjYzMzYyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K);
+    background-position: center;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+  }
+  .faqs-container__questions.ui-accordion-header-active {
+    margin-bottom: 0;
+    text-decoration: none !important;
+    color: #000 !important;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.3s linear;
+  }
+  .faqs-container__questions.ui-accordion-header-active:before {
+    transform: rotate(180deg);
+  }
+  .faqs-container__answers {
+    font-weight: 400;
+    padding: 0 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #ffffff;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    transform-origin: center top;
+  }
+  .faqs-container__answers:before {
+    content: "A:";
+    display: table-cell;
+    width: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.07px;
+    color: #0cd7d5;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+  .ui-accordion-content-active {
+    height: auto;
+  }
+  .faqs-container__answers-content {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    display: table-cell;
+    vertical-align: top;
+    padding-bottom: 24px;
+  }
+  .faqs-container__answers-content ul,
+  .faqs-container__answers-content ol {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  .faqs-container__answers-content ul {
+    font-size: 12px;
+    font-weight: 400;
+    list-style: none;
+  }
+  .faqs-container__answers-content ul li {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  @media (max-width: 959px) {
+    .faqs-container__questions {
+      padding: 16px;
+    }
+    .faqs-container__questions:before {
+      right: 16px;
+    }
+    .faqs-container__answers {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .faqs-container__answers-content {
+      padding-bottom: 16px;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    var animationTime = 300;
+    if (window._shadowRoot) {
+      accordionInit();
+      anchorScroll();
+    } else {
+      document.addEventListener("DOMContentLoaded", function () {
+        accordionInit();
+        anchorScroll();
+      });
+    }
+    function accordionInit() {
+      var questions = root.querySelectorAll(".faqs-container__questions");
+      var answers = root.querySelectorAll(".faqs-container__answers");
+      // console.log("questions", questions);
+      questions.forEach(function (question, index) {
+        question.addEventListener("click", function () {
+          triggerAccordion(question, false);
+        });
+      });
+      answers.forEach(function (answer, index) {
+        if (!answer.classList.contains("ui-accordion-content-active")) {
+          answer.style.height = "0px";
+        }
+      });
+      if (questions.length > 0) {
+        triggerAccordion(questions[0], true); // The click event that triggers the first question
+      }
+
+      function triggerAccordion(question, isFirstLoad) {
+        var answer = question.nextElementSibling;
+        resetActivationClasses(answer);
+        question.classList.add("ui-accordion-header-active");
+        if (answer && answer.classList.contains("faqs-container__answers")) {
+          answer.classList.add("ui-accordion-content-active");
+          answer.style.display = "block";
+          var height = answer.scrollHeight;
+          answer.style.height = height + "px";
+          void answer.offsetWidth;
+
+          if (isFirstLoad) return;
+
+          // When the question is not in the view, return it to the view
+          setTimeout(function () {
+            var rect = question.getBoundingClientRect();
+            // console.log("onTransitionEnd", rect);
+            var viewHeight =
+              window.innerHeight || root.documentElement.clientHeight;
+            var header = document.querySelector("#header");
+            var headerHeight = header ? header.offsetHeight : 0;
+            if (rect.top < 0 + headerHeight) {
+              const y = rect.top + window.scrollY - headerHeight;
+              window.scrollTo({ top: y, behavior: "smooth" });
+            }
+          }, animationTime + 200);
+        }
+      }
+
+      function resetActivationClasses(answer) {
+        questions.forEach(function (q) {
+          q.classList.remove("ui-accordion-header-active");
+        });
+        answers.forEach(function (a) {
+          if (a !== answer && a.style.display !== "none") {
+            var transformHeight = 54;
+            // console.log("transformHeight", transformHeight);
+            a.classList.remove("ui-accordion-content-active");
+            a.style.height = "0px";
+            a.style.transform = `translateY(-${transformHeight}px)`; //This seems to solve the scroll problem
+            setTimeout(() => {
+              a.style.display = "none";
+              a.style.transform = "";
+            }, animationTime);
+          }
+        });
+      }
+
+      window.addEventListener("resize", function () {
+        // reset the height of the active answer when the window is resized
+        // No need to set height, let it adapt
+        var activeAnswer = root.querySelector(".ui-accordion-content-active");
+        if (!activeAnswer) return;
+        activeAnswer.style.height = "";
+      });
+    }
+
+    function anchorScroll() {
+      var hash = window.location.hash;
+      setTimeout(() => {
+        scrollToHash(hash);
+      }, animationTime);
+      var anchors = root.querySelectorAll("a");
+      anchors.forEach(function (anchor) {
+        anchor.addEventListener("click", function (event) {
+          var target = this;
+          if (!target.getAttribute("href")?.startsWith("#")) return;
+          const anchorId = target.getAttribute("href");
+          if (!anchorId) return;
+          scrollToHash(anchorId);
+        });
+      });
+    }
+    function scrollToHash(hash) {
+      // Resolve the issue where the anchor function of tag A cannot be used
+      if (hash) {
+        var el = root.querySelector(hash);
+        if (!el) {
+          el = root.querySelector('[name="' + hash.replace(/^#/, "") + '"]');
+        }
+        if (el) {
+          const header = document.querySelector("#header");
+          if (header) {
+            // Avoid being obscured by header
+            const headerHeight = header.offsetHeight + 32;
+            const y =
+              el.getBoundingClientRect().top + window.scrollY - headerHeight;
+            window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+          } else {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }
+    }
+  })();
+</script>
+<div class="esim-faqs-page faqs-page-en">
+  <div class="faqs-page__content page-container">
+    <div class="faqs-section__getting-started" name="getting-started">
+      <h2>Getting Started with SUNDAY</h2>
+      <div
+        class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+        id="faqs-accordion-01 getting-started"
+        role="tablist"
+      >
+        <!-- question 1 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+          role="tab"
+          id="ui-id-1"
+          aria-controls="ui-id-2"
+          aria-selected="true"
+          aria-expanded="true"
+          tabindex="0"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+          ></span
+          >How can I buy an eSIM? Do I need to buy eSIM and data plan
+          separately?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+          style=""
+          id="ui-id-2"
+          aria-labelledby="ui-id-1"
+          role="tabpanel"
+          aria-hidden="false"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              You only need to buy the data plan you desire, and it will come
+              with an eSIM if this is your first purchase. Simply follow the
+              steps below.
+            </p>
+            <br />
+            <p>On your SUNDAY App:</p>
+            <p>1. Sign up or log into your SUNDAY account.</p>
+            <p>2. Enter or select your destination on the homepage.</p>
+            <p>
+              3. Choose the SUNDAY Pass (data plan) you preferred and follow the
+              steps to checkout.
+            </p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For newcomer, a new eSIM will be
+              assigned to the data plan when you buy your first data package.
+            </p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you're a repeat customer, you
+              can choose to add the new data package to an existing OR a new
+              eSIM on checkout page.&gt;
+            </p>
+            <p>
+              4. You will receive an order confirmation email upon successful
+              purchase. Follow the instructions for installation, or go to
+              <strong>My eSIM</strong> for details.
+            </p>
+            <br />
+            <p>
+              <strong>Note</strong>: Before buying any of the SUNDAY Passes
+              (data plans), remember to check that your device is
+              eSIM-compatible and carrier unlocked.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>
+              1.
+              <a href="https://dev.sunday.com/esim-how-to-install-en">
+                How to install eSIM (to the tutorial)</a
+              >
+            </p>
+            <p>
+              2.
+              <a href="https://dev.sunday.com/esim-activation-tutorial-en"
+                >How to activate data plan (to the tutorial)</a
+              >
+            </p>
+            <p>
+              3.
+              <a href="https://dev.sunday.com/esim-compatible-device-list-en"
+                >Is my device compatible with SUNDAY eSIM?</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- question 2 -->
+        <h3
+          id="A2"
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          aria-controls="ui-id-3"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >When should I install and/or activate my eSIM?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-3"
+          aria-labelledby="A2"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>eSIM Installation</p>
+            <p>
+              After purchase, you may follow the steps to complete the
+              installation on your eSIM-compatible device under stable Wi-Fi
+              (recommended) network. You are recommended to do this anytime
+              BEFORE you set off.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>
+              <a href="https://dev.sunday.com/esim-how-to-install-en"
+                >How to install eSIM (to the tutorial)</a
+              >
+            </p>
+            <br />
+            <p><strong>Data Plan Activitation</strong></p>
+            <p>
+              After successful eSIM installation, you could activate your data
+              plan when you arrive at the destination:
+            </p>
+            <p>1. Go to the eSIM setting on your device</p>
+            <p>2. Turn on your SUNDAY eSIM</p>
+            <p>3. Enable Data Romaing</p>
+            <p>
+              Your eSIM will then activate ONCE it connects to a supported
+              network.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>
+              1.
+              <a href="https://dev.sunday.com/esim-activation-tutorial-en"
+                >How to activate data plan (to the tutorial)</a
+              >
+            </p>
+            <p>
+              2.
+              <a
+                href="https://dev.sunday.com/sunday-esim-faqs-troubleshooting#F4"
+                >I have switched on my SUNDAY eSIM, but it is not working.
+                Why?</a
+              >
+            </p>
+            <p>
+              3.
+              <a
+                href="https://dev.sunday.com/sunday-esim-faqs-about-installing-and--using-esim#B5"
+              >
+                When will my SUNDAY Pass expire?</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- question 3 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-4"
+          aria-controls="ui-id-5"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >What is a Day Pass?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-5"
+          aria-labelledby="ui-id-4"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <img
+              src="https://t0.shop.theclub.com.hk/media/wysiwyg/Day_Volume_Table.png"
+              border="0"
+              alt=""
+              width="433"
+              height="828"
+            />
+          </div>
+        </div>
+        <!-- question 4 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-6"
+          aria-controls="ui-id-7"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >What is a Volume Pass?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-7"
+          aria-labelledby="ui-id-6"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <img
+              src="https://t0.shop.theclub.com.hk/media/wysiwyg/Day_Volume_Table.png"
+              border="0"
+              alt=""
+              width="433"
+              height="829"
+            />
+          </div>
+        </div>
+        <!-- question 5 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-8"
+          aria-controls="ui-id-9"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          ><a
+            name="A5"
+            href="“#”"
+            onclick="return false"
+            style="text-decoration: none; color: #000"
+            >How to add a new data plan to existing eSIM?</a
+          >
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-9"
+          aria-labelledby="ui-id-8"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              After choosing your payment method at the
+              <strong>Checkout</strong> page, SUNDAY will ask if you want to add
+              your new plan to any existing eSIM. Choose the one you want and
+              tap <strong>Continue to checkout</strong>.&nbsp; Then, the new
+              plan will be purchased and added to the selected eSIM, and you can
+              skip the installation step. Easy!<br /><img
+                src="https://t0.shop.theclub.com.hk/media/wysiwyg/A-5_existing_esim.jpg"
+                border="0"
+                alt=""
+                width="433"
+                height="828"
+              />
+            </p>
+            <p>
+              <strong>Note</strong>: If you have multiple plans for the same
+              destination in your eSIM, the first purchased plan will be
+              activated first.
+            </p>
+          </div>
+        </div>
+        <!-- question 6 -->
+        <h3
+          id="A6"
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          aria-controls="ui-id-10"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >Do I need to buy a new eSIM every time for a new data plan?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-10"
+          aria-labelledby="A6"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              SUNDAY offers you the flexibility to suit your needs. It is not
+              necessary to get a new eSIM when purchasing a new data plan.
+            </p>
+            <p>
+              For newcomer, a new eSIM will be assigned to your account when you
+              buy your first data package. Next time when you make a purchase on
+              SUNDAY App, you can choose to add the new data plan to an existing
+              OR a new eSIM on Checkout page.
+            </p>
+            <br />
+            <p><strong>See Also</strong></p>
+            <p>
+              1.
+              <a href="#A5">How to add a new data plan to existing eSIM?</a>
+            </p>
+          </div>
+        </div>
+        <!-- question 7 -->
+        <h3
+          class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+          role="tab"
+          id="ui-id-11"
+          aria-controls="ui-id-12"
+          aria-selected="false"
+          aria-expanded="false"
+          tabindex="-1"
+        >
+          <span
+            class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+          ></span
+          >Is my device compatible with SUNDAY eSIM?
+        </h3>
+        <div
+          class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+          style="display: none"
+          id="ui-id-12"
+          aria-labelledby="ui-id-11"
+          role="tabpanel"
+          aria-hidden="true"
+        >
+          <div class="faqs-container__answers-content">
+            <p>
+              See the list of devices that are eSIM-compatible
+              <a href="https://dev.sunday.com/esim-compatible-device-list-en"
+                >here</a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </main> -->

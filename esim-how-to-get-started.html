@@ -241,10 +241,15 @@
     }
     .image-popup__img {
       margin: 24px 0;
-      width: 100%;
+      width: auto;
       height: auto;
-
+      max-width: 100%;
       max-height: calc(100vh - 80px - 100px);
+    }
+    .image-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .image-loading {
       background-color: #eee;

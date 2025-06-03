@@ -1,0 +1,699 @@
+<main id="maincontent" class="page-main">
+  <div class="page messages">
+    <div data-placeholder="messages"></div>
+    <div data-bind="scope: 'messages'">
+      <!-- ko if: cookieMessages && cookieMessages.length > 0 --><!-- /ko -->
+
+      <!-- ko if: messages().messages && messages().messages.length > 0 --><!-- /ko -->
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column main">
+      <input name="form_key" type="hidden" value="TcOWBqlzGy1qDEKw" />
+
+      <script>
+        require([
+          "jquery",
+          "Magefan_Blog/js/lib/mfblogunveil",
+          "domReady!",
+        ], function ($) {
+          $(".mfblogunveil").mfblogunveil();
+        });
+      </script>
+
+      <div class="faqs-page-css">
+        <style>
+          body {
+            background: #f9fdfe;
+            font-family: open sans;
+          }
+          .esim-faqs-page  a,
+                .esim-faqs-page  a:hover,
+                .esim-faqs-page  a:active,
+                .esim-faqs-page  a: visited {
+            color: #000;
+            text-decoration: underline;
+          }
+          .esim-faqs-page {
+            max-width: calc(100% - 32px);
+          }
+          #hkt-clubmall .page-main .breadcrumbs {
+            display: none !important;
+          }
+          #hkt-clubmall .columns {
+            max-width: unset !important;
+          }
+          @media (min-width: 768px) {
+            .page-container {
+              max-width: 708px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 992px) {
+            .page-container {
+              max-width: 932px;
+              margin: 0 auto;
+            }
+          }
+          @media (min-width: 1300px) {
+            .page-container {
+              max-width: 1240px;
+              margin: 0 auto;
+            }
+          }
+          .faqs-page__wrapper {
+            padding: 35px 25px 30px;
+            background-color: #fff;
+          }
+          .faqs-page__title-questions {
+            float: left;
+            width: 100%;
+            font-weight: 200;
+            color: #4a4a4a;
+            font-size: 50px;
+          }
+          .faqs-page__title-answers {
+            float: left;
+            width: 100%;
+            font-weight: 700;
+            color: #ea1b76;
+            font-size: 50px;
+          }
+          .faqs-page__label {
+            margin: 0 2px 8px;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            line-height: 20px;
+            color: #4a4a4a;
+          }
+          .faqs-page__question-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 4px 2px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #ea1b76;
+          }
+          .faqs-page__question-link:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #b00050;
+          }
+          .faqs-page__question-link:visited {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ea1b76;
+          }
+          @media (min-width: 768px) {
+            .faqs-page__title-questions {
+              float: unset;
+              width: auto;
+            }
+            .faqs-page__title-answers {
+              float: unset;
+              width: auto;
+            }
+          }
+          [class^="faqs-section__"] {
+            margin-top: 38px;
+          }
+          [class^="faqs-section__"]:first-child {
+            margin-top: 0;
+          }
+          [class^="faqs-section__"] h2 {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: bold;
+          }
+          [class^="faqs-section__"] h2 p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            margin-left: 10px;
+            font-size: 14px;
+          }
+          [class^="faqs-section__"] h3 {
+            margin-top: 15px;
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400;
+          }
+          [class^="faqs-section__"] h3:hover {
+            cursor: pointer;
+          }
+          .faqs-page__content {
+            padding-top: 0px;
+          }
+          .faqs-container__questions {
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000 !important;
+            border: 1px solid #dfdfdf;
+            border-radius: 6px;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__questions:before {
+            float: right;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            content: "";
+            width: 28px;
+            height: 28px;
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-expand-icon.png"}});
+            background-position: center;
+            background-size: 28px 28px;
+            background-repeat: no-repeat;
+          }
+          .faqs-container__questions.ui-accordion-header-active {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: #000 !important;
+            border-bottom: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+          .faqs-container__questions.ui-accordion-header-active:before {
+            background-image: url({{mediaurl="wysiwyg/faqs_img/questions-and-answers-collapse-icon.png"}});
+          }
+          .faqs-container__answers {
+            font-size: 12px;
+            font-weight: 400;
+            padding: 18px 16px;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #dfdfdf;
+            border-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+          }
+          .faqs-container__answers:before {
+            font-size: 12px;
+            font-weight: 400;
+            content: "A:";
+            display: table-cell;
+            width: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.07px;
+            color: #0cd7d5;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+          }
+          .faqs-container__answers-content {
+            font-size: 12px;
+            font-weight: 400;
+            display: table-cell;
+            vertical-align: top;
+          }
+          .faqs-container__answers-content ul,
+          .faqs-container__answers-content ol {
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 10px;
+            padding-left: 20px;
+          }
+          .faqs-container__answers-content ul {
+            font-size: 12px;
+            font-weight: 400;
+            list-style: none;
+          }
+          .faqs-container__answers-content ul li {
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+        </style>
+      </div>
+      <div class="esim-faqs-page faqs-page-en">
+        <div class="faqs-page__content page-container">
+          <div
+            class="faqs-section__installing-and-using-esim"
+            name="installing-and-using-esim"
+          >
+            <h2>About Installing &amp; Using eSIM</h2>
+            <div
+              class="faqs-accordion ui-accordion ui-widget ui-helper-reset"
+              id="faqs-accordion-02 installing-and-using-esim"
+              role="tablist"
+            >
+              <!-- question 1 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons"
+                role="tab"
+                id="ui-id-1"
+                aria-controls="ui-id-2"
+                aria-selected="true"
+                aria-expanded="true"
+                tabindex="0"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"
+                ></span
+                >How to install and set up eSIM on my Android device?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
+                style=""
+                id="ui-id-2"
+                aria-labelledby="ui-id-1"
+                role="tabpanel"
+                aria-hidden="false"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    See the SUNDAY eSIM installation guide for Android devices
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#aos-activation"
+                      >here</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <!-- question 2 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-3"
+                aria-controls="ui-id-4"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >How to install and set up eSIM on my iOS device?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-4"
+                aria-labelledby="ui-id-3"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    See the SUNDAY eSIM installation guide for iOS devices
+                    <a
+                      href="https://api-dev.sunday.com/esim-how-to-install-en#ios-activation"
+                      >here</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <!-- question 3 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-5"
+                aria-controls="ui-id-6"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >When should I activate my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-6"
+                aria-labelledby="ui-id-5"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    After successful eSIM installation, you can follow the steps
+                    below to do the setting when you arrive at the destination:
+                  </p>
+                  <p>1. Go to the eSIM setting on your device</p>
+                  <p>2. Turn on your SUNDAY eSIM</p>
+                  <p>3. Enable <strong>Data Romaing</strong></p>
+                  <p>
+                    Your eSIM will then activate ONCE it connects to a supported
+                    network.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1.<a
+                      href="https://api-dev.sunday.com/esim-activation-tutorial-en"
+                      >How to activate data plan (to the tutorial)</a
+                    >
+                  </p>
+                  <p>
+                    2.<a href="#F4"
+                      >I have switched on my SUNDAY eSIM, but it is not working.
+                      Why?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 4 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-7"
+                aria-controls="ui-id-8"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >After I activated the data plan, can I pause it temporarily and
+                turn it on later?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-8"
+                aria-labelledby="ui-id-7"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    No, you cannnot manually pause any activated plan(s). Once
+                    the data plan is activated, its validity period will start
+                    counting until the specified expiration date and time.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>1.<a href="#B7">What happens to any unused data?</a></p>
+                </div>
+              </div>
+              <!-- question 5 -->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-9"
+                aria-controls="ui-id-10"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="B5"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none"
+                  >When will my SUNDAY Pass expire?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-10"
+                aria-labelledby="ui-id-9"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Unused SUNDAY Passes will expire 60 days after the date of
+                    purchase.&nbsp; You could check the "Active before" date
+                    under <strong>My eSIM</strong> and make sure you activate
+                    and use the Pass before this date.
+                  </p>
+                  <p>
+                    <img
+                      src="https://t0.shop.theclub.com.hk/media/wysiwyg/B-5_Active_before.jpg"
+                      border="0"
+                      alt=""
+                      width="433"
+                      height="828"
+                    />
+                  </p>
+                  <p>
+                    Activated SUNDAY Passes will expire after their validity
+                    period ends or when all data allowance is consumed,
+                    whichever comes first. You can always check Start and End
+                    Date of the plan(s) in use under <strong>My eSIM</strong>.
+                  </p>
+                  <p>
+                    <img
+                      src="https://t0.shop.theclub.com.hk/media/wysiwyg/B-5_Validity_period.jpg"
+                      border="0"
+                      alt=""
+                      width="433"
+                      height="828"
+                    />
+                  </p>
+                  <p>
+                    *PS just got "Used" plan screen, maybe "In Use" plan would
+                    be better
+                  </p>
+                  <br />
+                  <p>
+                    <strong>Note</strong>: Once the validity period of your data
+                    plan expires, any remaining unused data will be forfeited.
+                  </p>
+                  <br />
+                  <p>
+                    Any SUNDAY eSIM will be terminated 365 days after all SUNDAY
+                    Passes (data plans) linking to it have been used or expired.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1. <a href="#C3">How do I know which eSIM is being used?</a>
+                  </p>
+                  <p>
+                    2.
+                    <a href="#A2"
+                      >When should I install and/or activate my eSIM?</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- question 6-->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-11"
+                aria-controls="ui-id-12"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="B6"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none"
+                  >How can I track my current data usage?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-12"
+                aria-labelledby="ui-id-11"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>On your SUNDAY App:</p>
+                  <p>1. Go to <strong>My eSIM</strong> section.</p>
+                  <p>
+                    2. Tap to select the eSIM that you want to check the usage
+                  </p>
+                  <p>3. The dasboard will be showing the following info:</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp; a. Total GB of the plan</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp; b. Used GB</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp; c. Remaining GB</p>
+                  <p>
+                    You could also check the Start and End Date of the plan(s)
+                    in use. Please note that there could be up to 20 mins delay
+                    of information update.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>
+                    1. <a href="#C3">How do I know which eSIM is being used?</a>
+                  </p>
+                </div>
+              </div>
+              <!-- question 7-->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-13"
+                aria-controls="ui-id-14"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                ><a
+                  name="B7"
+                  href="“#”"
+                  onclick="return false"
+                  style="text-decoration: none"
+                  >What happens to any unused data?</a
+                >
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-14"
+                aria-labelledby="ui-id-13"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    If you leave a destination with unused data and return to
+                    the same location within the validity period, you can still
+                    utilize that data on a supported network. However, once the
+                    validity period of your data plan expires, any remaining
+                    unused data will be forfeited.
+                  </p>
+                  <p>
+                    You can always check the validity period of your SUNDAY
+                    Pass(es) under <strong>My eSIM</strong>.
+                  </p>
+                  <br />
+                  <p><strong>See Also</strong></p>
+                  <p>1. <a href="#B5">When will my SUNDAY Pass expire?</a></p>
+                  <p>
+                    2. <a href="#B6">How can I track my current data usage?</a>
+                  </p>
+                </div>
+              </div>
+              <!-- question 8-->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-15"
+                aria-controls="ui-id-16"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Can I use 5G with my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-16"
+                aria-labelledby="ui-id-15"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    SUNDAY eSIMs are compatible with 5G mobile devices/networks,
+                    but the speed may vary depending on your device and
+                    location.&nbsp; You can find out if the SUNDAY Pass you plan
+                    to purchase supports a 5G network under section
+                    <strong
+                      >Additional Information &gt; Coverage &amp;
+                      Operator</strong
+                    >.
+                  </p>
+                </div>
+              </div>
+              <!-- question 9-->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-17"
+                aria-controls="ui-id-18"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Can I make phone calls or send SMS with my eSIM?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-18"
+                aria-labelledby="ui-id-17"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Currently SUNDAY only provides data service. You can use
+                    internet-based calls and messages (e.g. Whatsapp) but not
+                    traditional voice calls or SMS.
+                  </p>
+                </div>
+              </div>
+              <!-- question 10-->
+              <h3
+                class="faqs-container__questions ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons"
+                role="tab"
+                id="ui-id-19"
+                aria-controls="ui-id-20"
+                aria-selected="false"
+                aria-expanded="false"
+                tabindex="-1"
+              >
+                <span
+                  class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"
+                ></span
+                >Can I use my eSIM as a tether or hotspot for another device?
+              </h3>
+              <div
+                class="faqs-container__answers ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content"
+                style="display: none"
+                id="ui-id-20"
+                aria-labelledby="ui-id-19"
+                role="tabpanel"
+                aria-hidden="true"
+              >
+                <div class="faqs-container__answers-content">
+                  <p>
+                    Yes, you can. Just note that speed of the hotspot may vary
+                    based on your network connection and the number of devices
+                    connected.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
