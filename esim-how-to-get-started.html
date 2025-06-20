@@ -1,462 +1,458 @@
-<main id="maincontent" class="page-main">
-  <style>
-    div {
-      font-family: Open Sans;
-    }
-    .breadcrumbs {
-      display: none;
-    }
-    .progress_bar {
-      margin-top: 7.7vw;
-      height: 76.6vw;
-      width: 2.3vw;
-    }
+<!-- <main id="maincontent" class="page-main"> -->
+<style>
+  div {
+    font-family: Open Sans;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+  .progress_bar {
+    margin-top: 7.7vw;
+    height: 76.6vw;
+    width: 2.3vw;
+  }
 
-    body {
-      background: #f9fdfe;
-    }
+  body {
+    background: #f9fdfe;
+  }
 
-    .no-hover {
-      text-decoration: none; /* No underline */
-      color: #ffffff; /* Retain the default color */
-    }
+  .no-hover {
+    text-decoration: none; /* No underline */
+    color: #ffffff; /* Retain the default color */
+  }
 
-    .no-hover:hover {
-      text-decoration: none; /* Keep no underline on hover */
-      color: #ffffff; /* Keep the same color on hover */
-    }
-    .a {
-      text-decoration: underline;
-      color: #0026ca;
-    }
-    .a:hover {
-      text-decoration: underline;
-      color: #0026ca;
-    }
+  .no-hover:hover {
+    text-decoration: none; /* Keep no underline on hover */
+    color: #ffffff; /* Keep the same color on hover */
+  }
+  .a {
+    text-decoration: underline;
+    color: #0026ca;
+  }
+  .a:hover {
+    text-decoration: underline;
+    color: #0026ca;
+  }
 
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .banner {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .content-wrapper {
+    display: flex;
+    margin: 32px 0;
+  }
+  .content-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .content-item + .content-item {
+    margin-left: 32px;
+  }
+  .content-image {
+    width: 125px;
+    height: 130px;
+  }
+  .content-item__point {
+    margin: 16px 0;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: #0cd7d5;
+    border-radius: 50%;
+  }
+  .content-item__point_left::after,
+  .content-item__point_content::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20vw;
+    height: 1px;
+    background-color: #0cd7d5;
+  }
+  .content-item__point_right::before,
+  .content-item__point_content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 20vw;
+    height: 1px;
+    background-color: #0cd7d5;
+  }
+  .content-item__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-top: 0px;
+    margin-bottom: 12px;
+    color: #00c6c4;
+  }
+  .content-item__p {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+  }
+  .content-item__line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 0px;
+    background-color: #0cd7d5;
+  }
+  .content-item__whiteline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 10px;
+    height: 100px;
+    background-color: #ffffff;
+  }
+  .button {
+    width: 160px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: #00a09f;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 32px;
+  }
+  .button:hover {
+    background-color: #007f7e;
+  }
+  .link {
+    display: block;
+    text-decoration: underline;
+    color: #1a1a1a;
+  }
+  .bottom-button {
+    text-align: center;
+  }
+  .button-fixed {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 959px) {
     .desktop {
-      display: block;
-    }
-
-    .mobile {
       display: none;
     }
-
-    .banner {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
+    .mobile {
+      display: block;
     }
     .content-wrapper {
-      display: flex;
-      margin: 32px 0;
+      margin-top: 24px;
+      flex-direction: column;
     }
     .content-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      flex-direction: row-reverse;
+      text-align: left;
       align-items: center;
-      text-align: center;
-    }
-    .content-item + .content-item {
-      margin-left: 32px;
-    }
-    .content-image {
-      width: 125px;
-      height: 130px;
-    }
-    .content-item__point {
-      margin: 16px 0;
-      position: relative;
-      width: 10px;
-      height: 10px;
-      background-color: #0cd7d5;
-      border-radius: 50%;
-    }
-    .content-item__point_left::after,
-    .content-item__point_content::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 20vw;
-      height: 1px;
-      background-color: #0cd7d5;
-    }
-    .content-item__point_right::before,
-    .content-item__point_content::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 20vw;
-      height: 1px;
-      background-color: #0cd7d5;
-    }
-    .content-item__title {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 18px;
-      margin-top: 0px;
-      margin-bottom: 12px;
-      color: #00c6c4;
+      justify-content: space-between;
     }
     .content-item__p {
-      font-size: 16px;
-      line-height: 20px;
-      margin: 0;
+      font-size: 14px;
+      line-height: 18px;
     }
-    .content-item__line {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1px;
-      height: 0px;
-      background-color: #0cd7d5;
+    .content-item__point {
+      margin: 0 12px 0 0;
+      flex-shrink: 0;
     }
-    .content-item__whiteline {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 10px;
-      height: 100px;
-      background-color: #ffffff;
+    .content-item + .content-item {
+      margin-left: 0px;
+      margin-top: 32px;
     }
+    .content-item__box {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .content-item__point {
+      margin-top: 6px;
+    }
+
     .button {
-      width: 160px;
-      height: 44px;
-      border-radius: 999px;
-      background-color: #00a09f;
-      color: #ffffff;
-      font-size: 16px;
-      outline: none;
-      border: none;
-      cursor: pointer;
-      margin-bottom: 32px;
-    }
-    .button:hover {
-      background-color: #007f7e;
-    }
-    .link {
-      display: block;
-      text-decoration: underline;
-      color: #1a1a1a;
-    }
-    .bottom-button {
-      text-align: center;
-    }
-    .button-fixed {
-      position: sticky;
-      bottom: 0;
-      left: 0;
       width: 100%;
-      padding: 16px 0;
-      background-color: #ffffff;
-      z-index: 1;
+    }
+  }
+</style>
+
+<style>
+  .show {
+    z-index: 100 !important;
+    opacity: 1 !important;
+  }
+  .img-show {
+    opacity: 1 !important;
+  }
+  .image-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 5px 10px 0px rgba(144, 224, 239, 0.25);
+    transition: all 0.3s linear;
+    z-index: -1;
+    opacity: 0;
+  }
+  .image-wrapper {
+    width: 538px;
+    padding: 10px 10px 44px 10px;
+    border-radius: 10px;
+    opacity: 0;
+    background-color: #ffffff;
+    transition: opacity 0.3s ease-in-out;
+    transition-delay: 0.3s;
+  }
+  .image-header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: end;
+  }
+  .image-close {
+    cursor: pointer;
+  }
+  .image-popup__img {
+    margin: 24px 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 80px - 100px);
+  }
+  .image-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .image-loading {
+    background-color: #eee;
+    height: 400px;
+    transition: height 0.3s linear;
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    function isInApp() {
+      return !!window.ReactNativeWebView;
     }
 
-    @media screen and (max-width: 959px) {
-      .desktop {
-        display: none;
+    function changePositionInApp() {
+      if (isInApp()) {
+        var button = root.querySelector(".bottom-button");
+        button.classList.add("button-fixed");
       }
-      .mobile {
-        display: block;
-      }
-      .content-wrapper {
-        margin-top: 24px;
-        flex-direction: column;
-      }
-      .content-item {
-        flex-direction: row-reverse;
-        text-align: left;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .content-item__p {
-        font-size: 14px;
-        line-height: 18px;
-      }
-      .content-item__point {
-        margin: 0 12px 0 0;
-        flex-shrink: 0;
-      }
-      .content-item + .content-item {
-        margin-left: 0px;
-        margin-top: 32px;
-      }
-      .content-item__box {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-      .content-item__point {
-        margin-top: 6px;
-      }
+    }
 
-      .button {
-        width: 100%;
-      }
-    }
-  </style>
+    function setPointHeight() {
+      var points = root.querySelectorAll(".mobile.content-item__point");
+      var line = root.querySelector(".content-item__line");
+      // console.log("points", points);
+      if (points.length < 2) return 0;
+      var first = points[0];
+      var last = points[points.length - 1];
 
-  <style>
-    .show {
-      z-index: 100 !important;
-      opacity: 1 !important;
+      var diff = Math.abs(
+        last.getBoundingClientRect().top - first.getBoundingClientRect().top
+      );
+      // console.log("diff", diff);
+      line.style.height = diff + 10 + "px";
     }
-    .img-show {
-      opacity: 1 !important;
-    }
-    .image-popup {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.4);
-      box-shadow: 0px 5px 10px 0px rgba(144, 224, 239, 0.25);
-      transition: all 0.3s linear;
-      z-index: -1;
-      opacity: 0;
-    }
-    .image-wrapper {
-      width: 538px;
-      padding: 10px 10px 44px 10px;
-      border-radius: 10px;
-      opacity: 0;
-      background-color: #ffffff;
-      transition: opacity 0.3s ease-in-out;
-      transition-delay: 0.3s;
-    }
-    .image-header {
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: end;
-    }
-    .image-close {
-      cursor: pointer;
-    }
-    .image-popup__img {
-      margin: 24px 0;
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: calc(100vh - 80px - 100px);
-    }
-    .image-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .image-loading {
-      background-color: #eee;
-      height: 400px;
-      transition: height 0.3s linear;
-    }
-  </style>
-  <script>
-    (function () {
-      var root = window._shadowRoot || document;
-      function isInApp() {
-        return !!window.ReactNativeWebView;
-      }
 
-      function changePositionInApp() {
-        if (isInApp()) {
-          var button = root.querySelector(".bottom-button");
-          button.classList.add("button-fixed");
-        }
-      }
-
-      function setPointHeight() {
-        var points = root.querySelectorAll(".mobile.content-item__point");
-        var line = root.querySelector(".content-item__line");
-        // console.log("points", points);
-        if (points.length < 2) return 0;
-        var first = points[0];
-        var last = points[points.length - 1];
-
-        var diff = Math.abs(
-          last.getBoundingClientRect().top - first.getBoundingClientRect().top
-        );
-        // console.log("diff", diff);
-        line.style.height = diff + 10 + "px";
-      }
-
-      if (window._shadowRoot) {
+    if (window._shadowRoot) {
+      changePositionInApp();
+      setPointHeight();
+      imagePopupInit();
+    } else {
+      window.addEventListener("DOMContentLoaded", function () {
         changePositionInApp();
         setPointHeight();
         imagePopupInit();
-      } else {
-        window.addEventListener("DOMContentLoaded", function () {
-          changePositionInApp();
-          setPointHeight();
-          imagePopupInit();
-        });
-      }
-      window.addEventListener("resize", function () {
-        setPointHeight();
+      });
+    }
+    window.addEventListener("resize", function () {
+      setPointHeight();
+    });
+
+    function isMobile() {
+      return window.innerWidth <= 959; // Adjust the width as needed
+    }
+
+    function imagePopupInit() {
+      const images = root.querySelectorAll(".content-image");
+      const $popup = root.querySelector(".image-popup");
+      const $popupWrapper = $popup.querySelector(".image-wrapper");
+      const $popupImg = $popup.querySelector(".image-popup__img");
+      const $close = $popup.querySelector(".image-close");
+
+      $popupImg.addEventListener("load", function () {
+        $popupImg.classList.remove("image-loading");
       });
 
-      function isMobile() {
-        return window.innerWidth <= 959; // Adjust the width as needed
+      images.forEach((image) => {
+        image.addEventListener("click", function () {
+          const src = this.getAttribute("src");
+          if (!src || isMobile()) return;
+          openImagePopup(src);
+        });
+      });
+
+      $close.addEventListener("click", function () {
+        $popup.classList.remove("show");
+        $popupWrapper.classList.remove("img-show");
+        setTimeout(() => {
+          $popupImg.setAttribute("src", "");
+        }, 500);
+      });
+
+      function openImagePopup(src) {
+        $popupImg.classList.add("image-loading");
+        $popupImg.setAttribute("src", src);
+        $popupWrapper.classList.add("img-show");
+        $popup.classList.add("show");
       }
+    }
+  })();
+</script>
+<div>
+  <picture>
+    <source
+      media="(max-width: 959px)"
+      srcset="
+        https://t0.shop.theclub.com.hk/media/wysiwyg/esim/3Steps_banner_2_1_.png
+      "
+    />
+    <img
+      class="banner"
+      src="https://api-dev.sunday.com/media/wysiwyg/esim/3Steps_banner_2_1_desktop.png"
+      border="0"
+      alt=""
+      width="1125"
+      height="522"
+    />
+  </picture>
 
-      function imagePopupInit() {
-        const images = root.querySelectorAll(".content-image");
-        const $popup = root.querySelector(".image-popup");
-        const $popupWrapper = $popup.querySelector(".image-wrapper");
-        const $popupImg = $popup.querySelector(".image-popup__img");
-        const $close = $popup.querySelector(".image-close");
-
-        $popupImg.addEventListener("load", function () {
-          $popupImg.classList.remove("image-loading");
-        });
-
-        images.forEach((image) => {
-          image.addEventListener("click", function () {
-            const src = this.getAttribute("src");
-            if (!src || isMobile()) return;
-            openImagePopup(src);
-          });
-        });
-
-        $close.addEventListener("click", function () {
-          $popup.classList.remove("show");
-          $popupWrapper.classList.remove("img-show");
-          setTimeout(() => {
-            $popupImg.setAttribute("src", "");
-          }, 500);
-        });
-
-        function openImagePopup(src) {
-          $popupImg.classList.add("image-loading");
-          $popupImg.setAttribute("src", src);
-          $popupWrapper.classList.add("img-show");
-          $popup.classList.add("show");
-        }
-      }
-    })();
-  </script>
-  <div>
-    <picture>
-      <source
-        media="(max-width: 959px)"
-        srcset="
-          https://t0.shop.theclub.com.hk/media/wysiwyg/esim/3Steps_banner_2_1_.png
-        "
-      />
+  <div class="content-wrapper">
+    <div class="content-item">
       <img
-        class="banner"
-        src="https://api-dev.sunday.com/media/wysiwyg/esim/3Steps_banner_2_1_desktop.png"
+        class="content-image"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step1.png"
         border="0"
         alt=""
-        width="1125"
-        height="522"
       />
-    </picture>
-
-    <div class="content-wrapper">
-      <div class="content-item">
-        <img
-          class="content-image"
-          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step1.png"
-          border="0"
-          alt=""
-        />
-        <span
-          class="desktop content-item__point content-item__point_left"
-        ></span>
-        <div class="content-item__box">
-          <span class="mobile content-item__point">
-            <i class="content-item__line"></i>
-          </span>
-          <div>
-            <h2 class="content-item__title">Step 1</h2>
-            <p class="content-item__p">
-              Simply input or select the destination you’re traveling to and
-              choose your data plan.
-            </p>
-          </div>
+      <div class="desktop content-item__point content-item__point_left"></div>
+      <div class="content-item__box">
+        <div class="mobile content-item__point">
+          <div class="content-item__line"></div>
+        </div>
+        <div>
+          <h2 class="content-item__title">Step 1</h2>
+          <p class="content-item__p">
+            Simply input or select the destination you’re travelling to, choose
+            your type of data pass.
+          </p>
         </div>
       </div>
+    </div>
 
-      <div class="content-item">
-        <img
-          class="content-image"
-          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step2.png"
-          border="0"
-          alt=""
-        />
-        <span
-          class="desktop content-item__point content-item__point_content"
-        ></span>
-        <div class="content-item__box">
-          <span class="mobile content-item__point"></span>
-          <div>
-            <h2 class="content-item__title">Step 2</h2>
-            <p class="content-item__p">
-              Follow the steps on screen to checkout and install the eSIM on
-              your device.
-            </p>
-          </div>
+    <div class="content-item">
+      <img
+        class="content-image"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step2.png"
+        border="0"
+        alt=""
+      />
+      <div
+        class="desktop content-item__point content-item__point_content"
+      ></div>
+      <div class="content-item__box">
+        <div class="mobile content-item__point"></div>
+        <div>
+          <h2 class="content-item__title">Step 2</h2>
+          <p class="content-item__p">
+            Follow the steps on the screen to complete your purchase and install
+            the eSIM on your device.
+          </p>
         </div>
       </div>
+    </div>
 
-      <div class="content-item">
-        <img
-          class="content-image"
-          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step3.png"
-          border="0"
-          alt=""
-        />
-        <span
-          class="desktop content-item__point content-item__point_right"
-        ></span>
-        <div class="content-item__box">
-          <span class="mobile content-item__point">
-            <i class="content-item__whiteline"></i
-          ></span>
-          <div>
-            <h2 class="content-item__title">Step 3</h2>
-            <p class="content-item__p">
-              Your plan will automatically activate when you arrive at your
-              destination.
-            </p>
-          </div>
+    <div class="content-item">
+      <img
+        class="content-image"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/getstart_step3.png"
+        border="0"
+        alt=""
+      />
+      <div class="desktop content-item__point content-item__point_right"></div>
+      <div class="content-item__box">
+        <div class="mobile content-item__point">
+          <div class="content-item__whiteline"></div>
+        </div>
+        <div>
+          <h2 class="content-item__title">Step 3</h2>
+          <p class="content-item__p">
+            Your plan will automatically activate when you arrive at your
+            destination and the eSIM connects to a designated network.
+          </p>
         </div>
       </div>
     </div>
   </div>
-  <div class="bottom-button">
-    <a
-      class="no-hover"
-      href="https://dev.sunday.com/search/search-by-category?category=Destinations"
-      ><button class="button">Get Started</button></a
-    >
-    <a class="link" href="https://dev.sunday.com/esim-compatible-device-list-en"
-      >How to check if my device supports eSIM?
-    </a>
-  </div>
+</div>
+<div class="bottom-button">
+  <a
+    class="no-hover"
+    href="https://dev.sunday.com/search/search-by-category?category=Destinations"
+    ><button class="button">Get Started</button></a
+  >
+  <a class="link" href="https://dev.sunday.com/esim-compatible-device-list-en"
+    >How to check if my device supports eSIM?
+  </a>
+</div>
 
-  <!-- image popup -->
-  <div class="image-popup">
-    <div class="image-wrapper">
-      <div class="image-header">
-        <img
-          class="image-close"
-          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/Close.png"
-          border="0"
-          width="24"
-          height="24"
-        />
-      </div>
-      <div class="image-content">
-        <img class="image-popup__img" src="" alt="Image" />
-      </div>
+<!-- image popup -->
+<div class="image-popup">
+  <div class="image-wrapper">
+    <div class="image-header">
+      <img
+        class="image-close"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/Close.png"
+        border="0"
+        width="24"
+        height="24"
+      />
+    </div>
+    <div class="image-content">
+      <img class="image-popup__img" src="" alt="Image" />
     </div>
   </div>
-</main>
+</div>
+<!-- </main> -->
