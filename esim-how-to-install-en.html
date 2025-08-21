@@ -1,8 +1,4 @@
 <main id="maincontent" class="page-main">
-  <meta
-    name="viewport"
-    content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
   <style>
     body {
       background-color: #fdfdfd; /* Set background color */
@@ -145,6 +141,15 @@
         width: 100%;
       }
     }
+
+    .content-image {
+      transition: transform 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .content-image:active {
+      transform: scale(1.1);
+    }
   </style>
   <style>
     .show {
@@ -188,10 +193,15 @@
     }
     .image-popup__img {
       margin: 24px 0;
-      width: 100%;
+      width: auto;
       height: auto;
-
+      max-width: 100%;
       max-height: calc(100vh - 80px - 100px);
+    }
+    .image-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .image-loading {
       background-color: #eee;
@@ -199,12 +209,11 @@
       transition: height 0.3s linear;
     }
   </style>
-  <script class="attachShadow">
-    // When loading a page through the esim website, there will be a variable window._shadowRoot
-    // don't use const/let in global scope in shadow root, use var instead
-    // use IIFE to avoid polluting the global scope
-
+  <script>
     (function () {
+      // When loading a page through the esim website, there will be a variable window._shadowRoot
+      // don't use const/let in global scope in shadow root, use var instead
+      // use IIFE to avoid polluting the global scope
       var root = window._shadowRoot || document;
       function tabInit() {
         const tabs = root.querySelectorAll(".tabs-item");
@@ -227,9 +236,11 @@
         if (selector === "#ios-activation") {
           iosActivation.classList.add("active");
           aosActivation.classList.add("hide");
+          logGAEvent("install_esim_iOS");
         } else if (selector === "#aos-activation") {
           aosActivation.classList.add("active");
           iosActivation.classList.add("hide");
+          logGAEvent("install_esim_Android");
         }
         window.scrollTo(0, 0);
       }
@@ -257,19 +268,22 @@
         aosActivation.classList.remove("hide");
       }
       function preselectTab() {
-        let OS = "#ios";
-        const type = getESimMobileOS();
-        if (type === "Android") {
-          OS = "#aos";
-        } else if (type === "iOS-Safari") {
-          OS = "#ios";
+        let selector = location.hash;
+        if (selector !== "#ios-activation" && selector !== "#aos-activation") {
+          let OS = "#ios";
+          const type = getESimMobileOS();
+          if (type === "Android") {
+            OS = "#aos";
+          } else if (type === "iOS-Safari") {
+            OS = "#ios";
+          }
+          selector = OS + "-activation";
         }
-        const selector = OS + "-activation";
-        // Automatically click the iOS tab and show its content
         const osLink = root.querySelector('a[href="' + selector + '"]');
-        underlineLink(osLink);
-        // Scroll to the corresponding section
-        location.hash = selector;
+        if (osLink) {
+          underlineLink(osLink);
+          location.hash = selector;
+        }
       }
 
       function changeTabPosition() {
@@ -296,6 +310,12 @@
 
       function isMobile() {
         return window.innerWidth <= 959; // Adjust the width as needed
+      }
+
+      function logGAEvent(eventName) {
+        if (window._safeLogEvent && eventName) {
+          window._safeLogEvent(eventName);
+        }
       }
 
       function imagePopupInit() {
@@ -334,6 +354,7 @@
       }
     })();
   </script>
+
   <div class="tabs">
     <a class="tabs-item" href="#ios-activation">iOS</a>
     <a class="tabs-item" href="#aos-activation">Android</a>
@@ -348,8 +369,11 @@
         your device is eSIM compatible and network unlocked.
       </li>
       <li class="mb-10">
-        you have a stable connection, preferably WiFi. (It’s because you need to
-        download the eSIM properly to your device.)
+        you have a stable connection, preferably WiFi so you can download the
+        eSIM properly to your device.
+      </li>
+      <li class="mb-10">
+        please note the installation process cannot be interrupted.
       </li>
     </ul>
     <h1 class="title">Method 1: By Direct Installation</h1>
@@ -368,9 +392,9 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_1_Step_4.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M1_Step4.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
@@ -387,13 +411,13 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_2.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M1_Step6.png"
           border="0"
-          alt=""
-          width="843"
+          alt
+          width="375"
+          height="216"
         />
       </li>
-
       <li class="content-li">
         <ol start="7">
           <li>
@@ -405,13 +429,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_3.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M1_Step7.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="8">
           <li>
@@ -426,13 +449,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_4.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M1_Step9.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="10">
           <li>
@@ -449,9 +471,9 @@
         </ol>
         <img
           class="content-image"
-          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_1_Step_11.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M1_Step11.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
@@ -470,19 +492,18 @@
           </li>
           <li>
             Tap <strong>Save QR Code</strong> to download the QR code image to
-            your device. You could share it to another device or print it out
-            for scanning.
+            your device. Alternatively, you could share it to another device or
+            print it out for scanning.
           </li>
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_2_Step_4.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step4.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="5">
           <li>
@@ -502,13 +523,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_7.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step6.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="7">
           <li>
@@ -524,13 +544,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_8.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step8.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="9">
           <li>
@@ -542,13 +561,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_9.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step9.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="10">
           <li>
@@ -562,13 +580,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_10.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step11.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="12">
           <li>
@@ -581,14 +598,13 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_11.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M2_Step12.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
     </ul>
-
     <h1 class="title mt-45">Method 3: By Manual Input</h1>
     <ul class="content-box">
       <li class="content-li">
@@ -610,13 +626,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_3_Step_4.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step4.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="5">
           <li>
@@ -627,13 +642,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_13.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step5.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="6">
           <li>
@@ -645,18 +659,17 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/IOS_Installation_Method_3_Step_6.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step6.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="7">
           <li>
-            Follow on-screen instructions to start the installation. It may take
-            around 2-3 minutes to finish.
+            Follow on-screen instructions. It may take around 2-3 minutes to
+            finish.
           </li>
           <li>
             When you see "Your Webbing eSIM is now active", tap
@@ -665,13 +678,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_15.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step8.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="9">
           <li>
@@ -683,13 +695,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_16.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step9.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="10">
           <li>
@@ -703,13 +714,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_17.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step11.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="12">
           <li>
@@ -723,9 +733,9 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_ios_install_18.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_iOS_M3_Step12.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
@@ -744,12 +754,14 @@
         you have already enabled the eSIM function of your device.&nbsp;
       </li>
       <li class="mb-10">
-        you have a stable connection, preferably WiFi. (It’s because you need to
-        download the eSIM properly to your device.)
+        you have a stable connection, preferably WiFi so you can download the
+        eSIM properly to your device.
+      </li>
+      <li class="mb-10">
+        please note the installation process cannot be interrupted.
       </li>
     </ul>
     <h1 class="title">Method 1: By QR code</h1>
-
     <ul class="content-box">
       <li class="content-li">
         <ol start="1">
@@ -760,8 +772,8 @@
           <li>Tap <b>Manage eSIM</b> and select the tab <b>QR Code</b>.</li>
           <li>
             Tap <strong>Save QR Code</strong> to download the QR code image to
-            your device. You could share it to another device or print it out
-            for scanning.
+            your device. Alternatively, you could share it to another device or
+            print it out for scanning.
           </li>
           <li>
             On your Android device, go to <b>Settings</b> &gt;
@@ -776,13 +788,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_1.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M1_Step6.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="7">
           <li>
@@ -796,13 +807,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_2.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M1_Step8.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="9">
           <li>
@@ -813,16 +823,14 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_3.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M1_Step9.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
     </ul>
-
     <h1 class="title mt-45">Method 2: By Manual Input</h1>
-
     <ul class="content-box">
       <li class="content-li">
         <ol start="1">
@@ -840,13 +848,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/AOS_Installation_Method_2_Step_4.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M2_Step4.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="5">
           <li>
@@ -860,26 +867,24 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_5.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M2_Step6.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="7">
           <li>Tap <b>Enter activation code manually</b>.</li>
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_6.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M2_Step7.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="8">
           <li>
@@ -890,13 +895,12 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/AOS_Installation_Method_2_Step_8.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M2_Step8.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
-
       <li class="content-li">
         <ol start="9">
           <li>
@@ -907,9 +911,9 @@
         </ol>
         <img
           class="content-image"
-          src="https://api-dev.sunday.com/media/wysiwyg/esim/how_to_install/esim_aos_install_8.png"
+          src="https://dev.sunday.com/media/wysiwyg/esim/how_to_install_new/Install_AOS_M2_Step9.png"
           border="0"
-          alt=""
+          alt
           width="843"
         />
       </li>
@@ -927,7 +931,6 @@
     >
     for the detailed guide.
   </p>
-
   <h1 class="title mt-45">Is my device eSIM-compatible?</h1>
   <p style="margin: 0px 0px 0px 5px; font-family: Open Sans; font-size: 14px">
     <br />Click
@@ -945,26 +948,18 @@
   <div class="image-popup">
     <div class="image-wrapper">
       <div class="image-header">
-        <svg
+        <img
           class="image-close"
-          xmlns="http://www.w3.org/2000/svg"
+          src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/Close.png"
+          border="0"
           width="24"
           height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M18 6L6 18M6 6L18 18"
-            stroke="#1A1A1A"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        />
       </div>
       <div class="image-content">
-        <img class="image-popup__img" src="" alt="Image" />
+        <img class="image-popup__img" border="0" alt="Image" />
       </div>
     </div>
   </div>
+  <!-- </main> -->
 </main>
