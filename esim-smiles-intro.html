@@ -1,4 +1,3 @@
-<!-- <main id="maincontent" class="page-main"> -->
 <style>
   body {
     /* Set background color */
@@ -116,19 +115,14 @@
       line-height: 24px;
       margin: 16px 0;
     }
-    .text {
-      font-size: 12px;
-      line-height: 16px;
-    }
+
     .bottom-box {
       flex-direction: column-reverse;
     }
     .bottom-box .img-box {
       margin-left: 0;
     }
-    .a {
-      font-size: 12px;
-    }
+
     .button {
       width: 100%;
     }
@@ -148,11 +142,28 @@
       }
     }
 
+    function trackClickEvent() {
+      var eventEls = root.querySelectorAll(".track-event");
+      eventEls.forEach(function (el) {
+        var eventName = el.getAttribute("data-event");
+        el.addEventListener("click", function (e) {
+          logGAEvent(eventName);
+        });
+      });
+    }
+    function logGAEvent(eventName) {
+      if (window._safeLogEvent && eventName) {
+        window._safeLogEvent(eventName);
+      }
+    }
+
     if (window._shadowRoot) {
       changePositionInApp();
+      trackClickEvent();
     } else {
       window.addEventListener("DOMContentLoaded", function () {
         changePositionInApp();
+        trackClickEvent();
       });
     }
   })();
@@ -169,7 +180,6 @@
         height="522"
       />
     </div>
-
     <div class="flex-1">
       <h2 class="title">What is SUNDAY Reward Programme?</h2>
       <p class="text">
@@ -181,37 +191,35 @@
       </p>
     </div>
   </div>
-
   <div class="flex bottom-box">
     <div class="flex-1">
       <h2 class="title">What are S.miles?</h2>
-
       <p class="text">
-        S.miles are the rewards in our reward programme. For every dollar you
+        S.miles are the rewards in our reward programme. For every US Dollar you
         spend, you will earn <strong>10 S.miles</strong>.
       </p>
       <br />
-
       <p class="text">
         You can also earn S.miles by introducing SUNDAY to your friends. Each
-        successful referral will bring you
-        <strong>200 S.miles</strong>.&nbsp;
+        successful referral will bring you <strong>200 S.miles</strong>.&nbsp;
       </p>
       <br />
       <p class="text">
         Earned S.miles are valid for 365 days from the date they are credited.
-        If you make another purchase, any remaining S.miles will
+        If you make another purchase, all remaining S.miles in your account will
         <strong>automatically extend for another 365 days</strong>.
       </p>
-      <br />
-      <a class="a" href="https://dev.sunday.com/esim-terms-and-conditions-en"
+      <br /><a
+        class="a track-event"
+        data-event="intro_smile_tnc"
+        href="https://dev.sunday.com/esim-terms-and-conditions-en"
         >Terms &amp; Conditions</a
       >
     </div>
     <div class="flex-1 img-box">
       <img
         class="image"
-        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/smileintrobanner23X.png"
+        src="https://t0.shop.theclub.com.hk/media/wysiwyg/esim/intro_to_smiles_screen2.png"
         border="0"
         alt=""
         width="1029"
@@ -219,13 +227,12 @@
       />
     </div>
   </div>
-
   <div class="bottom-button">
     <a
-      class="no-hover"
+      class="no-hover track-event"
+      data-event="intro_smile_shop_now"
       href="https://dev.sunday.com/search/search-by-category?category=Destinations"
       ><button class="button">Shop Now</button></a
     >
   </div>
 </div>
-<!-- </main> -->

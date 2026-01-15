@@ -1,141 +1,192 @@
-<!-- <main id="maincontent" class="page-main"> -->
-  <meta
-    name="viewport"
-    content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-  <style>
+<style>
+  body {
+    margin: 0;
+    font-family: Open Sans;
+    text-align: justify;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+
+  .page-main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .no-hover {
+    text-decoration: none; /* No underline */
+    color: #ffffff; /* Retain the default color */
+  }
+
+  .no-hover:hover {
+    text-decoration: none; /* Keep no underline on hover */
+    color: #ffffff; /* Keep the same color on hover */
+  }
+  .refer-earn {
+    display: flex;
+    font-family: Open Sans;
+  }
+  .refer-earn__image {
+    width: 541px;
+    height: 310px;
+    margin-right: 32px;
+    border-radius: 10px;
+  }
+  .refer-earn__title {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    line-height: 28px;
+  }
+  .refer-earn__content {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .image_point {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+  .share-button {
+    width: 128px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    background-color: #00a09f;
+  }
+  .share-button:hover {
+    background-color: #007f7e;
+  }
+  @media screen and (max-width: 959px) {
     body {
-      margin: 0;
-      font-family: Open Sans;
-      text-align: justify;
-    }
-    .breadcrumbs {
-      display: none;
-    }
-
-    .page-main {
-      padding-left: 0px;
-      padding-right: 0px;
-    }
-    .no-hover {
-      text-decoration: none; /* No underline */
-      color: #ffffff; /* Retain the default color */
-    }
-
-    .no-hover:hover {
-      text-decoration: none; /* Keep no underline on hover */
-      color: #ffffff; /* Keep the same color on hover */
+      margin: 0 16px;
     }
     .refer-earn {
-      display: flex;
-      font-family: Open Sans;
-    }
-    .refer-earn__image {
-      width: 541px;
-      height: 310px;
-      margin-right: 32px;
-      border-radius: 10px;
+      display: block;
+      font-size: 0;
     }
     .refer-earn__title {
       font-size: 18px;
-      margin: 0;
-      font-weight: 700;
-      line-height: 28px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-top: 32px;
+    }
+    .refer-earn__image {
+      width: 100%;
+      height: auto;
+      margin-right: 0;
     }
     .refer-earn__content {
-      margin-top: 24px;
-      margin-bottom: 24px;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 14px;
+      line-height: 18px;
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
     .image_point {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
+      width: 12px;
+      height: 12px;
+      vertical-align: -2px;
     }
-    .share-button {
-        width: 128px;
-        height: 44px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #ffffff;
-        border: none;
-        border-radius: 999px;
-        background-color: #00A09F;
+  }
+</style>
+<script>
+  (function () {
+    var root = window._shadowRoot || document;
+    function trackClickEvent() {
+      var eventEls = root.querySelectorAll(".track-event");
+      eventEls.forEach(function (el) {
+        var eventName = el.getAttribute("data-event");
+        el.addEventListener("click", function (e) {
+          logGAEvent(eventName);
+        });
+      });
     }
-    .share-button:hover {
-        background-color: #007f7e;
-    }
-    @media screen and (max-width: 959px) {
-      body {
-        margin: 0 16px;
-      }
-      .refer-earn {
-        display: block;
-        font-size: 0;
-      }
-      .refer-earn__title {
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 24px;
-        margin-top: 32px;
-      }
-      .refer-earn__image {
-        width: 100%;
-        height: auto;
-        margin-right: 0;
-      }
-      .refer-earn__content {
-        font-size: 12px;
-        line-height: 16px;
-        margin-top: 16px;
-        margin-bottom: 16px;
-      }
-      .image_point {
-        width: 12px;
-        height: 12px;
-        vertical-align: -2px;
-      }
-      .share-button {
-        width: 100%;
+    function logGAEvent(eventName) {
+      if (window._safeLogEvent && eventName) {
+        window._safeLogEvent(eventName);
       }
     }
-  </style>
-  <div class="refer-earn">
-    <img
-      class="refer-earn__image"
-      src="https://api-dev.sunday.com/media/wysiwyg/esim/Invite_fd.png"
-      alt=""
-      width="100%"
-    />
-    <div>
-      <h1 class="refer-earn__title">Refer &amp; Earn</h1>
-      <div class="refer-earn__content">
-        <span
-          >With your Referral Code, your friend(s) will get
-          10% off for their first purchase. You’ll also earn
-          <img
-            class="image_point"
-            src="https://api-dev.sunday.com/media/wysiwyg/esim/S.miles_2.png"
-            alt=""
-          />&nbsp;200 S.miles for every friend who successfully
-          checks out for the first time. ​<br /><br />
-          S.miles can be used to settle payment partially or entirely in your
-          future orders. Subject to
-          <a href="https://dev.sunday.com/esim-terms-and-conditions-en" style="color: #3598db;">Terms and Conditions</a>.
-        
-      </div>
 
+    if (window._shadowRoot) {
+      trackClickEvent();
+    } else {
+      document.addEventListener("DOMContentLoaded", function () {
+        trackClickEvent();
+      });
+    }
+  })();
+</script>
+<div class="refer-earn">
+  <img
+    class="refer-earn__image"
+    src="https://api-dev.sunday.com/media/wysiwyg/esim/Invite_fd.png"
+    border="0"
+    alt=""
+    width="100%"
+  />
+  <div>
+    <h1 class="refer-earn__title">Refer &amp; Earn</h1>
+    <div class="refer-earn__content">
+      With your Referral Code, your friend(s) will get 10% off for their first
+      purchase. You’ll also earn
+      <img
+        class="image_point"
+        src="https://api-dev.sunday.com/media/wysiwyg/esim/S.miles_2.png"
+        border="0"
+        alt=""
+      />&nbsp;200 S.miles for every friend who successfully checks out for the
+      first time. ​<br /><br />S.miles can be used to settle payment partially
+      or entirely in your future orders. ​<br /><br />Subject to<span
+        style="color: #000000"
+      >
+        <span style="text-decoration: underline"
+          ><a
+            class="track-event"
+            data-event="refer_tnc"
+            href="https://dev.sunday.com/esim-terms-and-conditions-en"
+            style="color: #000000; text-decoration: underline"
+            >Terms and Conditions</a
+          ></span
+        ></span
+      >.
+    </div>
+    <div style="text-align: center; display: flex; justify-content: center">
       <a
-        class="no-hover"
+        class="no-hover track-event"
+        data-event="refer_shop_now"
         href="https://dev.sunday.com/search/search-by-category?category=Destinations"
-        target="_blank"
+        ><button
+          class="button"
+          style="
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 20px;
+            gap: 10px;
+            width: 343px;
+            height: 45px;
+            background: #00a09f;
+            border-radius: 100px; /* inside auto layout */
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            text-decoration: none;
+            color: #ffffff;
+            border: none;
+          "
         >
-      <button
-          class="share-button">
           Shop Now
-        </button>
-      </a>
+        </button></a
+      >
     </div>
   </div>
-<!-- </main> -->
+</div>
